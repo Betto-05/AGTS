@@ -6,472 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- === FAVICON === -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='90' font-weight='900' font-family='sans-serif' fill='%23F97316'>A</text></svg>" type="image/svg+xml">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='90' font-weight='900' font-family='sans-serif' fill='%23007BFF'>A</text></svg>" type="image/svg+xml">
     
     <title>AGTS — Appraise Global Technology Solutions</title>
     
     <!-- Professional Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css">
 
-    <style>
-        /* =========================================
-           ROOT & DESIGN SYSTEM
-           ========================================= */
-        :root {
-            /* Brand Core */
-            --primary: #F97316;       /* Electric Orange */
-            --primary-light: #fdba74;
-            --primary-dark: #ea580c;
-            --primary-glow: rgba(249, 115, 22, 0.4);
-            
-            --success: #10B981;
-            
-            /* Dark Theme Colors */
-            --bg-body: #020203;       /* Deeper Black */
-            --bg-surface: #0a0a0c;    /* Rich Dark */
-            --bg-card: #131316;
-            --bg-border: #27272a;
-            --bg-border-light: #3f3f46;
-
-            /* Fonts */
-            --font-display: 'Space Grotesk', sans-serif;
-            --font-body: 'Manrope', sans-serif;
-            --font-arabic: 'Cairo', sans-serif;
-            
-            --text-main: #FFFFFF;
-            --text-body: #A1A1AA;
-            --text-muted: #52525B;
-            
-            --nav-height: 110px;
-            --container: 1400px;
-            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-body); }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; border: 2px solid var(--bg-body); }
-        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
-
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            background-color: var(--bg-body);
-            background-image: 
-                radial-gradient(circle at top right, rgba(249,115,22,0.03), transparent 40%),
-                radial-gradient(circle at bottom left, rgba(255,255,255,0.02), transparent 40%);
-            color: var(--text-main);
-            font-family: var(--font-body);
-            overflow-x: hidden;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* === TOAST NOTIFICATION (Added Fix) === */
-        .toast-notification {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: var(--bg-surface);
-            border: 1px solid var(--bg-border-light);
-            padding: 20px 25px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 2000; /* High z-index so it sits on top */
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            border-left: 5px solid var(--success);
-            /* Hide by default off-screen to left */
-            transform: translateX(-150%);
-            transition: transform 0.5s var(--bounce);
-            max-width: 400px;
-        }
-        
-        .toast-notification.active {
-            transform: translateX(0);
-        }
-
-        /* === ARABIC TYPOGRAPHY FIXES === */
-        body.lang-ar { font-family: var(--font-arabic) !important; direction: rtl; }
-        body.lang-ar h1, body.lang-ar h2, body.lang-ar h3, body.lang-ar .logo { font-family: var(--font-arabic) !important; font-weight: 700; }
-        body.lang-ar p, body.lang-ar a, body.lang-ar span, body.lang-ar button { font-size: 1.05em; }
-        
-        /* Arabic Toast Overrides */
-        body.lang-ar .toast-notification {
-            left: auto; 
-            right: 30px; 
-            border-left: 1px solid var(--bg-border-light);
-            border-right: 5px solid var(--success); 
-            transform: translateX(120%);
-        }
-        body.lang-ar .toast-notification.active { transform: translateX(0); }
-        
-        body.lang-ar .contact-info, body.lang-ar .footer-col { text-align: right; }
-        body.lang-ar .desktop-menu a::after { left: auto; right: 0; }
-        body.lang-ar .footer-links a:hover { padding-left: 0; padding-right: 8px; }
-
-        /* Typography Global */
-        h1, h2, h3, h4 { font-family: var(--font-display); color: white; font-weight: 700; letter-spacing: -0.02em; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        
-        .container { max-width: var(--container); padding: 0 40px; margin: 0 auto; position: relative; }
-        .section-padding { padding: 150px 0; }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-
-        /* Animation */
-        .reveal-fx { opacity: 0; transform: translateY(40px); transition: all 0.8s var(--ease-out); }
-        .reveal-fx.active { opacity: 1; transform: translateY(0); }
-
-        /* HEADER */
-        header {
-            position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); z-index: 100;
-            background: rgba(2, 2, 3, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s;
-        }
-        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-        
-        .logo { display: flex; align-items: center; height: 100%; transition: transform 0.3s ease; }
-        .logo:hover { transform: scale(1.02); }
-        .logo img {
-            height: 80px; 
-            width: auto;
-            display: block;
-            filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
-        }
-
-        .desktop-menu { display: flex; gap: 40px; align-items: center; }
-        .desktop-menu a { 
-            font-size: 0.95rem; font-weight: 500; color: var(--text-body); 
-            text-transform: uppercase; letter-spacing: 0.5px;
-            padding: 8px 0; position: relative;
-        }
-        .desktop-menu a:hover { color: white; }
-        .desktop-menu a::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px;
-            background: var(--primary); transition: 0.4s var(--bounce);
-        }
-        .desktop-menu a:hover::after { width: 100%; }
-
-        .btn-glow {
-            position: relative; overflow: hidden;
-            padding: 14px 32px; background: rgba(255,255,255,0.03); 
-            border: 1px solid var(--bg-border-light);
-            color: white; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s;
-            display: flex; align-items: center; justify-content: center; gap: 10px; font-family: inherit; z-index: 1;
-        }
-        .btn-glow::before {
-            content:''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.2), transparent);
-            transform: translateX(-100%); transition: 0.5s; z-index: -1;
-        }
-        .btn-glow:hover { 
-            border-color: var(--primary); color: white; 
-            box-shadow: 0 0 25px rgba(249, 115, 22, 0.25);
-        }
-        .btn-glow:hover::before { transform: translateX(100%); }
-        .btn-glow:disabled { opacity: 0.6; cursor: not-allowed; }
-
-        /* HERO */
-        #canvas-wrapper { position: fixed; top:0; left:0; width:100%; height:100%; z-index: 1; opacity: 0.4; pointer-events: none; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; z-index: 2; padding-top: var(--nav-height); }
-        .hero::before {
-            content:''; position: absolute; inset:0; z-index: -1;
-            background: radial-gradient(circle at 80% 40%, rgba(249, 115, 22, 0.08) 0%, transparent 40%);
-        }
-        
-        .hero-subtitle { 
-            display: inline-flex; align-items: center; gap: 8px;
-            font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); font-weight: 700; margin-bottom: 2rem; 
-            padding: 8px 18px; background: rgba(249,115,22,0.1); border-radius: 100px; border: 1px solid rgba(249,115,22,0.15);
-        }
-        .hero-title { font-size: 5rem; line-height: 1.05; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -2px; }
-        .hero-title { text-shadow: 0 0 80px rgba(0,0,0,0.8); }
-
-        .hero-desc { font-size: 1.3rem; color: var(--text-body); max-width: 650px; margin-bottom: 3.5rem; line-height: 1.7; font-weight: 300;}
-        
-        .typewriter-cursor { display: inline-block; width: 5px; height: 1em; background: var(--primary); animation: blink 1s infinite; vertical-align: sub; margin-left: 5px; }
-        body.lang-ar .typewriter-cursor { margin-left: 0; margin-right: 5px; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        /* MARQUEE */
-        .marquee-section { padding: 40px 0; border-y: 1px solid var(--bg-border); background: var(--bg-surface); overflow: hidden; position: relative; z-index: 2; }
-        .marquee-track { display: flex; gap: 80px; animation: scroll 60s linear infinite; width: max-content; }
-        body.lang-ar .marquee-track { animation: scrollReverse 60s linear infinite; }
-        
-        .marquee-item { 
-            font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; 
-            color: #4a4a50; 
-            text-transform: uppercase; white-space: nowrap; 
-            display: flex; align-items: center; gap: 80px; transition: 0.3s;
-        }
-        .marquee-section:hover .marquee-item { color: #FFFFFF; }
-        .sep-dot { color: var(--primary); font-size: 0.9rem; transform: translateY(-3px); display: inline-block; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes scrollReverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-
-        /* ABOUT / METHODOLOGY */
-        .about-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 6rem; align-items: center; }
-        
-        .section-badge { color:var(--primary); font-weight:800; letter-spacing:3px; font-size:0.85rem; margin-bottom:1rem; text-transform:uppercase; display: flex; align-items: center; gap:10px; }
-        .section-badge::before { content:''; display:block; width: 30px; height: 2px; background: var(--primary); }
-
-        .glass-card {
-            background: rgba(19, 19, 22, 0.7);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--bg-border-light);
-            border-radius: 24px; padding: 3.5rem; position: relative; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.5);
-            transition: transform 0.4s var(--bounce);
-        }
-        .glass-card:hover { border-color: rgba(255,255,255,0.2); }
-
-        .step-item { display: flex; gap: 30px; position: relative; padding-bottom: 50px; }
-        .step-item:last-child { padding-bottom: 0; }
-        .step-item:not(:last-child)::after {
-            content: ''; position: absolute; left: 24px; top: 60px; bottom: 0; width: 2px;
-            background-image: linear-gradient(to bottom, var(--bg-border-light) 33%, rgba(255,255,255,0) 0%);
-            background-position: bottom; background-size: 2px 8px; background-repeat: repeat-y;
-            z-index: 0;
-        }
-        body.lang-ar .step-item:not(:last-child)::after { left: auto; right: 24px; }
-
-        .step-num { 
-            width: 50px; height: 50px; background: linear-gradient(135deg, var(--bg-surface), #000); 
-            color: var(--primary); border: 1px solid var(--bg-border-light);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;
-            flex-shrink: 0; z-index: 2; position: relative; box-shadow: 0 0 15px rgba(0,0,0,0.5);
-        }
-        .step-content h4 { font-size: 1.35rem; margin-bottom: 10px; color: white; }
-        .step-content p { font-size: 1.05rem; color: var(--text-body); line-height: 1.6; }
-
-        /* SERVICES */
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem; }
-        .feature-card {
-            background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
-            padding: 3.5rem 3rem; border-radius: 20px; border: 1px solid var(--bg-border);
-            transition: 0.4s var(--ease-out); position: relative; overflow: hidden;
-        }
-        .feature-card::after {
-            content: ''; position: absolute; top:0; left:0; width: 100%; height: 100%;
-            background: radial-gradient(400px circle at top center, rgba(255,255,255,0.03), transparent 40%);
-            opacity: 0; transition: 0.4s;
-        }
-        .feature-card:hover { transform: translateY(-7px); border-color: rgba(255,255,255,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .feature-card:hover::after { opacity: 1; }
-        
-        .feature-icon {
-            width: 72px; height: 72px; background: #000; border-radius: 18px; margin-bottom: 2rem;
-            display: flex; align-items: center; justify-content: center; color: var(--primary); border: 1px solid var(--bg-border-light);
-            transition: 0.4s var(--bounce);
-        }
-        .feature-card:hover .feature-icon { 
-            transform: scale(1.1) rotate(5deg); border-color: var(--primary); 
-            background: var(--primary); color: white; box-shadow: 0 0 30px var(--primary-glow); 
-        }
-
-        /* WORK */
-        .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-        .project-thumb {
-            height: 420px; 
-            background: #101012; position: relative; border-radius: 24px;
-            display: flex; align-items: center; justify-content: center; border: 1px solid var(--bg-border);
-            overflow: hidden;
-            background-image: linear-gradient(var(--bg-border) 1px, transparent 1px), linear-gradient(90deg, var(--bg-border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            transition: 0.5s var(--ease-out);
-        }
-        .project-thumb::before {
-            content:''; position: absolute; inset:0; 
-            background: radial-gradient(circle at center, transparent 30%, #000 120%); z-index: 1;
-        }
-        .project-thumb.tahseel-card {
-            background: radial-gradient(circle at center, #0a4cac 0%, #001f4d 100%);
-        }
-        .project-logo-img {
-            max-width: 65%; max-height: 160px; width: auto; object-fit: contain; z-index: 2;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); transition: 0.5s;
-        }
-        .project-overlay {
-            position: absolute; bottom: 0; left: 0; right: 0; padding: 3rem; z-index: 5;
-            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0));
-            transform: translateY(20px); opacity: 0; transition: 0.5s var(--ease-out);
-        }
-        .project-item:hover .project-thumb { border-color: var(--text-muted); }
-        .project-item:hover .project-logo-img { transform: translateY(-20px) scale(1.05); }
-        .project-item:hover .project-overlay { transform: translateY(0); opacity: 1; }
-        .badge {
-            position: absolute; top: 30px; right: 30px; z-index: 5;
-            background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 100px;
-            font-size: 0.75rem; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 1px;
-            display: flex; align-items: center; gap: 8px;
-        }
-        body.lang-ar .badge { right: auto; left: 30px; }
-        .lock-icon { opacity: 0.7; }
-
-        /* EXECUTIVE TEAM */
-        .executive-card {
-            background: var(--bg-card);
-            border: 1px solid var(--bg-border);
-            border-radius: 24px;
-            padding: 4rem 2.5rem;
-            text-align: center;
-            flex: 0 1 450px;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; overflow: hidden; z-index: 1;
-            box-shadow: 0 0 0 rgba(0,0,0,0);
-        }
-        .executive-card::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(circle at top, rgba(249, 115, 22, 0.1), transparent 70%);
-            opacity: 0; transition: 0.5s; z-index: -1;
-        }
-        .executive-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--primary);
-            box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.7);
-        }
-        .executive-card:hover::before { opacity: 1; }
-
-        .profile-wrapper { width: 140px; height: 140px; margin: 0 auto 2rem; position: relative; }
-        .profile-circle {
-            width: 100%; height: 100%; border-radius: 50%;
-            background: #050507; 
-            overflow: hidden;
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 0 5px rgba(249, 115, 22, 0.1);
-            transition: all 0.5s ease;
-            position: relative; z-index: 2;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .profile-wrapper::after {
-            content:''; position: absolute; top:50%; left:50%; transform:translate(-50%, -50%);
-            width: 150px; height: 150px; border-radius: 50%;
-            background: var(--primary); filter: blur(35px); opacity: 0; transition: 0.5s;
-        }
-        .executive-card:hover .profile-wrapper::after { opacity: 0.6; }
-        .executive-card:hover .profile-circle { transform: scale(1.05); border-color: #fff; }
-        .profile-img { width: 100%; height: 100%; object-fit: cover; }
-        .exec-name { font-size: 1.6rem; margin-bottom: 0.5rem; color: white; }
-        .exec-role {
-            display: block; color: var(--primary); font-size: 0.8rem; letter-spacing: 2px; font-weight: 700;
-            margin-bottom: 1.5rem; text-transform: uppercase;
-        }
-        .exec-bio { color: var(--text-body); font-size: 1.05rem; padding: 0 10px; }
-
-        /* CONTACT */
-        .contact-wrapper {
-            background: var(--bg-surface); border: 1px solid var(--bg-border);
-            border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.5fr;
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.6);
-        }
-        .contact-info {
-            padding: 5rem; background-color: var(--primary); color: white; position: relative;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDQwTDQwIDBIODB2NDBIMHoiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L2c+PC9zdmc+');
-            display: flex; flex-direction: column; justify-content: space-between;
-        }
-        .contact-form { padding: 5rem; background: #08080a; }
-        .form-group { position: relative; margin-bottom: 3rem; }
-        
-        .form-input {
-            width: 100%; background: transparent; 
-            border: none; border-bottom: 1px solid var(--bg-border-light);
-            color: white; padding: 15px 5px; outline: none; transition: 0.4s; 
-            font-family: inherit; font-size: 1.15rem; font-weight: 300;
-        }
-        .form-input:focus { border-bottom-color: var(--primary); box-shadow: 0 4px 10px -4px var(--primary-glow); }
-        
-        .form-label { 
-            position: absolute; left: 5px; top: 15px; color: var(--text-muted); 
-            pointer-events: none; transition: 0.3s ease; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;
-        }
-        body.lang-ar .form-label { left: auto; right: 5px; }
-        
-        .form-input:focus ~ .form-label, .form-input:valid ~ .form-label { 
-            top: -15px; font-size: 0.75rem; color: var(--primary); 
-        }
-
-        /* NEW FOOTER LAYOUT */
-        footer {
-            background-color: #020203;
-            border-top: 1px solid var(--bg-border);
-            margin-top: 80px;
-            padding: 100px 0 40px;
-        }
-        .footer-grid {
-            display: grid;
-            /* Changed Grid Layout for better spacing */
-            grid-template-columns: 2fr 1fr 1fr 1.5fr; 
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-        .footer-about p {
-            margin-top: 1.5rem; color: var(--text-body);
-            font-size: 1rem; line-height: 1.7; max-width: 350px;
-        }
-        .footer-col h4 {
-            color: white; font-family: var(--font-display);
-            font-size: 1.1rem; margin-bottom: 2rem;
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-        .footer-links a {
-            display: block; color: var(--text-muted); margin-bottom: 1rem;
-            font-size: 0.95rem; transition: all 0.3s ease;
-        }
-        .footer-links a:hover { color: var(--primary); padding-left: 8px; }
-        .footer-contact-item {
-            display: flex; align-items: flex-start; gap: 15px;
-            margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.95rem;
-        }
-        .footer-contact-item i { flex-shrink: 0; color: var(--primary); margin-top: 3px; }
-
-        .social-row { display: flex; gap: 12px; margin-top: 2rem; }
-        .social-btn {
-            width: 40px; height: 40px;
-            background: rgba(255,255,255,0.03); border: 1px solid var(--bg-border);
-            border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            color: white; transition: 0.3s;
-        }
-        .social-btn:hover {
-            background: var(--primary); border-color: var(--primary); transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--bg-border);
-            padding-top: 30px; display: flex;
-            justify-content: space-between; align-items: center;
-            color: var(--text-muted); font-size: 0.9rem;
-        }
-        .legal-links { display: flex; gap: 30px; }
-
-        /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            :root { --nav-height: 90px; }
-            .logo img { height: 55px; }
-            .hero-title { font-size: 3.2rem; }
-            .about-layout, .contact-wrapper, .work-grid { grid-template-columns: 1fr; gap: 4rem; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .desktop-menu { display: none; }
-            .contact-info, .contact-form { padding: 3rem 2rem; }
-            .glass-card, .feature-card, .project-thumb { padding: 2rem; }
-            .section-padding { padding: 100px 0; }
-            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
-            .toast-notification { bottom: 20px; left: 20px; right: 20px; width: auto; justify-content: center; max-width: none; }
-        }
-    </style>
 </head>
 <body id="top">
 
@@ -480,12 +27,12 @@
 
     <!-- Toast Notification (Popup) -->
     <div id="toast" class="toast-notification">
-        <div class="toast-icon" style="flex-shrink:0; width:35px;height:35px; background:var(--success); color:black; border-radius:50%; display:flex; align-items:center; justify-content:center;">
-            <i data-feather="check" style="width:20px;"></i>
+        <div class="toast-icon">
+            <i data-feather="check"></i>
         </div>
         <div>
-            <h4 style="font-size:1.1rem; margin-bottom:2px;" data-i18n="toast_title">Message Sent</h4>
-            <p style="font-size:0.95rem; color:var(--text-body); margin:0;" data-i18n="toast_msg">We have received your inquiry.</p>
+            <h4 data-i18n="toast_title">Message Sent</h4>
+            <p data-i18n="toast_msg">We have received your inquiry.</p>
         </div>
     </div>
 
@@ -502,10 +49,15 @@
                 <a href="#team" data-i18n="nav_team">Management</a>
                 <a href="#contact" data-i18n="nav_contact">Contact</a>
             </nav>
-            <button onclick="toggleLanguage()" class="btn-glow" style="padding: 10px 24px;">
-                <i data-feather="globe" style="width:16px;"></i>
-                <span id="lang-btn-text">العربية</span>
-            </button>
+            <div class="header-actions">
+                <button onclick="toggleLanguage()" class="btn-primary">
+                    <i data-feather="globe"></i>
+                    <span id="lang-btn-text">العربية</span>
+                </button>
+                <button id="theme-toggle-btn" class="btn-primary">
+                    <i data-feather="moon"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -513,18 +65,18 @@
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-subtitle reveal-fx" data-i18n="hero_subtitle">
-                <span style="width:8px; height:8px; background:var(--primary); border-radius:50%; display:inline-block;"></span>
+                <span></span>
                 Website & Mobile Experts
             </div>
             <h1 class="hero-title reveal-fx">
                 <span data-i18n="hero_h1">We Develop</span> <br> 
-                <span class="text-gradient" id="typewriter-text"></span><span class="typewriter-cursor"></span>
+                <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
             </h1>
             <p class="hero-desc reveal-fx" data-i18n="hero_desc">
                 AGTS builds powerful websites and mobile apps that make your business stand out. We handle all the technical work so you can focus on what you do best.
             </p>
-            <div class="hero-actions reveal-fx" style="transition-delay:0.2s">
-                <a href="#contact" class="btn-glow" style="display:inline-flex; width: auto; font-size:1.15rem; padding: 18px 40px;">
+            <div class="hero-actions reveal-fx">
+                <a href="#contact" class="btn-primary">
                     <span data-i18n="btn_explore">Start A Project</span>
                     <i data-feather="arrow-right"></i>
                 </a>
@@ -545,11 +97,11 @@
             <div class="about-layout">
                 <div class="reveal-fx">
                     <div class="section-badge" data-i18n="about_badge">Our Process</div>
-                    <h2 class="section-header" style="font-size:3.5rem; line-height:1.1; margin-bottom:1.5rem;" data-i18n="about_title">From Idea to Launch.</h2>
-                    <p style="color:var(--text-body); margin-top:2rem; font-size:1.25rem; font-weight:300;" data-i18n="about_p1">
+                    <h2 class="section-header" data-i18n="about_title">From Idea to Launch.</h2>
+                    <p class="about-p1" data-i18n="about_p1">
                         We turn your vision into a successful digital product. Whether you need a modern website, a custom mobile app, or an internal system, AGTS manages the entire journey.
                     </p>
-                    <p style="color:var(--text-body); margin-top:2rem; font-size:1.1rem;" data-i18n="about_p2">
+                    <p class="about-p2" data-i18n="about_p2">
                         You get one expert team for your entire project. No need to manage different freelancers. We provide a streamlined, professional experience in Libya.
                     </p>
                 </div>
@@ -585,25 +137,25 @@
     <!-- SERVICES -->
     <section id="services" class="section-padding" style="background:var(--bg-surface); border-top:1px solid var(--bg-border);">
         <div class="container">
-            <div class="reveal-fx" style="margin-bottom:80px; max-width:800px;">
-                <h2 data-i18n="services_h2" style="font-size:3rem;">Our Services</h2>
-                <p style="color:var(--text-body); font-size:1.2rem; margin-top:10px;" data-i18n="services_sub">Professional software, web, and mobile solutions.</p>
+            <div class="reveal-fx">
+                <h2 class="section-header" data-i18n="services_h2">Our Services</h2>
+                <p class="section-subtitle" data-i18n="services_sub">Professional software, web, and mobile solutions.</p>
             </div>
             <div class="service-grid">
                 <div class="feature-card reveal-fx" style="transition-delay: 0.2s">
                     <div class="feature-icon"><i data-feather="monitor"></i></div>
                     <h3 data-i18n="srv_3_t">Websites & Web Apps</h3>
-                    <p style="color:var(--text-body); margin-top:1rem; font-size:1.05rem;" data-i18n="srv_3_d">Responsive, modern websites and complex web applications that perform perfectly on all devices.</p>
+                    <p data-i18n="srv_3_d">Responsive, modern websites and complex web applications that perform perfectly on all devices.</p>
                 </div>
                 <div class="feature-card reveal-fx" style="transition-delay: 0.1s">
                     <div class="feature-icon"><i data-feather="smartphone"></i></div>
                     <h3 data-i18n="srv_2_t">Mobile Applications</h3>
-                    <p style="color:var(--text-body); margin-top:1rem; font-size:1.05rem;" data-i18n="srv_2_d">High-performance native apps for both iOS (iPhone) and Android devices, designed for a great user experience.</p>
+                    <p data-i18n="srv_2_d">High-performance native apps for both iOS (iPhone) and Android devices, designed for a great user experience.</p>
                 </div>
                 <div class="feature-card reveal-fx">
                     <div class="feature-icon"><i data-feather="cpu"></i></div>
                     <h3 data-i18n="srv_1_t">Business Systems & AI</h3>
-                    <p style="color:var(--text-body); margin-top:1rem; font-size:1.05rem;" data-i18n="srv_1_d">Powerful back-end software to help your company manage data, improve efficiency, and utilize AI.</p>
+                    <p data-i18n="srv_1_d">Powerful back-end software to help your company manage data, improve efficiency, and utilize AI.</p>
                 </div>
             </div>
         </div>
@@ -612,11 +164,11 @@
     <!-- WORK -->
     <section id="work" class="section-padding">
         <div class="container">
-            <div class="reveal-fx" style="margin-bottom:80px;">
-                <h2 data-i18n="work_h2" style="font-size:3rem;">Recent Work</h2>
+            <div class="reveal-fx">
+                <h2 class="section-header" data-i18n="work_h2">Recent Work</h2>
             </div>
             <div class="work-grid">
-                <div class="project-item reveal-fx">
+                <a href="project-tahseel.html" class="project-item reveal-fx">
                     <div class="project-thumb tahseel-card">
                         <img src="tahseel.png" alt="Tahseel Logo" class="project-logo-img">
                         <div class="badge">
@@ -626,37 +178,37 @@
                             <h3 data-i18n="proj_1">Tahseel Education System</h3>
                         </div>
                     </div>
-                </div>
-                <div class="project-item reveal-fx" style="transition-delay: 0.1s">
+                </a>
+                <a href="project-private.html" class="project-item reveal-fx">
                     <div class="project-thumb">
-                        <div class="badge" style="border-color:var(--primary);"><i data-feather="lock" class="lock-icon" style="width:14px;"></i> <span data-i18n="badge_private">PRIVATE</span></div>
-                        <i data-feather="shield" style="color:#27272a; width:80px; height:80px;"></i>
+                        <div class="badge"><i data-feather="lock" class="lock-icon"></i> <span data-i18n="badge_private">PRIVATE</span></div>
+                        <i data-feather="shield"></i>
                         <div class="project-overlay">
-                            <span data-i18n="cat_fintech" style="color:var(--primary); font-weight:700;">FINANCE</span>
+                            <span data-i18n="cat_fintech">FINANCE</span>
                             <h3 data-i18n="proj_pay">Secure Payment Gateway</h3>
                         </div>
                     </div>
-                </div>
-                <div class="project-item reveal-fx">
+                </a>
+                <a href="project-private.html" class="project-item reveal-fx">
                     <div class="project-thumb">
-                         <div class="badge" style="border-color:var(--primary);"><i data-feather="lock" class="lock-icon" style="width:14px;"></i> <span data-i18n="badge_private">PRIVATE</span></div>
-                        <i data-feather="truck" style="color:#27272a; width:80px; height:80px;"></i>
+                         <div class="badge"><i data-feather="lock" class="lock-icon"></i> <span data-i18n="badge_private">PRIVATE</span></div>
+                        <i data-feather="truck"></i>
                         <div class="project-overlay">
-                             <span data-i18n="cat_logistics" style="color:var(--primary); font-weight:700;">TRANSPORT</span>
+                             <span data-i18n="cat_logistics">TRANSPORT</span>
                             <h3 data-i18n="proj_fleet">Fleet Management App</h3>
                         </div>
                     </div>
-                </div>
-                <div class="project-item reveal-fx" style="transition-delay: 0.1s">
+                </a>
+                <a href="project-private.html" class="project-item reveal-fx">
                     <div class="project-thumb">
-                        <div class="badge" style="border-color:var(--primary);"><i data-feather="lock" class="lock-icon" style="width:14px;"></i> <span data-i18n="badge_private">PRIVATE</span></div>
-                        <i data-feather="database" style="color:#27272a; width:80px; height:80px;"></i>
+                        <div class="badge"><i data-feather="lock" class="lock-icon"></i> <span data-i18n="badge_private">PRIVATE</span></div>
+                        <i data-feather="database"></i>
                         <div class="project-overlay">
-                             <span data-i18n="cat_data" style="color:var(--primary); font-weight:700;">DATA</span>
+                             <span data-i18n="cat_data">DATA</span>
                             <h3 data-i18n="proj_data">Company Analytics Dashboard</h3>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -664,12 +216,12 @@
     <!-- EXECUTIVE TEAM -->
     <section id="team" class="section-padding" style="background:var(--bg-surface); border-top:1px solid var(--bg-border);">
         <div class="container reveal-fx">
-            <div style="text-align: center; margin-bottom: 80px;">
-                <h2 data-i18n="team_h2" style="font-size:3rem;">Management Team</h2>
-                <div style="width: 100px; height: 5px; background: var(--primary); margin: 30px auto; border-radius:3px;"></div>
+            <div class="team-header">
+                <h2 class="section-header" data-i18n="team_h2">Management Team</h2>
+                <div class="separator"></div>
             </div>
             
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
+            <div class="team-grid">
                 <div class="executive-card">
                     <div class="profile-wrapper">
                         <div class="profile-circle"><img src="mohammed.jpg" alt="Mohammed Alferjani" class="profile-img" onerror="this.style.display='none'"></div>
@@ -696,24 +248,23 @@
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <div>
-                        <h2 data-i18n="contact_h2" style="font-size:3.5rem; line-height: 1.1; letter-spacing: -2px;">Let's Build<br>Together.</h2>
-                        <p data-i18n="contact_sub" style="font-size:1.25rem; opacity:0.9; margin-top:20px;">Tell us about your project idea. Let's make it real.</p>
+                        <h2 data-i18n="contact_h2">Let's Build<br>Together.</h2>
+                        <p class="subtitle" data-i18n="contact_sub">Tell us about your project idea. Let's make it real.</p>
                     </div>
                     <div>
-                        <div style="margin-bottom:3rem">
-                            <div style="opacity:0.7; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.8rem" data-i18n="contact_email">Email</div>
-                            <div style="font-size:1.6rem; font-weight:bold; font-family:var(--font-display);">info@agts-ly.com</div>
+                        <div class="info-item">
+                            <div class="info-label" data-i18n="contact_email">Email</div>
+                            <div class="info-value-lg">info@agts-ly.com</div>
                         </div>
-                        <div>
-                            <div style="opacity:0.7; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.8rem" data-i18n="contact_loc">Location</div>
-                            <div style="font-size:1.4rem; font-weight:600; line-height:1.4;" data-i18n="address">Venice Street,<br>Benghazi, Libya</div>
+                        <div class="info-item">
+                            <div class="info-label" data-i18n="contact_loc">Location</div>
+                            <div class="info-value-md" data-i18n="address">Venice Street,<br>Benghazi, Libya</div>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
                     <form id="contactForm">
                         <input type="hidden" name="_subject" value="New AGTS Website Inquiry">
-                        <!-- Helper to ensure json response -->
                         <input type="hidden" name="_template" value="table"> 
                         <div class="form-group">
                             <input type="text" name="name" id="f-name" class="form-input" required placeholder=" ">
@@ -727,7 +278,7 @@
                             <textarea name="message" id="f-msg" class="form-input" rows="3" required placeholder=" "></textarea>
                             <label for="f-msg" class="form-label" data-i18n="form_msg">Your Idea or Question</label>
                         </div>
-                        <button type="submit" id="submitBtn" class="btn-glow" style="width:100%; padding:20px; justify-content:center; font-size:1.1rem; border-color:var(--primary);">
+                        <button type="submit" id="submitBtn" class="btn-primary">
                             <span id="btnText" data-i18n="btn_submit">Submit Message</span>
                         </button>
                     </form>
@@ -742,7 +293,7 @@
             <div class="footer-grid">
                 <!-- Col 1: Brand Info -->
                 <div class="footer-col footer-about">
-                    <img src="agts.png" alt="AGTS Logo" style="height: 60px;">
+                    <img src="agts.png" alt="AGTS Logo">
                     <p data-i18n="footer_desc">Professional technology solutions. We build modern websites, apps, and digital systems for companies in Libya.</p>
                     <div class="social-row">
                         <a href="#" class="social-btn"><i data-feather="linkedin"></i></a>
@@ -795,258 +346,6 @@
     </footer>
 
     <!-- LOGIC -->
-    <script>
-        feather.replace();
-
-        const translations = {
-            en: {
-                nav_studio: "About", nav_caps: "Services", nav_work: "Work", nav_team: "Team", nav_contact: "Contact",
-                nav_company: "Company", nav_solutions: "Solutions",
-                ft_web: "Web Development", ft_mob: "Mobile Apps", ft_ai: "Enterprise Systems", ft_cons: "Consultation",
-                hero_subtitle: "Website & Mobile Experts", hero_h1: "We Build",
-                hero_desc: "AGTS builds powerful websites and mobile apps that make your business stand out. We handle all the technical work so you can focus on what you do best.",
-                btn_explore: "Start A Project",
-                about_badge: "Our Process", about_title: "From Idea to Launch.",
-                about_p1: "We turn your vision into a successful digital product. Whether you need a modern website, a custom mobile app, or an internal system, AGTS manages the entire journey.",
-                about_p2: "You get one expert team for your entire project. No need to manage different freelancers. We provide a streamlined, professional experience in Libya.",
-                step_1_t: "Planning & Design", step_1_d: "We start by understanding your goals. We create a clear plan showing exactly how your website or app will look and function before we start building.",
-                step_2_t: "Development & Review", step_2_d: "Our expert team brings your project to life. We provide regular updates so you can see the progress and test the solution on your devices.",
-                step_3_t: "Launch & Support", step_3_d: "We launch your website on fast servers and publish your app to the Apple and Google stores. Our support continues, ensuring everything runs smoothly.",
-                services_h2: "Our Services", services_sub: "Professional software, web, and mobile solutions.",
-                srv_1_t: "Business Systems & AI", srv_1_d: "Powerful back-end software to help your company manage data, improve efficiency, and utilize AI.",
-                srv_2_t: "Mobile Applications", srv_2_d: "High-performance native apps for both iOS (iPhone) and Android devices, designed for a great user experience.",
-                srv_3_t: "Websites & Web Apps", srv_3_d: "Responsive, modern websites and complex web applications that perform perfectly on all devices.",
-                work_h2: "Recent Work", proj_1: "Tahseel Education System", cat_edtech: "EDUCATION PLATFORM", badge_private: "PRIVATE",
-                proj_pay: "Secure Payment Gateway", cat_fintech: "FINANCE", proj_fleet: "Fleet Management App", cat_logistics: "TRANSPORT",
-                proj_data: "Company Analytics Dashboard", cat_data: "DATA",
-                team_h2: "Management Team", 
-                role_ceo: "CEO & FOUNDER", name_ceo: "Mohammed Alferjani", bio_ceo: "Leading the vision for digital infrastructure in North Africa.",
-                role_gm: "GENERAL MANAGER", name_gm: "Ibrahim Alferjani", bio_gm: "Managing operations and ensuring client satisfaction.",
-                contact_h2: "Let's Build Together.", contact_sub: "Tell us about your project idea. Let's make it real.",
-                contact_email: "Email", contact_loc: "Location", address: "Venice Street, Benghazi, Libya",
-                form_name: "Full Name", form_email: "Email Address", form_msg: "Your Idea or Question", btn_submit: "Submit Message",
-                toast_title: "Message Sent", toast_msg: "We have received your inquiry.",
-                footer_desc: "Professional technology solutions. We build modern websites, apps, and digital systems for companies in Libya.",
-                footer_reach: "Reach Us"
-            },
-            
-            ar: {
-                nav_studio: "عن الشركة", nav_caps: "خدماتنا", nav_work: "أعمالنا", nav_team: "الفريق", nav_contact: "اتصل بنا",
-                nav_company: "الشركة", nav_solutions: "خدماتنا",
-                ft_web: "تطوير المواقع", ft_mob: "تطبيقات الهاتف", ft_ai: "أنظمة الشركات", ft_cons: "الاستشارات",
-                hero_subtitle: "خبراء المواقع والتطبيقات", hero_h1: "نحن نبرمج",
-                hero_desc: "تبني AGTS مواقع إلكترونية وتطبيقات هاتف قوية تساعد مشروعك على التميز. نحن نتولى كل الجانب التقني لتركز أنت على نجاح عملك.",
-                btn_explore: "ابدأ مشروعك",
-                about_badge: "طريقة عملنا", about_title: "من الفكرة إلى الإطلاق.",
-                about_p1: "نحول رؤيتك إلى منتج رقمي ناجح. سواء كنت تحتاج إلى موقع إلكتروني حديث، أو تطبيق هاتف مخصص، أو نظام داخلي، AGTS تدير الرحلة بأكملها.",
-                about_p2: "تحصل على فريق خبير واحد لمشروعك بأكمله. لا حاجة لإدارة عدة أشخاص. نقدم تجربة احترافية ومتكاملة في ليبيا.",
-                step_1_t: "التخطيط والتصميم", step_1_d: "نبدأ بفهم أهدافك. نضع خطة واضحة تُظهر بالضبط كيف سيبدو ويعمل موقعك أو تطبيقك قبل أن نبدأ في البرمجة.",
-                step_2_t: "التطوير والمراجعة", step_2_d: "يقوم فريقنا الخبير ببناء مشروعك. نقدم تحديثات منتظمة حتى تتمكن من رؤية التقدم واختبار النظام على أجهزتك.",
-                step_3_t: "الإطلاق والدعم الفني", step_3_d: "نُطلق موقعك على خوادم سريعة وننشر تطبيقك في متاجر أبل وجوجل. يستمر دعمنا لضمان عمل كل شيء بسلاسة.",
-                services_h2: "خدماتنا", services_sub: "حلول برمجية احترافية للويب والهاتف.",
-                srv_1_t: "أنظمة الشركات والذكاء الاصطناعي", srv_1_d: "برامج خلفية قوية لمساعدة شركتك على إدارة البيانات وتحسين الكفاءة والاستفادة من الذكاء الاصطناعي.",
-                srv_2_t: "تطبيقات الهاتف", srv_2_d: "تطبيقات عالية الأداء لأجهزة iOS (آيفون) وأندرويد، مصممة لتجربة مستخدم رائعة.",
-                srv_3_t: "المواقع وتطبيقات الويب", srv_3_d: "مواقع إلكترونية حديثة ومتجاوبة وتطبيقات ويب معقدة تعمل بشكل مثالي على جميع الأجهزة.",
-                work_h2: "أحدث أعمالنا", proj_1: "منصة تحصيل التعليمية", cat_edtech: "منصة تعليمية", badge_private: "خاص",
-                proj_pay: "بوابة دفع آمنة", cat_fintech: "التقنية المالية", proj_fleet: "تطبيق إدارة النقل", cat_logistics: "النقل",
-                proj_data: "لوحة تحكم بيانات الشركة", cat_data: "البيانات",
-                team_h2: "فريق الإدارة", 
-                role_ceo: "المدير التنفيذي", name_ceo: "محمد الفرجاني", bio_ceo: "قيادة الرؤية التقنية وتطوير البنية التحتية الرقمية.",
-                role_gm: "المدير العام", name_gm: "إبراهيم الفرجاني", bio_gm: "إدارة العمليات وضمان رضا العملاء.",
-                contact_h2: "لنبنِ معاً", contact_sub: "شاركنا فكرة مشروعك. لنجعلها حقيقة.",
-                contact_email: "البريد الإلكتروني", contact_loc: "العنوان", address: "شارع فينيسيا، بنغازي، ليبيا",
-                form_name: "الاسم الكامل", form_email: "البريد الإلكتروني", form_msg: "اكتب فكرتك أو سؤالك", btn_submit: "إرسال الرسالة",
-                toast_title: "تم الإرسال", toast_msg: "لقد استلمنا طلبكم، سيتم الرد قريباً.",
-                footer_desc: "حلول تقنية احترافية. نبني مواقع وتطبيقات وأنظمة رقمية حديثة للشركات في ليبيا.",
-                footer_reach: "تواصل معنا"
-            }
-        };
-
-        const phrasesEn = ["Websites", "Mobile Apps", "Digital Solutions"];
-        const phrasesAr = ["مواقع إلكترونية", "تطبيقات الهاتف", "حلول رقمية"];
-        let currentPhrases = phrasesEn;
-        let currentLang = 'en';
-
-        function toggleLanguage() {
-            const btnText = document.getElementById("lang-btn-text");
-            currentLang = currentLang === 'en' ? 'ar' : 'en';
-            
-            if(currentLang === 'ar') {
-                document.body.classList.add('lang-ar');
-                btnText.textContent = "English";
-                currentPhrases = phrasesAr; 
-            } else {
-                document.body.classList.remove('lang-ar');
-                btnText.textContent = "العربية";
-                currentPhrases = phrasesEn; 
-            }
-            renderMarquee();
-
-            const langData = translations[currentLang];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if(langData[key]) el.textContent = langData[key];
-            });
-
-            // Handle button text state
-            const submitBtn = document.getElementById('submitBtn');
-            const formBtnText = document.getElementById('btnText');
-            if(!submitBtn.disabled) {
-                formBtnText.textContent = langData['btn_submit'];
-            }
-            
-            resetTypewriter();
-        }
-
-        function renderMarquee() {
-            const track = document.getElementById('marquee-track');
-            const itemsEn = ["Websites", "Mobile Apps", "Software", "AI Tools", "Cloud", "Benghazi"];
-            const itemsAr = ["مواقع الويب", "تطبيقات الهاتف", "برمجيات", "أدوات الذكاء الاصطناعي", "خدمات سحابية", "بنغازي"];
-            const list = currentLang === 'ar' ? itemsAr : itemsEn;
-            
-            let fullHTML = '';
-            for(let i=0; i<4; i++) { 
-                list.forEach(txt => {
-                    fullHTML += `<div class="marquee-item">${txt} <span class="sep-dot">●</span></div>`;
-                });
-            }
-            track.innerHTML = fullHTML;
-        }
-        
-        const typeText = document.getElementById("typewriter-text");
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typeTimer;
-
-        function typeWriter() {
-            const currentPhrase = currentPhrases[phraseIndex];
-            let typeSpeed = isDeleting ? 40 : 100;
-            
-            if (isDeleting) charIndex--; else charIndex++;
-            typeText.textContent = currentPhrase.substring(0, charIndex);
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                typeSpeed = 2500;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % currentPhrases.length;
-                typeSpeed = 500;
-            }
-            typeTimer = setTimeout(typeWriter, typeSpeed);
-        }
-
-        function resetTypewriter() {
-            clearTimeout(typeTimer);
-            typeText.textContent = "";
-            charIndex = 0;
-            isDeleting = false;
-            phraseIndex = 0;
-            typeWriter();
-        }
-
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const btnSpan = document.getElementById('btnText');
-            const toast = document.getElementById('toast');
-            
-            const originalText = translations[currentLang]['btn_submit'];
-            const loadingText = currentLang === 'ar' ? 'جارِ الإرسال...' : 'Sending...';
-            
-            btn.disabled = true;
-            btnSpan.textContent = loadingText;
-            
-            const formData = new FormData(contactForm);
-            
-            fetch("https://formsubmit.co/ajax/info@agts-ly.com", { 
-                method: "POST", 
-                body: formData 
-            })
-            .then(res => res.json())
-            .then(data => {
-                contactForm.reset();
-                toast.classList.add('active');
-                setTimeout(() => toast.classList.remove('active'), 5000);
-            })
-            .catch(err => { 
-                console.error(err); 
-                // Only show alert if toast failed to fire (rare)
-                alert(currentLang === 'ar' ? 'حدث خطأ. يرجى المحاولة لاحقاً.' : 'Message not sent. Please try again.'); 
-            })
-            .finally(() => { 
-                btn.disabled = false; 
-                btnSpan.textContent = originalText; 
-            });
-        });
-        
-        // Canvas & Animations
-        const canvas = document.getElementById("hero-canvas");
-        const ctx = canvas.getContext("2d");
-        let width, height, particles = [];
-        
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            initParticles();
-        }
-
-        function initParticles() {
-            particles = [];
-            const density = window.innerWidth < 800 ? 15000 : 9000;
-            const count = (width * height) / density;
-            for (let i = 0; i < count; i++) {
-                particles.push({
-                    x: Math.random() * width, y: Math.random() * height,
-                    vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
-                    size: Math.random() * 1.5 + 0.5
-                });
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = "#F97316";
-
-            particles.forEach((p, i) => {
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > width) p.vx *= -1;
-                if (p.y < 0 || p.y > height) p.vy *= -1;
-
-                ctx.globalAlpha = p.size / 3;
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    let p2 = particles[j];
-                    let dist = Math.sqrt((p.x - p2.x)**2 + (p.y - p2.y)**2);
-                    if (dist < 110) {
-                        ctx.globalAlpha = (1 - dist / 110) * 0.3;
-                        ctx.beginPath();
-                        ctx.strokeStyle = "#F97316";
-                        ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
-                    }
-                }
-            });
-            requestAnimationFrame(animate);
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            typeWriter();
-            renderMarquee();
-            resize();
-            animate();
-            document.querySelectorAll('.reveal-fx').forEach(el => observer.observe(el));
-        });
-
-        window.addEventListener('resize', resize);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
