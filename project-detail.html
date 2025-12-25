@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail — AGTS</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #F97316;
+            /* Dark Theme (Default) */
+            --bg-body: #0B0F19;
+            --bg-surface: #111827;
+            --text-main: #F9FAFB;
+            --text-body: #D1D5DB;
+            /* Light Theme */
+            --bg-body-light: #F9FAFB;
+            --bg-surface-light: #FFFFFF;
+            --text-main-light: #111827;
+            --text-body-light: #374151;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-body);
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        body.light-theme {
+            --bg-body: var(--bg-body-light);
+            --bg-surface: var(--bg-surface-light);
+            --text-main: var(--text-main-light);
+            --text-body: var(--text-body-light);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-main);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #C2410C;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <h1>Project Detail Page</h1>
+        <p>This is a placeholder for a detailed project description. Content for each project will be added here soon.</p>
+        <a href="index.html" class="btn">Back to Home</a>
+    </main>
+
+    <script>
+        // Apply saved theme on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-theme');
+            }
+        });
+    </script>
+</body>
+</html>
