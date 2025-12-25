@@ -3,9 +3,10 @@ feather.replace();
 
 // Init AOS
 AOS.init({
-    duration: 800,
+    duration: 1000,
     once: true,
-    offset: 50,
+    offset: 100,
+    easing: 'ease-in-out',
 });
 
 // Header scroll effect
