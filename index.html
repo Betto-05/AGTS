@@ -2,230 +2,179 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGTS — Appraise Global Technology Solutions</title>
-    
-    <!-- Fonts -->
+    <title>AGTS - Engineering Digital Solutions</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- AOS Animation Library -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS (Animate on Scroll) Library -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body id="top">
+<body>
 
-    <!-- Navigation -->
-    <header>
-        <div class="container nav-wrapper">
-            <a href="#top" class="logo">
-                <div class="logo-box">A</div>
-                <div>AGTS</div>
-            </a>
-            <nav class="desktop-menu">
-                <a href="#services" data-i18n="nav_caps">Services</a>
-                <a href="#work" data-i18n="nav_work">Work</a>
-                <a href="#team" data-i18n="nav_team">About</a>
-                <a href="#contact" data-i18n="nav_contact">Contact</a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">AGTS</a>
+                <ul class="nav-menu">
+                    <li><a href="#services" data-i18n="nav_services">Services</a></li>
+                    <li><a href="#work" data-i18n="nav_work">Work</a></li>
+                    <li><a href="#about" data-i18n="nav_about">About</a></li>
+                    <li><a href="#contact" class="btn btn-primary" data-i18n="nav_contact">Contact Us</a></li>
+                    <li><button id="language-toggle" class="btn-toggle"><i class="fas fa-globe"></i> <span id="language-toggle-text">العربية</span></button></li>
+                    <li><button id="dark-mode-toggle" class="btn-toggle"><i class="fas fa-moon"></i></button></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </nav>
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <button onclick="toggleLanguage()" class="btn">
-                    <span id="lang-btn-text">العربية</span>
-                </button>
-                <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">
-                    <i data-feather="moon"></i>
-                    <i data-feather="sun"></i>
-                </button>
-            </div>
         </div>
     </header>
 
-    <main>
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="hero-background"></div>
-            <div class="container hero-content">
-                <h1 data-aos="fade-up" data-i18n="hero_h1">Engineering <span class="text-gradient">Digital Solutions</span> for Tomorrow's Market.</h1>
-                <p data-aos="fade-up" data-aos-delay="100" data-i18n="hero_desc">
-                    We architect and build high-performance mobile apps, dynamic web frontends, and intelligent backend systems to elevate your business in the digital era.
-                </p>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <a href="#contact" class="btn" data-i18n="btn_explore">Start A Project</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title" data-i18n="hero_title">Engineering Tomorrow's Digital Solutions</h1>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">We architect and build high-performance mobile apps, dynamic web frontends, and intelligent backend systems to elevate your business in the digital era.</p>
+                <a href="#work" class="btn btn-primary" data-i18n="hero_cta">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="services_title">Our Expertise</h2>
+                <p class="section-subtitle" data-i18n="services_subtitle">Delivering excellence across the full product lifecycle.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="service-title" data-i18n="service_mobile_title">Mobile Development</h3>
+                    <p class="service-description" data-i18n="service_mobile_desc">Crafting beautiful and performant native applications for iOS and Android that your users will love.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="service-title" data-i18n="service_web_title">Web Development</h3>
+                    <p class="service-description" data-i18n="service_web_desc">Building responsive, modern, and scalable web applications tailored to your business needs.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fas fa-server"></i></div>
+                    <h3 class="service-title" data-i18n="service_backend_title">Backend & APIs</h3>
+                    <p class="service-description" data-i18n="service_backend_desc">Designing and implementing robust and secure backend systems and APIs to power your applications.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SERVICES -->
-        <section id="services" class="section-padding">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="subtitle" data-i18n="services_h2">Tech Capabilities</span>
-                    <h2 data-i18n="services_main_h">Full-Stack Engineering Powerhouse</h2>
-                </div>
-                <div class="service-grid">
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-icon"><i data-feather="smartphone"></i></div>
-                        <h3 data-i18n="srv_2_t">Mobile Applications</h3>
-                        <p data-i18n="srv_2_d">Native-performance iOS and Android solutions built with Flutter, designed for scalability and exceptional user experience.</p>
-                    </div>
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-icon"><i data-feather="layout"></i></div>
-                        <h3 data-i18n="srv_3_t">Web Frontend</h3>
-                        <p data-i18n="srv_3_d">Responsive, modern web applications using React and Next.js that are fast, secure, and SEO-friendly.</p>
-                    </div>
-                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-icon"><i data-feather="server"></i></div>
-                        <h3 data-i18n="srv_1_t">Backend & AI</h3>
-                        <p data-i18n="srv_1_d">Robust backend systems using microservices, REST APIs, and AI data processing pipelines to power your applications.</p>
-                    </div>
-                </div>
+    <!-- Work Section -->
+    <section id="work" class="work">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="work_title">Our Work</h2>
+                <p class="section-subtitle" data-i18n="work_subtitle">A selection of projects we are proud of.</p>
             </div>
-        </section>
-
-        <!-- WORK / DEPLOYMENTS -->
-        <section id="work" class="section-padding">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="subtitle" data-i18n="work_h2">Featured Deployments</span>
-                    <h2 data-i18n="work_main_h">Solving Complex Problems</h2>
-                </div>
-                <div class="work-grid">
-                    <a href="project-detail.html" class="project-card" data-aos="fade-right">
-                        <div class="project-thumbnail">
-                            <img src="assets/img/tahseel.png" alt="EdTech Project">
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category" data-i18n="cat_edtech">EDTECH w/ AI</span>
-                            <h3 data-i18n="proj_1">Tahseel Education System</h3>
-                        </div>
-                    </a>
-                    <a href="project-detail.html" class="project-card" data-aos="fade-left">
-                        <div class="project-thumbnail">
-                           <img src="assets/img/smart-payment.png" alt="FinTech Project">
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category" data-i18n="cat_fintech">FINTECH</span>
-                            <h3 data-i18n="proj_pay">Smart Payment Gateway</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXECUTIVE TEAM -->
-        <section id="team" class="section-padding">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="subtitle" data-i18n="team_h2">Executive Management</span>
-                    <h2 data-i18n="team_main_h">The Leadership Driving AGTS</h2>
-                </div>
-                <div class="team-grid">
-                    <div class="team-member-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="assets/img/ceo.png" alt="Mohammed Alferjani" class="team-member-photo">
-                        <h3 data-i18n="name_ceo">Mohammed Alferjani</h3>
-                        <p class="team-member-role" data-i18n="role_ceo">CHIEF EXECUTIVE OFFICER</p>
-                        <p class="text-muted" data-i18n="bio_ceo">Driving the technical vision and expansion of digital infrastructure.</p>
+            <div class="work-grid">
+                <div class="work-item" data-aos="fade-up">
+                    <img src="assets/img/tahseel.png" alt="Project 1" class="work-img">
+                    <div class="work-overlay">
+                        <h3 class="work-title" data-i18n="work_proj1_title">Tahseel Platform</h3>
+                        <p class="work-category" data-i18n="work_proj1_cat">EdTech</p>
                     </div>
-                    <div class="team-member-card" data-aos="fade-up" data-aos-delay="200">
-                        <img src="assets/img/gm.png" alt="Ibrahim Alferjani" class="team-member-photo">
-                        <h3 data-i18n="name_gm">Ibrahim Alferjani</h3>
-                        <p class="team-member-role" data-i18n="role_gm">GENERAL MANAGER</p>
-                        <p class="text-muted" data-i18n="bio_gm">Operational strategy and enterprise client management.</p>
+                </div>
+                <div class="work-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/img/smart-payment.png" alt="Project 2" class="work-img">
+                    <div class="work-overlay">
+                        <h3 class="work-title" data-i18n="work_proj2_title">Smart Payment</h3>
+                        <p class="work-category" data-i18n="work_proj2_cat">FinTech</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- CONTACT FORM SECTION -->
-        <section id="contact" class="section-padding">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="subtitle" data-i18n="contact_h2">Get In Touch</span>
-                    <h2 data-i18n="contact_main_h">Let's Build Something Great</h2>
-                </div>
-                <div class="contact-wrapper">
-                    <form id="contact-form" class="contact-form" action="https://formsubmit.co/info@agts-ly.com" method="POST" data-aos="fade-right">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://winnielv.github.io/AGTS/">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Full Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                    <div class="contact-info" data-aos="fade-left" data-aos-delay="200">
-                        <h3>Contact Information</h3>
-                        <p>For any inquiries, please reach out to us. We are available for meetings in our office.</p>
-                        <ul>
-                            <li><i data-feather="map-pin"></i> Venice Street, Benghazi, Libya</li>
-                            <li><i data-feather="mail"></i> info@agts-ly.com</li>
-                            <li><i data-feather="phone"></i> +218 91 123 4567</li>
-                        </ul>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="about_title">About AGTS</h2>
+                <p data-i18n="about_desc">Appraise Global Technology Solutions (AGTS) is a premier software engineering firm based in Benghazi, Libya. We specialize in high-performance mobile and web applications, offering a comprehensive suite of services from initial concept to deployment and beyond. Our mission is to empower businesses with the technology they need to thrive in a digital-first world.</p>
+                <div class="team">
+                    <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                        <img src="assets/img/ceo.png" alt="Team Member 1" class="team-photo">
+                        <h3 class="team-name" data-i18n="team_ceo_name">Mohammed Alferjani</h3>
+                        <p class="team-role" data-i18n="team_ceo_role">CEO</p>
+                    </div>
+                    <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                        <img src="assets/img/gm.png" alt="Team Member 2" class="team-photo">
+                        <h3 class="team-name" data-i18n="team_gm_name">Ibrahim Alferjani</h3>
+                        <p class="team-role" data-i18n="team_gm_role">General Manager</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="contact_title">Let's build together</h2>
+                <p data-i18n="contact_subtitle">Have a project in mind? We'd love to hear from you.</p>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" placeholder="Full Name" required data-i18n-placeholder="form_name_placeholder">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" placeholder="Email Address" required data-i18n-placeholder="form_email_placeholder">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" id="message" rows="5" placeholder="Your Message" required data-i18n-placeholder="form_message_placeholder"></textarea>
+                    </div>
+                    <button type="submit" id="submitBtn" class="btn btn-primary" data-i18n="form_submit">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification">
+        <div class="toast-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="toast-message" data-i18n="toast_success">Your message has been sent successfully!</div>
+    </div>
 
     <!-- Footer -->
-    <footer class="site-footer">
+    <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <a href="#top" class="logo" style="margin-bottom: 1rem;">
-                        <div class="logo-box">A</div>
-                        <div>AGTS</div>
-                    </a>
-                    <p data-i18n="footer_about">Premier software engineering firm in Benghazi, Libya, specializing in high-performance mobile and web applications.</p>
-                    <div class="footer-socials">
-                        <a href="#" aria-label="LinkedIn"><i data-feather="linkedin"></i></a>
-                        <a href="#" aria-label="Twitter"><i data-feather="twitter"></i></a>
-                        <a href="#" aria-label="GitHub"><i data-feather="github"></i></a>
-                    </div>
+            <div class="footer-content">
+                <p>&copy; 2024 AGTS. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/agts-ly" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/agts_ly" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/agts-ly" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
-                 <div>
-                    <h4 data-i18n="footer_links_h">Quick Links</h4>
-                    <a href="#services" data-i18n="nav_caps">Services</a><br>
-                    <a href="#work" data-i18n="nav_work">Work</a><br>
-                    <a href="#team" data-i18n="nav_team">Management</a>
-                </div>
-                <div>
-                    <h4 data-i18n="footer_contact_h">Contact Us</h4>
-                    <p>info@agts-ly.com</p>
-                    <p data-i18n="address">Venice Street, Benghazi, Libya</p>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <span data-i18n="footer_copy">&copy; 2025 Appraise Global Technology Solutions. All Rights Reserved.</span>
             </div>
         </div>
     </footer>
 
-    <div id="form-status"></div>
-
-    <!-- JS Libraries -->
+    <!-- AOS (Animate on Scroll) Library -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <!-- Main Script -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
