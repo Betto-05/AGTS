@@ -134,8 +134,8 @@
         
         .hero-subtitle { 
             display: inline-block;
-            font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); font-weight: 700; margin-bottom: 1.5rem; 
-            padding: 5px 12px; background: rgba(249,115,22,0.1); border-radius: 4px;
+            font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: white; font-weight: 700; margin-bottom: 1.5rem;
+            padding: 8px 20px; background: var(--primary); border-radius: 30px;
         }
         .hero-title { font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -1px; }
         .hero-desc { font-size: 1.25rem; color: var(--text-body); max-width: 600px; margin-bottom: 3rem; line-height: 1.7; }
@@ -193,10 +193,92 @@
             padding: 3rem; border-radius: 16px; border: 1px solid var(--bg-border);
             transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .feature-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            background: linear-gradient(180deg, var(--primary-glow) 0%, rgba(20,24,30,0.5) 100%);
+        }
         .feature-icon {
             width: 64px; height: 64px; background: rgba(255,255,255,0.03); border-radius: 12px; margin-bottom: 2rem;
             display: flex; align-items: center; justify-content: center; color: var(--primary); border: 1px solid var(--bg-border);
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem 1rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--bg-border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .tech-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: var(--bg-card);
+        }
+        .tech-item img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .tech-item:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        .tech-item span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-body);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-border);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+        }
+        .testimonial-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-body);
+            margin-bottom: 2rem;
+        }
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .testimonial-author img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            padding: 4px;
+        }
+        .testimonial-author h4 {
+            font-size: 1.1rem;
+            color: white;
+        }
+        .testimonial-author span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
         /* WORK */
@@ -256,6 +338,86 @@
         body.lang-ar .form-label { left: auto; right: 0; }
         .form-input:focus ~ .form-label, .form-input:valid ~ .form-label { top: -15px; font-size: 0.85rem; color: var(--primary); }
 
+        /* Footer */
+        .site-footer {
+            background-color: var(--bg-surface);
+            padding: 80px 0;
+            border-top: 1px solid var(--bg-border);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        body.lang-ar .footer-column h4::after {
+            left: auto;
+            right: 0;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+        .footer-links a {
+            color: var(--text-body);
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+        .footer-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            border: 1px solid var(--bg-border);
+            color: var(--text-body);
+            transition: all 0.3s ease;
+        }
+        .footer-socials a:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        .footer-bottom {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--bg-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
         /* TOAST */
         .toast-notification {
             position: fixed; bottom: 30px; left: 30px;
@@ -299,6 +461,7 @@
             <nav class="desktop-menu">
                 <a href="#about" data-i18n="nav_studio">Studio</a>
                 <a href="#services" data-i18n="nav_caps">Services</a>
+                <a href="#tech" data-i18n="nav_tech">Technology</a>
                 <a href="#work" data-i18n="nav_work">Work</a>
                 <a href="#team" data-i18n="nav_team">Management</a>
                 <a href="#contact" data-i18n="nav_contact">Contact</a>
@@ -340,7 +503,7 @@
             <div class="about-layout">
                 <div class="reveal-fx">
                     <!-- Professional Badge -->
-                    <div style="color:var(--primary); font-weight:700; letter-spacing:2px; font-size:0.9rem; margin-bottom:1rem; text-transform:uppercase;" data-i18n="about_badge">
+                    <div style="display: inline-block; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: white; font-weight: 700; margin-bottom: 1.5rem; padding: 8px 20px; background: var(--primary); border-radius: 30px;" data-i18n="about_badge">
                         Methodology
                     </div>
                     
@@ -429,6 +592,27 @@
         </div>
     </section>
 
+    <!-- TECHNOLOGY STACK -->
+    <section id="tech" class="section-padding">
+        <div class="container">
+            <div class="reveal-fx" style="text-align:center; max-width:700px; margin: 0 auto 60px;">
+                <h2 data-i18n="tech_h2">Technology Stack</h2>
+                <p style="color:var(--text-body); margin-top:10px;" data-i18n="tech_sub">We build on a foundation of modern, scalable, and secure technologies to deliver robust enterprise-grade solutions.</p>
+            </div>
+
+            <div class="tech-grid reveal-fx">
+                <!-- Row 1 -->
+                <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter"><span>Flutter</span></div>
+                <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"><span>React</span></div>
+                <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"><span>Next.js</span></div>
+                <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><span>Python</span></div>
+                <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud"><span>Google Cloud</span></div>
+                <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"><span>Docker</span></div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- WORK / DEPLOYMENTS -->
     <section id="work" class="section-padding">
         <div class="container">
@@ -481,6 +665,43 @@
                             <span data-i18n="cat_data" style="color:var(--primary); font-size:0.8rem; font-weight:700;">BIG DATA</span>
                             <h3 data-i18n="proj_data">Enterprise Dashboard</h3>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENT TESTIMONIALS -->
+    <section id="testimonials" class="section-padding">
+        <div class="container">
+            <div class="reveal-fx" style="text-align:center; max-width:700px; margin: 0 auto 60px;">
+                <h2 data-i18n="testimonials_h2">Client Testimonials</h2>
+                <p style="color:var(--text-body); margin-top:10px;" data-i18n="testimonials_sub">Our clients' success is our success. Here's what they have to say about working with AGTS.</p>
+            </div>
+
+            <div class="service-grid">
+                <div class="testimonial-card reveal-fx">
+                    <p class="testimonial-quote" data-i18n="testimonial_1_q">"AGTS delivered a robust and scalable mobile app that has transformed our business. Their technical expertise and commitment to quality are second to none."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client 1">
+                        <h4 data-i18n="testimonial_1_n">Ahmed Ben Ali</h4>
+                        <span data-i18n="testimonial_1_t">CEO, Libya Ventures</span>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal-fx" style="transition-delay: 0.1s">
+                    <p class="testimonial-quote" data-i18n="testimonial_2_q">"The team at AGTS is professional, responsive, and highly skilled. They developed a custom ERP system that has streamlined our operations and improved efficiency."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client 2">
+                        <h4 data-i18n="testimonial_2_n">Fatima El-Kadhi</h4>
+                        <span data-i18n="testimonial_2_t">COO, Tripoli Industries</span>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal-fx" style="transition-delay: 0.2s">
+                    <p class="testimonial-quote" data-i18n="testimonial_3_q">"We were impressed with AGTS's ability to understand our complex requirements and deliver a solution that exceeded our expectations. Highly recommended."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client 3">
+                        <h4 data-i18n="testimonial_3_n">Khalid Al-Amin</h4>
+                        <span data-i18n="testimonial_3_t">CTO, Sahara Logistics</span>
                     </div>
                 </div>
             </div>
@@ -569,16 +790,45 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container" style="border-top: 1px solid var(--bg-border); padding-top: 60px; padding-bottom: 40px; margin-top: 60px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
-                <div class="logo">
-                    <div class="logo-box">A</div>
-                    <span>AGTS</span>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="logo">
+                        <div class="logo-box">A</div>
+                        <span>AGTS</span>
+                    </div>
+                    <p style="margin-top: 1.5rem; color: var(--text-body);" data-i18n="footer_about">
+                        AGTS is a premier software engineering firm based in Benghazi, Libya, specializing in high-performance mobile and web applications.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="LinkedIn"><i data-feather="linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i data-feather="twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i data-feather="github"></i></a>
+                    </div>
                 </div>
-                <div style="color:#555; font-size:0.9rem;">
-                    &copy; 2025 Appraise Global Technology Solutions.
+
+                <div class="footer-column">
+                    <h4 data-i18n="footer_links_h">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about" data-i18n="nav_studio">Studio</a></li>
+                        <li><a href="#services" data-i18n="nav_caps">Services</a></li>
+                        <li><a href="#work" data-i18n="nav_work">Work</a></li>
+                        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                    </ul>
                 </div>
+
+                <div class="footer-column">
+                    <h4 data-i18n="footer_contact_h">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@agts-ly.com">info@agts-ly.com</a></li>
+                        <li data-i18n="address">Venice Street, Benghazi, Libya</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span data-i18n="footer_copy">&copy; 2025 Appraise Global Technology Solutions. All Rights Reserved.</span>
             </div>
         </div>
     </footer>
@@ -593,7 +843,7 @@
         // -----------------------------------
         const translations = {
             en: {
-                nav_studio: "Studio", nav_caps: "Services", nav_work: "Work", nav_team: "Management", nav_contact: "Contact",
+                nav_studio: "Studio", nav_caps: "Services", nav_tech: "Technology", nav_work: "Work", nav_team: "Management", nav_contact: "Contact",
                 hero_subtitle: "Mobile & Web Specialists",
                 hero_h1: "We Develop",
                 hero_desc: "AGTS architects full-stack solutions: High-performance mobile apps, dynamic modern frontends, and AI-powered backend infrastructures for the Libyan market.",
@@ -616,11 +866,32 @@
                 srv_1_t: "Backend & AI", srv_1_d: "Microservices, REST APIs, and AI Data Processing pipelines.",
                 srv_2_t: "Mobile Applications", srv_2_d: "iOS and Android solutions built with Flutter for native performance.",
                 srv_3_t: "Web Frontend", srv_3_d: "Responsive, modern web applications using React and Next.js.",
+
+                tech_h2: "Technology Stack",
+                tech_sub: "We build on a foundation of modern, scalable, and secure technologies to deliver robust enterprise-grade solutions.",
+
                 work_h2: "Featured Deployments", 
                 proj_1: "Tahseel Education System", cat_edtech: "EDTECH w/ AI", badge_private: "NDA PROTECTED",
                 proj_pay: "Smart Payment Gateway", cat_fintech: "FINTECH",
+
+                testimonials_h2: "Client Testimonials",
+                testimonials_sub: "Our clients' success is our success. Here's what they have to say about working with AGTS.",
+                testimonial_1_q: "\"AGTS delivered a robust and scalable mobile app that has transformed our business. Their technical expertise and commitment to quality are second to none.\"",
+                testimonial_1_n: "Ahmed Ben Ali",
+                testimonial_1_t: "CEO, Libya Ventures",
+                testimonial_2_q: "\"The team at AGTS is professional, responsive, and highly skilled. They developed a custom ERP system that has streamlined our operations and improved efficiency.\"",
+                testimonial_2_n: "Fatima El-Kadhi",
+                testimonial_2_t: "COO, Tripoli Industries",
+                testimonial_3_q: "\"We were impressed with AGTS's ability to understand our complex requirements and deliver a solution that exceeded our expectations. Highly recommended.\"",
+                testimonial_3_n: "Khalid Al-Amin",
+                testimonial_3_t: "CTO, Sahara Logistics",
                 proj_fleet: "Algorithmic Fleet System", cat_logistics: "LOGISTICS",
                 proj_data: "Enterprise Dashboard", cat_data: "BIG DATA",
+
+                footer_about: "AGTS is a premier software engineering firm based in Benghazi, Libya, specializing in high-performance mobile and web applications.",
+                footer_links_h: "Quick Links",
+                footer_contact_h: "Contact Us",
+                footer_copy: "© 2025 Appraise Global Technology Solutions. All Rights Reserved.",
                 team_h2: "Executive Management", 
                 role_ceo: "CHIEF EXECUTIVE OFFICER", name_ceo: "Mohammed Alferjani", bio_ceo: "Driving the technical vision and expansion of digital infrastructure.",
                 role_gm: "GENERAL MANAGER", name_gm: "Ibrahim Alferjani", bio_gm: "Operational strategy and enterprise client management.",
@@ -632,7 +903,7 @@
             
             // Professional Tech-Arabic Translations
             ar: {
-                nav_studio: "عن الشركة", nav_caps: "الخدمات", nav_work: "أعمالنا", nav_team: "الإدارة", nav_contact: "اتصل بنا",
+                nav_studio: "عن الشركة", nav_caps: "الخدمات", nav_tech: "التقنيات", nav_work: "أعمالنا", nav_team: "الإدارة", nav_contact: "اتصل بنا",
                 hero_subtitle: "تطوير تطبيقات وويب",
                 hero_h1: "نحن نبرمج",
                 hero_desc: "تُهندس AGTS حلولاً برمجية متكاملة: تطبيقات هاتف عالية الأداء، واجهات ويب حديثة، وأنظمة خلفية مدعومة بالذكاء الاصطناعي للسوق الليبي.",
@@ -655,11 +926,32 @@
                 srv_1_t: "أنظمة الخلفية والذكاء الاصطناعي", srv_1_d: "خدمات مصغرة، واجهات API، وخوارزميات معالجة البيانات.",
                 srv_2_t: "تطبيقات الهاتف", srv_2_d: "حلول iOS و Android مبنية بتقنية Flutter لأداء فائق.",
                 srv_3_t: "الواجهات الأمامية (Web)", srv_3_d: "تطبيقات ويب حديثة ومتجاوبة باستخدام React و Next.js.",
+
+                tech_h2: "مجموعة التقنيات",
+                tech_sub: "نحن نبني على أساس من التقنيات الحديثة والقابلة للتطوير والآمنة لتقديم حلول قوية على مستوى المؤسسات.",
+
                 work_h2: "أحدث المشاريع", 
                 proj_1: "منصة تحصيل التعليمية", cat_edtech: "تعليم ذكي (AI)", badge_private: "مشروع سري (NDA)",
                 proj_pay: "بوابة دفع ذكية", cat_fintech: "تقنية مالية",
+
+                testimonials_h2: "شهادات العملاء",
+                testimonials_sub: "نجاح عملائنا هو نجاحنا. إليك ما يقولونه عن العمل مع AGTS.",
+                testimonial_1_q: "\"قدمت AGTS تطبيقًا قويًا وقابلًا للتطوير غير أعمالنا. خبرتهم الفنية والتزامهم بالجودة لا يعلى عليه.\"",
+                testimonial_1_n: "أحمد بن علي",
+                testimonial_1_t: "الرئيس التنفيذي، ليبيا فينتشرز",
+                testimonial_2_q: "\"فريق AGTS محترف وسريع الاستجابة وذو مهارات عالية. لقد طوروا نظام تخطيط موارد المؤسسات المخصص الذي بسّط عملياتنا وحسّن الكفاءة.\"",
+                testimonial_2_n: "فاطمة القاضي",
+                testimonial_2_t: "مدير العمليات، صناعات طرابلس",
+                testimonial_3_q: "\"لقد أعجبنا بقدرة AGTS على فهم متطلباتنا المعقدة وتقديم حل فاق توقعاتنا. موصى به للغاية.\"",
+                testimonial_3_n: "خالد الأمين",
+                testimonial_3_t: "المدير التقني، صحارى للخدمات اللوجستية",
                 proj_fleet: "نظام إدارة لوجستي", cat_logistics: "خوارزميات النقل",
                 proj_data: "لوحة تحكم للمؤسسات", cat_data: "بيانات ضخمة",
+
+                footer_about: "AGTS هي شركة رائدة في هندسة البرمجيات مقرها في بنغازي، ليبيا، متخصصة في تطبيقات الموبايل والويب عالية الأداء.",
+                footer_links_h: "روابط سريعة",
+                footer_contact_h: "اتصل بنا",
+                footer_copy: "© 2025 Appraise Global Technology Solutions. جميع الحقوق محفوظة.",
                 team_h2: "الإدارة التنفيذية", 
                 role_ceo: "الرئيس التنفيذي", name_ceo: "محمد الفرجاني", bio_ceo: "قيادة الرؤية التقنية وتطوير البنية التحتية الرقمية.",
                 role_gm: "المدير العام", name_gm: "إبراهيم الفرجاني", bio_gm: "الإدارة الاستراتيجية للعمليات وضمان نجاح الشركاء.",
