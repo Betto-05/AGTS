@@ -26,11 +26,23 @@
             --tahseel-blue: #004aad;  
             --success: #10B981;
             
-            /* Dark Theme Colors */
+            /* Dark Theme Colors (Default) */
             --bg-body: #050507;
             --bg-surface: #0f1218;
             --bg-card: #14171f;
             --bg-border: #2D3340;
+            --text-main: #FFFFFF;
+            --text-body: #9CA3AF;
+            --text-muted: #6B7280;
+
+            /* Light Theme Colors */
+            --bg-body-light: #F9FAFB;
+            --bg-surface-light: #FFFFFF;
+            --bg-card-light: #FFFFFF;
+            --bg-border-light: #E5E7EB;
+            --text-main-light: #1F2937;
+            --text-body-light: #4B5563;
+            --text-muted-light: #6B7280;
 
             /* Fonts */
             --font-display: 'Space Grotesk', sans-serif;
@@ -51,8 +63,54 @@
 
         body {
             background-color: var(--bg-body);
-            color: var(--text-main);
+            color: var(--text-body);
             font-family: var(--font-body);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.light-theme {
+            --bg-body: var(--bg-body-light);
+            --bg-surface: var(--bg-surface-light);
+            --bg-card: var(--bg-card-light);
+            --bg-border: var(--bg-border-light);
+            --text-main: var(--text-main-light);
+            --text-body: var(--text-body-light);
+            --text-muted: var(--text-muted-light);
+        }
+
+        body.light-theme .logo-box {
+            color: white;
+        }
+
+        body.light-theme .project-thumb {
+            background-image: linear-gradient(var(--bg-border-light) 1px, transparent 1px), linear-gradient(90deg, var(--bg-border-light) 1px, transparent 1px);
+        }
+
+        body.light-theme .footer-socials a {
+            color: var(--text-main-light);
+        }
+
+        body.light-theme .footer-socials a:hover {
+            color: white;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-body);
+            padding: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .theme-toggle:hover {
+            color: var(--primary);
+        }
+        .theme-toggle .feather-sun { display: none; }
+        .theme-toggle .feather-moon { display: block; }
+        body.light-theme .theme-toggle .feather-sun { display: block; }
+        body.light-theme .theme-toggle .feather-moon { display: none; }
             overflow-x: hidden;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
@@ -100,8 +158,19 @@
         /* HEADER */
         header {
             position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); z-index: 100;
-            background: rgba(5, 5, 7, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(5, 5, 7, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        body.light-theme header.scrolled {
+            background: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid var(--bg-border-light);
         }
         .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 100%; }
         
@@ -197,6 +266,7 @@
             border-color: var(--primary);
             transform: translateY(-5px);
             background: linear-gradient(180deg, var(--primary-glow) 0%, rgba(20,24,30,0.5) 100%);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.1);
         }
         .feature-icon {
             width: 64px; height: 64px; background: rgba(255,255,255,0.03); border-radius: 12px; margin-bottom: 2rem;
@@ -281,10 +351,91 @@
             color: var(--text-muted);
         }
 
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-border);
+            border-radius: 16px;
+            padding: 3rem;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        body.lang-ar .modal-close {
+            right: auto;
+            left: 20px;
+        }
+        .modal-close:hover {
+            color: var(--primary);
+        }
+        .modal-body h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+        .modal-body p {
+            color: var(--text-body);
+            margin-bottom: 2rem;
+        }
+        .modal-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tech-badge {
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+
         /* WORK */
         .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .project-item {
+            cursor: pointer;
+        }
         .project-thumb {
             height: 380px; 
+            transition: transform 0.3s ease;
+        }
+        .project-item:hover .project-thumb {
+            transform: scale(1.05);
             background: #1e1e24; position: relative; border-radius: 16px;
             display: flex; align-items: center; justify-content: center; border: 1px solid var(--bg-border);
             overflow: hidden;
@@ -439,6 +590,18 @@
 </head>
 <body id="top">
 
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div id="modal-close-btn" class="modal-close">
+                <i data-feather="x" style="width: 24px; height: 24px;"></i>
+            </div>
+            <div id="modal-body" class="modal-body">
+                <!-- Project details will be injected here by JS -->
+            </div>
+        </div>
+    </div>
+
     <!-- Particle Canvas -->
     <div id="canvas-wrapper"><canvas id="hero-canvas"></canvas></div>
 
@@ -466,10 +629,16 @@
                 <a href="#team" data-i18n="nav_team">Management</a>
                 <a href="#contact" data-i18n="nav_contact">Contact</a>
             </nav>
-            <button onclick="toggleLanguage()" class="btn-glow">
-                <i data-feather="globe" style="width:16px;"></i>
-                <span id="lang-btn-text">العربية</span>
-            </button>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button onclick="toggleLanguage()" class="btn-glow">
+                    <i data-feather="globe" style="width:16px;"></i>
+                    <span id="lang-btn-text">العربية</span>
+                </button>
+                <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">
+                    <i data-feather="moon"></i>
+                    <i data-feather="sun"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -622,7 +791,7 @@
 
             <div class="work-grid">
                 <!-- 1. TAHSEEL: Public Project -->
-                <div class="project-item reveal-fx">
+                <div class="project-item reveal-fx" onclick="openModal('tahseel')">
                     <div class="project-thumb tahseel-card">
                         <img src="tahseel.png" alt="Tahseel Logo" class="project-logo-img">
                         <div class="project-overlay">
@@ -633,10 +802,10 @@
                 </div>
 
                 <!-- 2. Financial: NDA -->
-                <div class="project-item reveal-fx" style="transition-delay: 0.1s">
+                <div class="project-item reveal-fx" style="transition-delay: 0.1s" onclick="openModal('fintech')">
                     <div class="project-thumb">
+                        <img src="https://placehold.co/600x400/1f2937/F97316?text=Fintech" alt="Fintech Project" class="project-logo-img" style="filter: none; max-width: 100%; height: 100%; object-fit: cover;">
                         <span class="badge" data-i18n="badge_private">NDA PROTECTED</span>
-                        <i data-feather="lock" style="color:var(--text-muted); width:60px; height:60px; opacity:0.2;"></i>
                         <div class="project-overlay">
                             <span data-i18n="cat_fintech" style="color:var(--primary); font-size:0.8rem; font-weight:700;">FINTECH</span>
                             <h3 data-i18n="proj_pay">Smart Payment Gateway</h3>
@@ -645,10 +814,10 @@
                 </div>
 
                 <!-- 3. Logistics: NDA -->
-                <div class="project-item reveal-fx">
+                <div class="project-item reveal-fx" onclick="openModal('logistics')">
                     <div class="project-thumb">
+                        <img src="https://placehold.co/600x400/1f2937/F97316?text=Logistics" alt="Logistics Project" class="project-logo-img" style="filter: none; max-width: 100%; height: 100%; object-fit: cover;">
                         <span class="badge" data-i18n="badge_private">NDA PROTECTED</span>
-                        <i data-feather="truck" style="color:var(--text-muted); width:60px; height:60px; opacity:0.2;"></i>
                         <div class="project-overlay">
                             <span data-i18n="cat_logistics" style="color:var(--primary); font-size:0.8rem; font-weight:700;">LOGISTICS</span>
                             <h3 data-i18n="proj_fleet">Algorithmic Fleet System</h3>
@@ -657,10 +826,10 @@
                 </div>
 
                 <!-- 4. Energy: NDA -->
-                <div class="project-item reveal-fx" style="transition-delay: 0.1s">
+                <div class="project-item reveal-fx" style="transition-delay: 0.1s" onclick="openModal('data')">
                     <div class="project-thumb">
+                        <img src="https://placehold.co/600x400/1f2937/F97316?text=Big+Data" alt="Big Data Project" class="project-logo-img" style="filter: none; max-width: 100%; height: 100%; object-fit: cover;">
                         <span class="badge" data-i18n="badge_private">NDA PROTECTED</span>
-                        <i data-feather="database" style="color:var(--text-muted); width:60px; height:60px; opacity:0.2;"></i>
                         <div class="project-overlay">
                             <span data-i18n="cat_data" style="color:var(--primary); font-size:0.8rem; font-weight:700;">BIG DATA</span>
                             <h3 data-i18n="proj_data">Enterprise Dashboard</h3>
@@ -970,8 +1139,118 @@
         let currentLang = 'en';
 
         // -----------------------------------
+        //  MODAL LOGIC
+        // -----------------------------------
+        const projectData = {
+            en: {
+                tahseel: {
+                    title: "Tahseel Education System",
+                    desc: "A comprehensive EdTech platform with AI-powered features to enhance learning outcomes. It includes modules for student management, online courses, and performance analytics.",
+                    tech: ["Flutter", "Python", "Google Cloud", "AI/ML"]
+                },
+                fintech: {
+                    title: "Smart Payment Gateway",
+                    desc: "A secure and scalable payment gateway for a major financial institution, processing thousands of transactions daily with advanced fraud detection.",
+                    tech: ["React", "Node.js", "AWS", "Cybersecurity"]
+                },
+                logistics: {
+                    title: "Algorithmic Fleet System",
+                    desc: "An advanced logistics platform that uses proprietary algorithms to optimize delivery routes, manage fleet maintenance, and track shipments in real-time.",
+                    tech: ["Next.js", "Python", "Docker", "Google Maps API"]
+                },
+                data: {
+                    title: "Enterprise Dashboard",
+                    desc: "A big data dashboard for an energy sector client, visualizing complex datasets to provide actionable insights and improve operational efficiency.",
+                    tech: ["React", "Python", "Kubernetes", "Data Analytics"]
+                }
+            },
+            ar: {
+                tahseel: {
+                    title: "منصة تحصيل التعليمية",
+                    desc: "منصة تعليمية شاملة مزودة بميزات مدعومة بالذكاء الاصطناعي لتعزيز نتائج التعلم. تشمل وحدات لإدارة الطلاب والدورات عبر الإنترنت وتحليلات الأداء.",
+                    tech: ["Flutter", "Python", "Google Cloud", "AI/ML"]
+                },
+                fintech: {
+                    title: "بوابة دفع ذكية",
+                    desc: "بوابة دفع آمنة وقابلة للتطوير لمؤسسة مالية كبرى، تعالج آلاف المعاملات يوميًا مع كشف متقدم للاحتيال.",
+                    tech: ["React", "Node.js", "AWS", "Cybersecurity"]
+                },
+                logistics: {
+                    title: "نظام إدارة لوجستي",
+                    desc: "منصة لوجستية متقدمة تستخدم خوارزميات خاصة لتحسين طرق التسليم وإدارة صيانة الأسطول وتتبع الشحنات في الوقت الفعلي.",
+                    tech: ["Next.js", "Python", "Docker", "Google Maps API"]
+                },
+                data: {
+                    title: "لوحة تحكم للمؤسسات",
+                    desc: "لوحة تحكم للبيانات الضخمة لعميل في قطاع الطاقة، تعرض مجموعات بيانات معقدة لتوفير رؤى قابلة للتنفيذ وتحسين الكفاءة التشغيلية.",
+                    tech: ["React", "Python", "Kubernetes", "Data Analytics"]
+                }
+            }
+        };
+
+        const modal = document.getElementById('project-modal');
+        const modalBody = document.getElementById('modal-body');
+        const closeBtn = document.getElementById('modal-close-btn');
+
+        function openModal(projectId) {
+            const lang = document.body.classList.contains('lang-ar') ? 'ar' : 'en';
+            const data = projectData[lang][projectId];
+
+            let techBadges = data.tech.map(t => `<span class="tech-badge">${t}</span>`).join('');
+
+            modalBody.innerHTML = `
+                <h3>${data.title}</h3>
+                <p>${data.desc}</p>
+                <div class="modal-tech-stack">${techBadges}</div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+
+        // -----------------------------------
         //  UI LOGIC
         // -----------------------------------
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            // Re-render icons after theme change
+            feather.replace();
+        }
+
+        // Apply saved theme on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-theme');
+            }
+            // Re-render icons on initial load
+            feather.replace();
+            typeWriter();
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+
         function toggleLanguage() {
             const btnText = document.getElementById("lang-btn-text");
             currentLang = currentLang === 'en' ? 'ar' : 'en';
