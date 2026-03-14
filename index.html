@@ -8,1098 +8,1180 @@
     <!-- === FAVICON === -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='90' font-weight='900' font-family='sans-serif' fill='%23F97316'>A</text></svg>" type="image/svg+xml">
     
-    <title>AGTS — Appraise Global Technology Solutions</title>
+    <title>AGTS — Professional Technology Solutions</title>
     
-    <!-- Professional Typography -->
+    <!-- Ultra Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
     <style>
         /* =========================================
-           ROOT & DESIGN SYSTEM
+           CORE SYSTEM VARIABLES
            ========================================= */
         :root {
-            /* Shared CONSTANTS */
+            /* Brand Elements */
             --primary: #F97316;
-            --primary-light: #fdba74;
-            --primary-dark: #ea580c;
+            --primary-light: #fbd38d;
+            --primary-dark: #dd6b20;
             --success: #10B981;
+
+            /* Utilities */
+            --container-w: 1280px;
+            --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-bouncy: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            --nav-top-offset: 20px;
             
-            --nav-height: 90px;
-            --container: 1400px;
-            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+            /* Typography Scale (Clamp for extreme fluidity) */
+            --fs-display: clamp(2.8rem, 5vw, 5.5rem);
+            --fs-h1: clamp(2.5rem, 5vw, 4rem);
+            --fs-h2: clamp(2rem, 4vw, 3.2rem);
+            --fs-h3: clamp(1.4rem, 2vw, 1.8rem);
+            --fs-body: clamp(1rem, 1.1vw, 1.15rem);
             
+            /* Typography Fonts */
             --font-display: 'Space Grotesk', sans-serif;
-            --font-body: 'Manrope', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
             --font-arabic: 'Cairo', sans-serif;
         }
 
-        /* === DARK MODE === */
-        body[data-theme="dark"] {
-            --bg-body: #020203;
-            --bg-surface: #0a0a0c;
-            --bg-card: #131316;
-            --bg-border: #27272a;
-            --bg-border-light: #3f3f46;
-            --glass-bg: rgba(2, 2, 3, 0.75);
-            --glass-card-bg: rgba(19, 19, 22, 0.7);
-            --nav-border: rgba(255, 255, 255, 0.08);
-            --text-main: #FFFFFF;
-            --text-head: #FFFFFF;
-            --text-body: #A1A1AA;
-            --text-muted: #52525B;
-            --primary-glow: rgba(249, 115, 22, 0.4);
-            --grad-body: radial-gradient(circle at top right, rgba(249,115,22,0.03), transparent 40%),
-                         radial-gradient(circle at bottom left, rgba(255,255,255,0.02), transparent 40%);
-            --shadow-card: 0 40px 100px -20px rgba(0,0,0,0.5);
+        /* === DARK MODE EXPERT UI === */
+        html[data-theme="dark"] {
+            --bg-site: #060608;
+            --bg-nav: rgba(18, 18, 20, 0.65);
+            --bg-panel: rgba(25, 25, 30, 0.4);
+            --bg-card: rgba(18, 18, 20, 0.5);
+            --bg-border: rgba(255, 255, 255, 0.08);
+            --bg-border-hov: rgba(255, 255, 255, 0.2);
+            --text-bold: #FFFFFF;
+            --text-base: #9AA0A6;
+            --text-dim: #6b7280;
+            --btn-glass: rgba(255, 255, 255, 0.03);
+            
+            /* Ambient Aurora variables */
+            --glow-1: rgba(249, 115, 22, 0.25);
+            --glow-2: rgba(76, 29, 149, 0.25);
+            --glow-3: rgba(15, 118, 110, 0.15);
+            --shadow-high: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
         }
 
-        /* === LIGHT MODE === */
-        body[data-theme="light"] {
-            --bg-body: #f8fafc;
-            --bg-surface: #ffffff;
-            --bg-card: #ffffff;
-            --bg-border: #e2e8f0;
-            --bg-border-light: #cbd5e1;
-            --glass-bg: rgba(255, 255, 255, 0.85);
-            --glass-card-bg: rgba(255, 255, 255, 0.65);
-            --nav-border: rgba(0, 0, 0, 0.05);
-            --text-main: #0f172a; 
-            --text-head: #020617;
-            --text-body: #475569;
-            --text-muted: #94a3b8;
-            --primary-glow: rgba(249, 115, 22, 0.15);
-            --grad-body: radial-gradient(circle at top right, rgba(249,115,22,0.08), transparent 40%),
-                         radial-gradient(circle at bottom left, rgba(0,0,0,0.02), transparent 40%);
-            --shadow-card: 0 20px 50px -15px rgba(0,0,0,0.1);
+        /* === LIGHT MODE EXPERT UI === */
+        html[data-theme="light"] {
+            --bg-site: #F9FAFB;
+            --bg-nav: rgba(255, 255, 255, 0.85);
+            --bg-panel: rgba(255, 255, 255, 0.7);
+            --bg-card: rgba(255, 255, 255, 0.8);
+            --bg-border: rgba(0, 0, 0, 0.06);
+            --bg-border-hov: rgba(249, 115, 22, 0.4);
+            --text-bold: #09090b;
+            --text-base: #52525B;
+            --text-dim: #A1A1AA;
+            --btn-glass: rgba(0, 0, 0, 0.02);
+
+            /* Ambient Aurora variables */
+            --glow-1: rgba(249, 115, 22, 0.12);
+            --glow-2: rgba(124, 58, 237, 0.08);
+            --glow-3: rgba(16, 185, 129, 0.08);
+            --shadow-high: 0 30px 60px -15px rgba(0,0,0,0.06);
         }
 
-        /* SCROLLBAR */
+        /* Scrollbar Elite Design */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-body); }
-        ::-webkit-scrollbar-thumb { background: var(--bg-border-light); border-radius: 4px; border: 2px solid var(--bg-body); }
+        ::-webkit-scrollbar-track { background: var(--bg-site); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-border); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
+        /* Globals */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        
+        /* FIX FOR OVERSCROLL BOUNCE */
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 120px;
+            background-color: var(--bg-site); 
+            transition: background-color 0.8s ease; 
+        }
 
+        /* The Premium Background Effect: Noise overlay & Glowing Aurora Orbs */
         body {
-            background-color: var(--bg-body);
-            background-image: var(--grad-body);
-            color: var(--text-main);
+            background-color: var(--bg-site);
+            color: var(--text-base);
             font-family: var(--font-body);
+            font-weight: 400;
             overflow-x: hidden;
-            line-height: 1.6;
-            transition: background-color 0.4s ease, color 0.4s ease;
+            line-height: 1.65;
+            transition: background-color 0.8s ease, color 0.8s ease;
+            /* Prevents bounce/rubber-banding at max top/bottom without locking the scroll */
+            overscroll-behavior-y: none; 
         }
 
-        /* ARABIC */
+        .ambient-mesh {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; overflow: hidden;
+        }
+        
+        .aurora {
+            position: absolute; width: 60vw; height: 60vh;
+            filter: blur(140px);
+            opacity: 0.8; mix-blend-mode: normal;
+            animation: drift 25s ease-in-out infinite alternate;
+        }
+        .a1 { background: var(--glow-1); top: -20%; left: -10%; border-radius: 50%; }
+        .a2 { background: var(--glow-2); top: 30%; right: -20%; width: 50vw; height: 70vh; border-radius: 40%; animation-duration: 30s;}
+        .a3 { background: var(--glow-3); bottom: -10%; left: 30%; width: 80vw; height: 50vh; border-radius: 60%; animation-duration: 35s;}
+
+        @keyframes drift { 
+            0% { transform: translateY(0) scale(1) rotate(0deg); }
+            50% { transform: translateY(-50px) scale(1.1) rotate(10deg); }
+            100% { transform: translateY(30px) scale(0.9) rotate(-15deg); } 
+        }
+
+        /* SVG Grain Texture for cinematic real-life screen feel */
+        .noise-layer {
+            position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.25; mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* RTL Logic (Arabic Font Support) */
         body.lang-ar { font-family: var(--font-arabic) !important; direction: rtl; }
-        body.lang-ar h1, body.lang-ar h2, body.lang-ar h3, body.lang-ar h4 { font-family: var(--font-arabic) !important; font-weight: 700; }
-        body.lang-ar .desktop-menu a { letter-spacing: 0; }
-        body.lang-ar .contact-info, body.lang-ar .footer-col { text-align: right; }
-        body.lang-ar .desktop-menu a::after { left: auto; right: 0; }
-
-        /* TYPOGRAPHY */
-        h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-head); font-weight: 700; letter-spacing: -0.02em; transition: color 0.3s; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        
-        .container { max-width: var(--container); padding: 0 40px; margin: 0 auto; position: relative; }
-        .section-padding { padding: 150px 0; }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, var(--text-main) 30%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
+        body.lang-ar h1, body.lang-ar h2, body.lang-ar h3, body.lang-ar h4, body.lang-ar .desktop-menu a {
+            font-family: var(--font-arabic) !important; letter-spacing: 0; font-weight: 700;
         }
 
-        /* ANIMATION */
-        .reveal-fx { opacity: 0; transform: translateY(40px); transition: all 0.8s var(--ease-out); }
-        .reveal-fx.active { opacity: 1; transform: translateY(0); }
+        /* Tyopgraphy Sets */
+        h1, h2, h3, h4, .badge-label, .title-caps {
+            font-family: var(--font-display); color: var(--text-bold); font-weight: 600; line-height: 1.1; 
+            letter-spacing: -0.03em;
+        }
+        
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: var(--container-w); margin: 0 auto; padding: 0 5%; width: 100%; position: relative; z-index: 2;
+        }
+
+        .sect-pad { padding: 140px 0; }
+        
+        .gradient-txt {
+            background: linear-gradient(120deg, var(--text-bold) 10%, var(--primary) 90%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; padding-right: 0.1em;
+        }
+
+        /* Universal Animations via IntSecObserver */
+        .fxd-up { opacity: 0; transform: translateY(40px) scale(0.98); transition: 1.2s var(--ease-silk); will-change: transform, opacity; }
+        .fxd-up.in-view { opacity: 1; transform: translateY(0) scale(1); }
 
         /* =========================================
-           NAVBAR
+           FLOATING PILL NAVIGATION
            ========================================= */
         header {
-            position: fixed; top: 0; left: 0; right: 0; 
-            height: var(--nav-height); 
-            z-index: 100;
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--nav-border);
-            transition: 0.3s ease;
+            position: fixed; top: var(--nav-top-offset); left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1400px; height: 75px; z-index: 100;
+            background: var(--bg-nav); border: 1px solid var(--bg-border);
+            border-radius: 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 20px 0 20px; transition: 0.5s ease;
+        }
+
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 65px; object-fit: contain; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .logo:hover img { transform: scale(1.05); }
+
+        .desktop-menu { display: flex; gap: 28px; }
+        .desktop-menu a {
+            font-size: 0.88rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;
+            color: var(--text-dim); position: relative; padding: 8px 4px; overflow: hidden;
+            display: inline-flex; flex-direction: column; justify-content: center;
         }
         
-        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-        
-        .logo { display: flex; align-items: center; height: 100%; transition: transform 0.3s ease; gap: 12px;}
-        .logo:hover { transform: scale(1.02); }
-        .logo img { height: 85px; width: auto; display: block; }
-
-        /* DESKTOP MENU */
-        .desktop-menu { display: flex; gap: 32px; align-items: center; background: rgba(0,0,0,0.03); padding: 8px 30px; border-radius: 100px; border: 1px solid var(--nav-border); }
-        body[data-theme="light"] .desktop-menu { background: rgba(255,255,255,0.5); }
-
-        .desktop-menu a { 
-            font-size: 0.9rem; font-weight: 600; color: var(--text-muted); 
-            text-transform: uppercase; letter-spacing: 0.5px;
-            padding: 8px 0; position: relative;
-        }
-        .desktop-menu a:hover, .desktop-menu a.active { color: var(--text-head); }
+        .desktop-menu a span { transition: transform 0.4s var(--ease-bouncy); }
         .desktop-menu a::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px;
-            background: var(--primary); transition: 0.4s var(--bounce);
+            content: attr(data-text); position: absolute; top: 100%; font-weight: 700; color: var(--text-bold);
+            transition: transform 0.4s var(--ease-bouncy); text-shadow: 0 0 15px var(--primary-light);
         }
-        .desktop-menu a:hover::after { width: 100%; }
+        .desktop-menu a:hover span { transform: translateY(-150%); }
+        .desktop-menu a:hover::after { transform: translateY(-150%); }
 
-        .nav-actions { display: flex; align-items: center; gap: 12px; }
+        .nav-toggles { display: flex; align-items: center; gap: 10px; }
 
-        .icon-btn {
-            width: 44px; height: 44px; border-radius: 50%;
-            background: transparent; border: 1px solid var(--bg-border);
-            color: var(--text-main); display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: 0.3s;
+        .action-pill-btn {
+            background: transparent; color: var(--text-bold); font-family: inherit;
+            border: 1px solid var(--bg-border); border-radius: 50px; display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.85rem; font-weight: 600; cursor: pointer; padding: 8px 16px;
+            transition: all 0.3s var(--ease-silk); white-space: nowrap; height: 42px;
         }
-        .icon-btn:hover { border-color: var(--primary); color: var(--primary); background: rgba(249, 115, 22, 0.05); }
+        .action-pill-btn i { width: 16px; transition: transform 0.3s;}
+        .action-pill-btn:hover { background: var(--bg-border-hov); border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(249,115,22,0.1); }
+        .action-pill-btn:hover i { transform: scale(1.1); color: var(--primary); }
 
-        .lang-btn {
-            display: flex; align-items: center; gap: 8px;
-            padding: 8px 20px; height: 44px; border-radius: 100px;
-            background: transparent; border: 1px solid var(--bg-border);
-            color: var(--text-main); font-family: inherit; font-weight: 600; font-size: 0.9rem;
-            cursor: pointer; transition: 0.3s;
-        }
-        .lang-btn:hover { border-color: var(--primary); color: var(--primary); background: rgba(249, 115, 22, 0.05); }
+        .menu-tgl-mobile { display: none; background: transparent; color: var(--text-bold); border: none; font-size: 2rem; padding: 0; cursor: pointer; }
 
-        .btn-glow {
-            position: relative; overflow: hidden;
-            padding: 14px 32px; background: rgba(255,255,255,0.03); 
-            border: 1px solid var(--bg-border-light);
-            color: var(--text-head); 
-            border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s;
-            display: flex; align-items: center; justify-content: center; gap: 10px; font-family: inherit; z-index: 1;
+        /* Modern CTA */
+        .btn-luminous {
+            position: relative; display: inline-flex; align-items: center; gap: 12px;
+            font-weight: 600; padding: 18px 35px; border-radius: 12px;
+            color: var(--text-bold);
+            overflow: hidden; text-transform: uppercase; letter-spacing: 1px;
+            background: transparent; border: 1px solid rgba(249, 115, 22, 0.4); z-index: 1; cursor: pointer; box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.2);
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        body[data-theme="light"] .btn-glow { background: white; border-color: var(--bg-border-light); color: var(--primary); }
+        .btn-luminous::before {
+            content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--primary), #ef4444); z-index: -2;
+        }
+        .btn-luminous::after {
+            content: ''; position: absolute; inset: 1px; background: var(--bg-site); border-radius: 11px; z-index: -1;
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-luminous:hover::after { opacity: 0.2; }
+        .btn-luminous:hover { box-shadow: 0 15px 40px -5px rgba(249, 115, 22, 0.5); border-color: transparent; color: white;}
+
+        /* =========================================
+           HERO CONCEPT - HIGH END
+           ========================================= */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; text-align: center; }
         
-        .btn-glow::before {
-            content:''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.2), transparent);
-            transform: translateX(-100%); transition: 0.5s; z-index: -1;
-        }
-        .btn-glow:hover { border-color: var(--primary); color: var(--primary-dark); box-shadow: 0 0 25px rgba(249, 115, 22, 0.15); }
-        .btn-glow:hover::before { transform: translateX(100%); }
-
-        /* === MOBILE MENU STYLES === */
-        .menu-toggle { display: none; background: none; border: none; color: var(--text-main); cursor: pointer; padding: 5px; z-index: 101;}
-
-        /* Mobile Drawer Container */
-        .mobile-overlay {
-            position: fixed; 
-            top: 0; 
-            left: 0;
-            width: 100%; 
-            height: 100vh;
-            background-color: var(--bg-body);
-            z-index: 99; /* Below Header (100) but covers content */
-            padding-top: var(--nav-height); /* So content isn't behind header */
-            transform: translateX(100%); /* Initially hidden to the right */
-            transition: transform 0.4s var(--ease-out);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
+        .badge-pro { 
+            display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; color: var(--primary); 
+            letter-spacing: 0.1em; background: rgba(249, 115, 22, 0.08); padding: 8px 18px; border-radius: 50px; 
+            border: 1px solid var(--bg-border-hov); margin-bottom: 2rem; backdrop-filter: blur(10px); text-transform: uppercase;
         }
         
-        .mobile-overlay.active {
-            transform: translateX(0); /* Slides in */
+        .badge-pro span { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+
+        .hero h1 { font-size: var(--fs-display); margin-bottom: 2rem; z-index: 10; position: relative;}
+        .hero-desc { font-size: var(--fs-h3); color: var(--text-dim); max-width: 800px; margin: 0 auto 3rem; line-height: 1.6; font-weight: 300; }
+        
+        .tw-wrap { position: relative; display: inline-flex; font-size: 0.55em; font-weight: 500; margin-top: 0.2rem; }
+        .tw-cursor { display: inline-block; width: 3px; height: 0.8em; background: var(--primary); animation: blinkCursor 0.9s cubic-bezier(1,0,0,1) infinite; align-self: center; margin-left: 6px; transform: translateY(0.1em); }
+        @keyframes blinkCursor { 50% { opacity: 0; } }
+
+        /* =========================================
+           MARQUEE XL (SINGLE LINE)
+           ========================================= */
+        .marq-wrap {
+            padding: 2.5rem 0; overflow: hidden; background: var(--bg-card); 
+            border-top: 1px solid var(--bg-border); border-bottom: 1px solid var(--bg-border);
+            position: relative; z-index: 10;
         }
         
-        body.lang-ar .mobile-overlay {
-            transform: translateX(-100%); /* RTL slide direction */
-        }
-        body.lang-ar .mobile-overlay.active {
-            transform: translateX(0);
-        }
-
-        .mobile-nav-link {
-            width: 100%;
-            text-align: center;
-            padding: 20px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            font-family: var(--font-display);
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--bg-border);
-            transition: 0.3s;
-        }
-        .mobile-nav-link:hover {
-            color: var(--primary);
-            background: var(--bg-surface);
-        }
-
-        /* === HERO === */
-        #canvas-wrapper { position: fixed; top:0; left:0; width:100%; height:100%; z-index: 1; opacity: 0.4; pointer-events: none; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; z-index: 2; padding-top: var(--nav-height); }
-        .hero-subtitle { 
-            display: inline-flex; align-items: center; gap: 8px;
-            font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); font-weight: 700; margin-bottom: 2rem; 
-            padding: 8px 18px; background: rgba(249,115,22,0.1); border-radius: 100px; border: 1px solid rgba(249,115,22,0.15);
-        }
-        .hero-title { font-size: 5rem; line-height: 1.05; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -2px; }
-        body[data-theme="dark"] .hero-title { text-shadow: 0 0 80px rgba(0,0,0,0.8); }
-        .hero-desc { font-size: 1.3rem; color: var(--text-body); max-width: 650px; margin-bottom: 3.5rem; line-height: 1.7; font-weight: 300;}
+        .marq-track { display: flex; width: max-content; animation: scrollLine 40s linear infinite; }
+        .marq-slide { display: flex; align-items: center; gap: 4rem; padding-right: 4rem; }
+        body.lang-ar .marq-track { animation: scrollLineReverse 40s linear infinite; }
+        body.lang-ar .marq-slide { padding-right: 0; padding-left: 4rem; }
         
-        .typewriter-cursor { display: inline-block; width: 5px; height: 1em; background: var(--primary); animation: blink 1s infinite; vertical-align: sub; margin-left: 5px; }
-        body.lang-ar .typewriter-cursor { margin-left: 0; margin-right: 5px; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .marq-item { 
+            font-family: var(--font-display); font-size: clamp(1.8rem, 2.8vw, 3.2rem); color: var(--text-bold); text-transform: uppercase; font-weight: 700; transition: opacity 0.4s; display: flex; align-items: center; gap: 4rem; opacity: 0.4;
+        }
+        
+        .marq-wrap:hover .marq-item { opacity: 1; }
+        .marq-icon { font-size: 2rem; color: var(--primary); display: flex; opacity: 0.8;}
+        
+        @keyframes scrollLine { from { transform: translateX(0%); } to { transform: translateX(-50%); } }
+        @keyframes scrollLineReverse { from { transform: translateX(-50%); } to { transform: translateX(0%); } }
 
-        /* === SECTIONS === */
-        /* MARQUEE */
-        .marquee-section { padding: 40px 0; border-y: 1px solid var(--bg-border); background: var(--bg-surface); overflow: hidden; position: relative; z-index: 2; }
-        .marquee-track { display: flex; gap: 80px; animation: scroll 60s linear infinite; width: max-content; }
-        body.lang-ar .marquee-track { animation: scrollReverse 60s linear infinite; }
-        .marquee-item { 
-            font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; 
-            color: var(--bg-border-light); 
-            text-transform: uppercase; white-space: nowrap; 
-            display: flex; align-items: center; gap: 80px; transition: 0.3s;
-        }
-        .marquee-section:hover .marquee-item { color: var(--text-main); }
-        .sep-dot { color: var(--primary); font-size: 0.9rem; transform: translateY(-3px); display: inline-block; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes scrollReverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        /* =========================================
+           SECTION HEADER MINIMAL
+           ========================================= */
+        .sec-head { text-align: center; max-width: 800px; margin: 0 auto 5rem; }
+        .sec-title { font-size: var(--fs-h2); }
+        .sec-desc { font-size: var(--fs-body); color: var(--text-dim); margin-top: 15px; }
+        .accent-bar { width: 50px; height: 3px; background: var(--primary); border-radius: 5px; margin: 0 auto 1.5rem auto;}
 
-        /* ABOUT */
-        .about-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 6rem; align-items: center; }
-        .section-badge { color:var(--primary); font-weight:800; letter-spacing:3px; font-size:0.85rem; margin-bottom:1rem; text-transform:uppercase; display: flex; align-items: center; gap:10px; }
-        .section-badge::before { content:''; display:block; width: 30px; height: 2px; background: var(--primary); }
-        .glass-card {
-            background: var(--glass-card-bg);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--bg-border-light);
-            border-radius: 24px; padding: 3.5rem; position: relative; 
-            box-shadow: var(--shadow-card); transition: transform 0.4s var(--bounce);
-        }
-        .glass-card:hover { border-color: var(--text-muted); }
-        .step-item { display: flex; gap: 30px; position: relative; padding-bottom: 50px; }
-        .step-item:last-child { padding-bottom: 0; }
-        .step-item:not(:last-child)::after {
-            content: ''; position: absolute; left: 24px; top: 60px; bottom: 0; width: 2px;
-            background-image: linear-gradient(to bottom, var(--bg-border-light) 33%, rgba(255,255,255,0) 0%);
-            background-position: bottom; background-size: 2px 8px; background-repeat: repeat-y;
-            z-index: 0;
-        }
-        body.lang-ar .step-item:not(:last-child)::after { left: auto; right: 24px; }
-        .step-num { 
-            width: 50px; height: 50px; background: linear-gradient(135deg, var(--bg-surface), var(--bg-body)); 
-            color: var(--primary); border: 1px solid var(--bg-border-light);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;
-            flex-shrink: 0; z-index: 2; position: relative; box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
+        /* =========================================
+           DYNAMIC PROCESS
+           ========================================= */
+        .grid-split { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 4rem; align-items: start; }
+        .timeline { display: flex; flex-direction: column; gap: 0; position: relative;}
+        .tl-step { display: flex; gap: 30px; padding-bottom: 3.5rem; position: relative; }
+        .tl-step:last-child { padding-bottom: 0; }
+        .tl-step::after { content: ''; position: absolute; left: 34px; top: 60px; bottom: -15px; width: 1px; background: linear-gradient(to bottom, var(--primary), transparent); opacity: 0.4; }
+        body.lang-ar .tl-step::after { left: auto; right: 34px; }
+        .tl-step:last-child::after { display: none; }
+        
+        .tl-num { width: 70px; height: 70px; flex-shrink: 0; border-radius: 20px; background: var(--bg-card); border: 1px solid var(--bg-border); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--primary); font-family: var(--font-display); font-weight: 700; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: 0.5s var(--ease-bouncy); }
+        .tl-step:hover .tl-num { transform: scale(1.1); border-color: var(--primary); box-shadow: 0 10px 30px var(--glow-1); }
+        
+        .tl-content h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        .tl-content p { color: var(--text-dim); }
 
-        /* SERVICES */
-        .feature-card {
-            background: linear-gradient(180deg, var(--bg-surface) 0%, transparent 100%);
-            padding: 3.5rem 3rem; border-radius: 20px; border: 1px solid var(--bg-border);
-            transition: 0.4s var(--ease-out); position: relative; overflow: hidden;
-            box-shadow: 0 0 0 transparent;
+        /* =========================================
+           SERVICES (BENTO BOX)
+           ========================================= */
+        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; position: relative; }
+        
+        .glow-card {
+            background: var(--bg-card); border: 1px solid var(--bg-border);
+            border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; gap: 20px; transition: border-color 0.4s, transform 0.4s ease; cursor: pointer; backdrop-filter: blur(20px);
         }
-        body[data-theme="light"] .feature-card { background: white; border-color: var(--bg-border); }
-        .feature-card:hover { transform: translateY(-7px); border-color: var(--text-muted); box-shadow: var(--shadow-card); }
-        .feature-icon {
-            width: 72px; height: 72px; background: var(--bg-body); border-radius: 18px; margin-bottom: 2rem;
-            display: flex; align-items: center; justify-content: center; color: var(--primary); border: 1px solid var(--bg-border-light);
-            transition: 0.4s var(--bounce);
-        }
-        .feature-card:hover .feature-icon { 
-            transform: scale(1.1) rotate(5deg); border-color: var(--primary); 
-            background: var(--primary); color: white; box-shadow: 0 0 30px var(--primary-glow); 
-        }
+        .glow-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; background: radial-gradient( 500px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.05), transparent 40% ); z-index: 1; opacity: 0; transition: opacity 0.5s ease; }
+        html[data-theme="light"] .glow-card::before { background: radial-gradient( 400px circle at var(--mouse-x) var(--mouse-y), rgba(249, 115, 22, 0.08), transparent 40% ); }
+        .glow-card:hover { border-color: var(--bg-border-hov); transform: translateY(-4px); box-shadow: var(--shadow-high); }
+        .glow-card:hover::before { opacity: 1; }
+        
+        .ic-box { width: 65px; height: 65px; background: var(--bg-panel); display: inline-flex; justify-content: center; align-items: center; border-radius: 16px; border: 1px solid var(--bg-border); color: var(--text-bold); transition: 0.4s var(--ease-bouncy); }
+        .glow-card:hover .ic-box { transform: scale(1.05) rotate(-5deg); background: var(--primary); border-color: transparent; color: white; box-shadow: 0 15px 35px var(--glow-1); }
+        .glow-card h3 { font-size: 1.35rem; }
+        .glow-card p { font-size: 1.05rem; color: var(--text-dim); line-height: 1.6;}
+        .glow-card.bento-span-2 { grid-column: span 2; }
 
-        /* PROJECTS */
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem; }
-        .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-        .project-thumb {
-            height: 420px; 
-            background: var(--bg-surface); position: relative; border-radius: 24px;
-            display: flex; align-items: center; justify-content: center; border: 1px solid var(--bg-border);
-            overflow: hidden;
-            background-image: linear-gradient(var(--bg-border) 1px, transparent 1px), linear-gradient(90deg, var(--bg-border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            transition: 0.5s var(--ease-out);
-        }
-        .project-thumb::before {
-            content:''; position: absolute; inset:0; 
-            background: radial-gradient(circle at center, transparent 30%, var(--bg-surface) 120%); z-index: 1;
-        }
-        .project-thumb.tahseel-card {
-            background: radial-gradient(circle at center, #0a4cac 0%, #001f4d 100%);
-            border-color: #0a4cac;
-        }
-        .project-logo-img { max-width: 65%; max-height: 160px; width: auto; object-fit: contain; z-index: 2; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); transition: 0.5s; }
-        .project-overlay {
-            position: absolute; bottom: 0; left: 0; right: 0; padding: 3rem; z-index: 5;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
-            transform: translateY(20px); opacity: 0; transition: 0.5s var(--ease-out); pointer-events: none;
-        }
-        .project-overlay h3 { color: white; } 
-        .project-item:hover .project-thumb { border-color: var(--text-muted); }
-        .project-item:hover .project-logo-img { transform: translateY(-20px) scale(1.05); }
-        .project-item:hover .project-overlay { transform: translateY(0); opacity: 1; }
-        .badge {
-            position: absolute; top: 30px; right: 30px; z-index: 5;
-            background: var(--bg-surface);
-            border: 1px solid var(--bg-border); padding: 8px 18px; border-radius: 100px;
-            font-size: 0.75rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;
-            display: flex; align-items: center; gap: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        body.lang-ar .badge { right: auto; left: 30px; }
+        /* =========================================
+           PROJECT SHOWCASE
+           ========================================= */
+        .proj-wrap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .proj-visual { aspect-ratio: 16/12; border-radius: 20px; overflow: hidden; position: relative; background: var(--bg-nav); display: flex; align-items: center; justify-content: center; border: 1px solid var(--bg-border); box-shadow: 0 10px 40px rgba(0,0,0,0.1); z-index: 1; }
+        .proj-visual::before { content: ''; position: absolute; inset:0; background-size: 40px 40px; background-image: linear-gradient(to right, var(--bg-border) 1px, transparent 1px), linear-gradient(to bottom, var(--bg-border) 1px, transparent 1px); opacity: 0.3; pointer-events: none; z-index: -1; }
+        .img-reveal { width: auto; max-width: 60%; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8)); transition: transform 0.6s var(--ease-bouncy), opacity 0.5s ease; }
+        
+        .lock-ic { position: absolute; display:flex; justify-content:center; align-items:center; width: 80px; height: 80px; border-radius:50%; background: var(--bg-card); color: var(--text-base); border: 1px solid var(--bg-border); box-shadow: 0 10px 20px rgba(0,0,0,0.3); backdrop-filter: blur(5px); }
+        .p-stat { position: absolute; top: 30px; right: 30px; padding: 8px 18px; border-radius: 50px; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter:blur(20px); border: 1px solid rgba(255,255,255,0.1); font-size: 0.75rem; letter-spacing: 1px; color: white; text-transform: uppercase; font-weight: 700; display: flex; align-items:center; gap: 8px; z-index: 2; }
+        body.lang-ar .p-stat { right: auto; left: 30px; }
+        .proj-info { margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; padding: 0 10px; }
+        .proj-cat { font-size: 0.8rem; font-weight: 700; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; display:block; }
+        .proj-title { font-size: 1.4rem;}
 
-        /* TEAM */
-        .executive-card {
-            background: var(--bg-card); border: 1px solid var(--bg-border); border-radius: 24px;
-            padding: 4rem 2.5rem; text-align: center; flex: 0 1 450px;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; z-index: 1;
-        }
-        .executive-card::before {
-            content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top, rgba(249, 115, 22, 0.1), transparent 70%);
-            opacity: 0; transition: 0.5s; z-index: -1;
-        }
-        .executive-card:hover { transform: translateY(-12px); border-color: var(--primary); box-shadow: var(--shadow-card); }
-        .executive-card:hover::before { opacity: 1; }
-        .profile-wrapper { width: 140px; height: 140px; margin: 0 auto 2rem; position: relative; }
-        .profile-circle {
-            width: 100%; height: 100%; border-radius: 50%; background: var(--bg-surface); overflow: hidden;
-            border: 3px solid var(--primary); box-shadow: 0 0 0 5px rgba(249, 115, 22, 0.1); transition: all 0.5s ease;
-            position: relative; z-index: 2; display: flex; align-items: center; justify-content: center;
-        }
-        .profile-wrapper::after {
-            content:''; position: absolute; top:50%; left:50%; transform:translate(-50%, -50%);
-            width: 150px; height: 150px; border-radius: 50%; background: var(--primary); filter: blur(35px); opacity: 0; transition: 0.5s;
-        }
-        .executive-card:hover .profile-wrapper::after { opacity: 0.6; }
-        .executive-card:hover .profile-circle { transform: scale(1.05); border-color: var(--text-main); }
-        .profile-img { width: 100%; height: 100%; object-fit: cover; }
-        .exec-name { font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--text-head); }
-        .exec-role {
-            display: block; color: var(--primary); font-size: 0.8rem; letter-spacing: 2px; font-weight: 700;
-            margin-bottom: 1.5rem; text-transform: uppercase;
-        }
+        .pj-wrap { display: block; }
+        .pj-wrap:hover .proj-visual { border-color: var(--primary); }
+        .pj-wrap:hover .img-reveal { transform: scale(1.1) translateY(-10px); }
+        .theme-tahseel .proj-visual { background: radial-gradient(circle at 50% 120%, rgba(10, 76, 172, 0.4), transparent 60%); }
 
-        /* CONTACT */
-        .contact-wrapper {
-            background: var(--bg-surface); border: 1px solid var(--bg-border);
-            border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.5fr;
-            box-shadow: var(--shadow-card);
-        }
-        .contact-info {
-            padding: 5rem; background-color: var(--primary); color: white; position: relative;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDQwTDQwIDBIODB2NDBIMHoiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L2c+PC9zdmc+');
-            display: flex; flex-direction: column; justify-content: space-between;
-        }
-        .contact-form { padding: 5rem; background: var(--bg-card); }
-        .form-group { position: relative; margin-bottom: 3rem; }
-        .form-input {
-            width: 100%; background: transparent; 
-            border: none; border-bottom: 1px solid var(--bg-border-light);
-            color: var(--text-main); padding: 15px 5px; outline: none; transition: 0.4s; 
-            font-family: inherit; font-size: 1.15rem; font-weight: 300;
-        }
-        .form-input:focus { border-bottom-color: var(--primary); box-shadow: 0 4px 10px -4px var(--primary-glow); }
-        .form-label { 
-            position: absolute; left: 5px; top: 15px; color: var(--text-muted); 
-            pointer-events: none; transition: 0.3s ease; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;
-        }
-        body.lang-ar .form-label { left: auto; right: 5px; }
-        .form-input:focus ~ .form-label, .form-input:valid ~ .form-label { top: -15px; font-size: 0.75rem; color: var(--primary); }
+        /* =========================================
+           TEAM CIRCLES
+           ========================================= */
+        .exec-grid { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; margin-bottom: 4rem;}
+        
+        /* Modifying spacing to include bio under names */
+        .card-exec { text-align: center; width: 320px; padding: 2rem 1rem; background: transparent; transition: 0.3s; }
+        .card-exec p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; margin-top: 5px; }
 
-        /* TOAST & FOOTER */
-        .toast-notification {
-            position: fixed; bottom: 30px; left: 30px; background: var(--bg-surface);
-            border: 1px solid var(--bg-border); padding: 20px 25px; border-radius: 12px;
-            display: flex; align-items: center; gap: 15px; z-index: 2000;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3); border-left: 5px solid var(--success);
-            transform: translateX(-150%); transition: transform 0.5s var(--bounce); max-width: 400px; color: var(--text-main);
-        }
-        .toast-notification.active { transform: translateX(0); }
-        body.lang-ar .toast-notification {
-            left: auto; right: 30px; border-left: 1px solid var(--bg-border); border-right: 5px solid var(--success); 
-            transform: translateX(120%);
-        }
-        body.lang-ar .toast-notification.active { transform: translateX(0); }
+        .avatar { width: 220px; height: 220px; border-radius: 50%; margin: 0 auto 1.5rem; position: relative; transition: 0.4s var(--ease-silk); cursor: default; }
+        .avatar-inner { width: 100%; height: 100%; border-radius: inherit; background: var(--bg-card); border: 2px solid var(--bg-border); box-shadow: 0 0 0 10px rgba(255,255,255,0.02); overflow: hidden; display:flex; justify-content:center; align-items:center; color: var(--bg-border); transition: all 0.4s; }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.4s; }
+        
+        .avatar::before { content: ''; position: absolute; inset:-2px; background: conic-gradient(from 0deg, var(--primary), transparent 50%, var(--primary)); border-radius: 50%; z-index: -1; filter: blur(20px); opacity: 0; transition: opacity 0.5s; }
+        .card-exec:hover .avatar::before { opacity: 0.6; animation: rotateBorder 4s linear infinite; }
+        .card-exec:hover .avatar-inner { border-color: transparent; }
+        .card-exec:hover img { filter: grayscale(0); }
+        @keyframes rotateBorder { to { transform: rotate(360deg); } }
+        
+        .exec-name { font-size: 1.8rem; margin-bottom: 6px; }
+        .exec-role { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); font-weight: 700; margin-bottom: 0.6rem; display:block; }
 
-        footer { background-color: var(--bg-card); border-top: 1px solid var(--bg-border); margin-top: 80px; padding: 100px 0 40px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; margin-bottom: 60px; }
-        .footer-about p { margin-top: 1.5rem; color: var(--text-body); font-size: 1rem; line-height: 1.7; max-width: 350px; }
-        .footer-col h4 { color: var(--text-head); font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-links a { display: block; color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem; transition: all 0.3s ease; }
-        .footer-links a:hover { color: var(--primary); padding-left: 8px; }
-        .footer-contact-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
-        .footer-contact-item i { flex-shrink: 0; color: var(--primary); margin-top: 3px; }
-        .social-row { display: flex; gap: 12px; margin-top: 2rem; }
-        .social-btn {
-            width: 40px; height: 40px; background: transparent; border: 1px solid var(--bg-border-light);
-            border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            color: var(--text-main); transition: 0.3s;
-        }
-        .social-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-3px); color: white; }
-        .footer-bottom { border-top: 1px solid var(--bg-border); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.9rem; }
+        /* Team Core Sub-Level Structure */
+        .core-grid { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        .core-grid .card-exec { width: 280px; padding: 1.5rem 1rem;}
+        .core-grid .avatar { width: 180px; height: 180px;}
+        .core-grid .exec-name { font-size: 1.45rem; }
 
-        /* RESPONSIVE */
+        /* =========================================
+           CONTACT
+           ========================================= */
+        .contact-panel { background: var(--bg-nav); border: 1px solid var(--bg-border); border-radius: 30px; overflow: hidden; backdrop-filter: blur(40px); display: grid; grid-template-columns: 1fr 1fr; position: relative; z-index: 10; }
+        .contact-info { padding: 4.5rem; position: relative;}
+        .c-block { margin-top: 4rem; display: grid; gap: 2.5rem; }
+        .info-col p.l { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 10px; font-weight:700;}
+        .info-col h3 { font-size: 1.5rem; color: var(--text-bold); }
+        .contact-form { padding: 4.5rem; background: rgba(0,0,0,0.1); }
+        html[data-theme="light"] .contact-form { background: rgba(0,0,0,0.02); border-left: 1px solid var(--bg-border);}
+        
+        .f-input { width: 100%; background: transparent; border: none; border-bottom: 2px solid var(--bg-border); border-radius:0; padding: 20px 0 10px 0; margin-bottom: 2rem; outline: none; color: var(--text-bold); font-family: inherit; font-size: 1.1rem; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .f-input::placeholder { color: var(--text-dim); }
+        .f-input:focus { border-bottom-color: var(--primary); }
+
+        .form-sub-btn { background: transparent; color: var(--text-bold); border: 1px solid var(--bg-border-hov); padding: 20px 30px; width: 100%; border-radius: 12px; font-weight: 700; font-family: inherit; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.4s; cursor: pointer; display: flex; justify-content: space-between; align-items:center; }
+        .form-sub-btn:hover { background: var(--primary); border-color: var(--primary); color: white; box-shadow: 0 10px 30px var(--glow-1);}
+
+        /* Toast notification */
+        .sys-toast { position: fixed; bottom: 30px; right: 30px; padding: 20px 25px; border-radius: 15px; background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--success); color: var(--text-bold); z-index: 9999; display: flex; align-items:center; gap: 15px; font-weight:600; transform: translateX(150%); opacity:0; transition: 0.6s var(--ease-bouncy); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .sys-toast.active { transform: translateX(0); opacity: 1; }
+        body.lang-ar .sys-toast { right: auto; left: 30px; transform: translateX(-150%);}
+        body.lang-ar .sys-toast.active { transform: translateX(0); }
+
+        /* =========================================
+           ULTRA CLEAN FOOTER
+           ========================================= */
+        .mega-foot { border-top: 1px solid var(--bg-border); background: var(--bg-nav); backdrop-filter: blur(40px); padding-top: 8rem; position: relative;}
+        .ft-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .ft-bio p { color: var(--text-dim); max-width: 380px; font-size: 1.05rem; }
+        .ft-col h4 { margin-bottom: 2rem; font-size: 1.1rem; }
+        .ft-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 1rem; transition: 0.3s; width: max-content; }
+        .ft-link:hover { color: var(--text-bold); padding-left: 5px;}
+        body.lang-ar .ft-link:hover { padding-left: 0; padding-right: 5px; }
+        .ft-line { padding: 30px 0; display: flex; justify-content: space-between; border-top: 1px solid var(--bg-border); font-size: 0.9rem; color: var(--text-dim); }
+        .sc-wrap { display: flex; gap: 15px; margin-top: 30px;}
+        .sc-circle { width: 44px; height: 44px; display:flex; align-items:center; justify-content:center; border: 1px solid var(--bg-border); border-radius: 50%; color: var(--text-dim); transition: 0.3s;}
+        .sc-circle:hover { color: white; border-color: #3b5998; background: #3b5998; transform: translateY(-4px);}
+
+        /* MOBILE MENU PULLDOWN */
+        .drawer { position: fixed; inset: 0; background: var(--bg-site); z-index: 95; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3vh; opacity: 0; pointer-events: none; transform: translateY(-10%); transition: 0.6s var(--ease-silk); }
+        .drawer.active { opacity: 1; pointer-events: all; transform: translateY(0); }
+        .drawer a { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; color: var(--text-dim); font-family: var(--font-display); }
+        .drawer a:hover { color: var(--text-bold); }
+
+        /* RESPONSIVENESS */
         @media (max-width: 1024px) {
-            :root { --nav-height: 80px; }
-            .logo img { height: 45px; }
-            .hero-title { font-size: 3.2rem; }
-            .about-layout, .contact-wrapper, .work-grid { grid-template-columns: 1fr; gap: 4rem; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            
-            /* Hide desktop, show hamburger */
+            header { top: 15px; width: 94%; height: 65px; border-radius: 20px;}
             .desktop-menu { display: none; }
-            .menu-toggle { display: block; margin-right: 20px;} 
-            body.lang-ar .menu-toggle { margin-right:0; margin-left: 20px;}
+            .menu-tgl-mobile { display: block; }
+            .action-pill-btn { border: none; padding: 5px 10px; background: transparent !important; }
+            .btn-text { display: none; }
+            .bento-grid, .grid-split, .proj-wrap, .contact-panel { grid-template-columns: 1fr; }
+            .glow-card.bento-span-2 { grid-column: span 1; }
+            .sect-pad { padding: 100px 0; }
+            .contact-info, .contact-form { padding: 3rem; }
+            .hero { padding-top: 100px; }
+            .ft-grid { grid-template-columns: 1fr; }
+        }
 
-            .contact-info, .contact-form { padding: 3rem 2rem; }
-            .glass-card, .feature-card, .project-thumb { padding: 2rem; }
-            .section-padding { padding: 100px 0; }
-            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
-            .toast-notification { bottom: 20px; left: 20px; right: 20px; width: auto; justify-content: center; max-width: none; }
+        @media (max-width: 600px) {
+            .contact-info, .contact-form { padding: 2rem; }
+            .core-grid { gap: 1.5rem; }
         }
     </style>
 </head>
-<body id="top" data-theme="dark">
+<body id="home">
 
-    <!-- Particle Canvas -->
-    <div id="canvas-wrapper"><canvas id="hero-canvas"></canvas></div>
+    <!-- Deep Ambient Effect Architecture -->
+    <div class="ambient-mesh">
+        <div class="aurora a1"></div>
+        <div class="aurora a2"></div>
+        <div class="aurora a3"></div>
+    </div>
+    <div class="noise-layer"></div>
 
-    <!-- Toast Notification (Popup) -->
-    <div id="toast" class="toast-notification">
-        <div class="toast-icon" style="flex-shrink:0; width:35px;height:35px; background:var(--success); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center;">
-            <i data-feather="check" style="width:20px;"></i>
+    <!-- Notification Engine -->
+    <div id="toast" class="sys-toast">
+        <div style="background:var(--success); color:#fff; border-radius:50%; width:24px; height:24px; display:flex; justify-content:center; align-items:center;">
+            <i data-feather="check" style="width:14px; height:14px;"></i>
         </div>
-        <div>
-            <h4 style="font-size:1.1rem; margin-bottom:2px;" data-i18n="toast_title">Message Sent</h4>
-            <p style="font-size:0.95rem; color:var(--text-body); margin:0;" data-i18n="toast_msg">We have received your inquiry.</p>
-        </div>
+        <div><span data-i18n="toast_msg">Message received. We'll be in touch soon.</span></div>
     </div>
 
-    <!-- ENHANCED NAVIGATION -->
-    <header>
-        <div class="container nav-wrapper">
-            <div style="display:flex; align-items:center;">
-                <!-- BUTTON WAS HERE BUT LOGIC WAS MISSING -->
-                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
-                    <i data-feather="menu"></i>
-                </button>
-                <a href="#top" class="logo">
-                    <img src="AGTS.png" alt="AGTS" title="Appraise Global Technology Solutions">
-                </a>
-            </div>
+    <!-- The Header Floating Pill -->
+    <header id="main-header">
+        <a href="#home" class="logo">
+            <img src="AGTS.png" alt="AGTS Logo" title="Appraise Global Technology Solutions" onerror="this.style.display='none'">
+        </a>
 
-            <!-- Central Desktop Menu -->
-            <nav class="desktop-menu">
-                <a href="#about" data-i18n="nav_studio">About</a>
-                <a href="#services" data-i18n="nav_caps">Services</a>
-                <a href="#work" data-i18n="nav_work">Work</a>
-                <a href="#team" data-i18n="nav_team">Team</a>
-                <a href="#contact" data-i18n="nav_contact">Contact</a>
-            </nav>
-            
-            <!-- Right Actions (Theme + Lang) -->
-            <div class="nav-actions">
-                <button onclick="toggleTheme()" class="icon-btn" title="Toggle Theme" aria-label="Toggle Dark Mode">
-                    <i data-feather="moon" id="theme-icon" style="width:20px;"></i>
-                </button>
+        <!-- Middle Anchor Points -->
+        <nav class="desktop-menu">
+            <a href="#studio" data-text="ABOUT"><span data-i18n="nav_studio">About</span></a>
+            <a href="#services" data-text="SERVICES"><span data-i18n="nav_caps">Services</span></a>
+            <a href="#showcase" data-text="WORK"><span data-i18n="nav_work">Work</span></a>
+            <a href="#team" data-text="TEAM"><span data-i18n="nav_team">Team</span></a>
+            <a href="#connect" data-text="CONNECT"><span data-i18n="nav_contact">Connect</span></a>
+        </nav>
 
-                <button onclick="toggleLanguage()" class="lang-btn">
-                    <i data-feather="globe" style="width:16px;"></i>
-                    <span id="lang-btn-text">العربية</span>
-                </button>
-            </div>
+        <!-- Triggers -->
+        <div class="nav-toggles">
+            <button onclick="switchSystemTheme()" class="action-pill-btn" aria-label="Swap Theme">
+                <i data-feather="moon" id="ic-theme"></i> 
+            </button>
+            <button onclick="flipSystemLocale()" class="action-pill-btn" style="color:var(--text-bold); border-color: var(--primary);">
+                <i data-feather="globe"></i> <span id="label-lang" class="btn-text" style="padding-top:2px;">عربي</span>
+            </button>
+            <button class="menu-tgl-mobile" onclick="runMobileDraw()" aria-label="Toggle Navigation">
+                <i data-feather="menu" id="mob-ic"></i>
+            </button>
         </div>
     </header>
 
-    <!-- NEW: MOBILE NAVIGATION DRAWER -->
-    <!-- This overlay appears when button is clicked on mobile -->
-    <div class="mobile-overlay" id="mobileDrawer">
-        <a href="#about" class="mobile-nav-link" data-i18n="nav_studio" onclick="toggleMenu()">About</a>
-        <a href="#services" class="mobile-nav-link" data-i18n="nav_caps" onclick="toggleMenu()">Services</a>
-        <a href="#work" class="mobile-nav-link" data-i18n="nav_work" onclick="toggleMenu()">Work</a>
-        <a href="#team" class="mobile-nav-link" data-i18n="nav_team" onclick="toggleMenu()">Team</a>
-        <a href="#contact" class="mobile-nav-link" data-i18n="nav_contact" onclick="toggleMenu()">Contact</a>
+    <!-- Overlay Navigation Drawer (Mobile) -->
+    <div class="drawer" id="mobile-canvas">
+        <a href="#studio" data-i18n="nav_studio" onclick="runMobileDraw()">About</a>
+        <a href="#services" data-i18n="nav_caps" onclick="runMobileDraw()">Services</a>
+        <a href="#showcase" data-i18n="nav_work" onclick="runMobileDraw()">Work</a>
+        <a href="#team" data-i18n="nav_team" onclick="runMobileDraw()">Team</a>
+        <a href="#connect" data-i18n="nav_contact" onclick="runMobileDraw()">Connect</a>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="container hero-content">
-            <div class="hero-subtitle reveal-fx" data-i18n="hero_subtitle">
-                <span style="width:8px; height:8px; background:var(--primary); border-radius:50%; display:inline-block;"></span>
-                Technology Experts
+    <!-- MAIN INTERFACE -->
+    <main>
+
+        <!-- THE STAGE (HERO) -->
+        <section class="hero" id="top">
+            <div class="container fxd-up" style="max-width: 1000px; transition-delay:0.1s;">
+                <div class="badge-pro">
+                    <span></span> <div data-i18n="hero_badge" style="transform: translateY(2px);">Professional Software Agency</div>
+                </div>
+                
+                <h1>
+                    <span data-i18n="hero_t1" style="display:block;">We Build Next-Level</span>
+                    <div class="tw-wrap gradient-txt">
+                        <span id="tw-board"></span>
+                    </div><span class="tw-cursor"></span>
+                </h1>
+                
+                <p class="hero-desc fxd-up" style="transition-delay:0.2s;" data-i18n="hero_body">
+                    Transforming bold ideas into powerful digital products. From smart system design to flawless user experiences, AGTS builds reliable technology solutions globally.
+                </p>
+
+                <div class="fxd-up" style="transition-delay: 0.3s;">
+                    <a href="#connect" class="btn-luminous">
+                        <span data-i18n="btn_ignite">Start Your Project</span>
+                        <i data-feather="arrow-up-right"></i>
+                    </a>
+                </div>
             </div>
-            <h1 class="hero-title reveal-fx">
-                <span data-i18n="hero_h1">We Develop</span> <br> 
-                <span class="text-gradient" id="typewriter-text"></span><span class="typewriter-cursor"></span>
-            </h1>
-            <p class="hero-desc reveal-fx" data-i18n="hero_desc">
-                AGTS builds powerful websites and mobile apps that make your business stand out. We handle all the technical work so you can focus on what you do best.
-            </p>
-            <div class="hero-actions reveal-fx" style="transition-delay:0.2s">
-                <a href="#contact" class="btn-glow" style="display:inline-flex; width: auto; font-size:1.15rem; padding: 18px 40px;">
-                    <span data-i18n="btn_explore">Start A Project</span>
-                    <i data-feather="arrow-right"></i>
-                </a>
+        </section>
+
+        <!-- INFINITY STRIP -->
+        <div class="marq-wrap">
+            <div class="marq-track" id="mq-track">
+                <div class="marq-slide" id="mq-road"></div>
+                <div class="marq-slide" id="mq-road-copy"></div>
             </div>
         </div>
-    </section>
 
-    <!-- MARQUEE STRIP -->
-    <div class="marquee-section">
-        <div class="marquee-track" id="marquee-track"></div>
-    </div>
+        <!-- BLUEPRINT (ABOUT) -->
+        <section id="studio" class="sect-pad">
+            <div class="container fxd-up">
+                <div class="grid-split">
+                    <div class="about-lead fxd-up">
+                        <div class="accent-bar" style="margin-left: 0;"></div>
+                        <h2 class="sec-title" data-i18n="about_headline" style="text-align: left; margin-bottom: 20px;">Execution Precision.</h2>
+                        <p class="sec-desc" data-i18n="about_body" style="font-size: 1.25rem; text-align: left; color:var(--text-bold); font-weight:300;">
+                            At AGTS, we make technology simple. We assign you an elite team of developers to blueprint, deploy, and scale your platforms securely.
+                        </p>
+                    </div>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section-padding">
-        <div class="container">
-            <div class="about-layout">
-                <div class="reveal-fx">
-                    <div class="section-badge" data-i18n="about_badge">Our Process</div>
-                    <h2 class="section-header" style="font-size:3.5rem; line-height:1.1; margin-bottom:1.5rem;" data-i18n="about_title">From Idea to Launch.</h2>
-                    <p style="color:var(--text-body); margin-top:2rem; font-size:1.25rem; font-weight:300;" data-i18n="about_p1">
-                        We turn your vision into a successful digital product. Whether you need a modern website, a custom mobile app, or an internal system, AGTS manages the entire journey.
-                    </p>
-                    <p style="color:var(--text-body); margin-top:2rem; font-size:1.1rem;" data-i18n="about_p2">
-                        You get one expert team for your entire project. No need to manage different freelancers. We provide a streamlined, professional experience in Libya.
-                    </p>
-                </div>
-                <div class="reveal-fx">
-                    <div class="glass-card">
-                        <div class="step-item">
-                            <div class="step-num">01</div>
-                            <div class="step-content">
-                                <h4 data-i18n="step_1_t">Planning & Design</h4>
-                                <p data-i18n="step_1_d">We start by understanding your goals. We create a clear plan showing exactly how your website or app will look and function before we start building.</p>
+                    <div class="timeline fxd-up">
+                        <div class="tl-step">
+                            <div class="tl-num">01</div>
+                            <div class="tl-content">
+                                <h3 data-i18n="ap_1_h">Planning & Architecture</h3>
+                                <p data-i18n="ap_1_b">We map out your system structure and user interface perfectly before writing any code.</p>
                             </div>
                         </div>
-                        <div class="step-item">
-                            <div class="step-num">02</div>
-                            <div class="step-content">
-                                <h4 data-i18n="step_2_t">Development & Review</h4>
-                                <p data-i18n="step_2_d">Our expert team brings your project to life. We provide regular updates so you can see the progress and test the solution on your devices.</p>
+                        <div class="tl-step">
+                            <div class="tl-num">02</div>
+                            <div class="tl-content">
+                                <h3 data-i18n="ap_2_h">Development & Testing</h3>
+                                <p data-i18n="ap_2_b">We build your website or app using modern technologies, testing it strictly to ensure it runs flawlessly.</p>
                             </div>
                         </div>
-                        <div class="step-item">
-                            <div class="step-num">03</div>
-                            <div class="step-content">
-                                <h4 data-i18n="step_3_t">Launch & Support</h4>
-                                <p data-i18n="step_3_d">We launch your website on fast servers and publish your app to the Apple and Google stores. Our support continues, ensuring everything runs smoothly.</p>
+                        <div class="tl-step">
+                            <div class="tl-num">03</div>
+                            <div class="tl-content">
+                                <h3 data-i18n="ap_3_h">Launch & Growth</h3>
+                                <p data-i18n="ap_3_b">We launch your project on fast, secure servers, ready to handle traffic and scale globally.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="section-padding" style="background:var(--bg-surface); border-top:1px solid var(--bg-border);">
-        <div class="container">
-            <div class="reveal-fx" style="margin-bottom:80px; max-width:800px;">
-                <h2 data-i18n="services_h2" style="font-size:3rem;">Our Services</h2>
-                <p style="color:var(--text-body); font-size:1.2rem; margin-top:10px;" data-i18n="services_sub">Professional software, web, and mobile solutions.</p>
-            </div>
-            <div class="service-grid">
-                <div class="feature-card reveal-fx" style="transition-delay: 0.2s">
-                    <div class="feature-icon"><i data-feather="monitor"></i></div>
-                    <h3 data-i18n="srv_3_t">Websites & Web Apps</h3>
-                    <p style="color:var(--text-body); margin-top:1rem; font-size:1.05rem;" data-i18n="srv_3_d">Responsive, modern websites and complex web applications that perform perfectly on all devices.</p>
+        <!-- MATRIX (SERVICES 8 GRID) -->
+        <section id="services" class="sect-pad" style="border-top: 1px solid var(--bg-border);">
+            <div class="container">
+                
+                <div class="sec-head fxd-up">
+                    <div class="accent-bar"></div>
+                    <h2 class="sec-title" data-i18n="sv_h">Our Services</h2>
+                    <p class="sec-desc" data-i18n="sv_sub">Professional technology solutions designed to help your business grow.</p>
                 </div>
-                <div class="feature-card reveal-fx" style="transition-delay: 0.1s">
-                    <div class="feature-icon"><i data-feather="smartphone"></i></div>
-                    <h3 data-i18n="srv_2_t">Mobile Applications</h3>
-                    <p style="color:var(--text-body); margin-top:1rem; font-size:1.05rem;" data-i18n="srv_2_d">High-performance native apps for both iOS (iPhone) and Android devices, designed for a great user experience.</p>
-                </div>
-                <div class="feature-card reveal-fx">
-                    <div class="feature-icon"><i data-feather="cpu"></i></div>
-                    <h3 data-i18n="srv_1_t">Business Systems & AI</h3>
-                    <p style="color:var(--text-body); margin-top:1rem; font-size:1.05rem;" data-i18n="srv_1_d">Powerful back-end software to help your company manage data, improve efficiency, and utilize AI.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- WORK -->
-    <section id="work" class="section-padding">
-        <div class="container">
-            <div class="reveal-fx" style="margin-bottom:80px;">
-                <h2 data-i18n="work_h2" style="font-size:3rem;">Recent Work</h2>
-            </div>
-            <div class="work-grid">
-                <div class="project-item reveal-fx">
-                    <div class="project-thumb tahseel-card">
-                        <img src="tahseel.png" alt="Tahseel Logo" class="project-logo-img">
-                        <div class="badge">
-                             <span data-i18n="cat_edtech">EDUCATION PLATFORM</span>
-                        </div>
-                        <div class="project-overlay">
-                            <h3 data-i18n="proj_1">Tahseel</h3>
-                        </div>
+                <div class="bento-grid">
+                    
+                    <!-- 1 AI/Sys -->
+                    <div class="glow-card card-target bento-span-2 fxd-up">
+                        <div class="ic-box"><i data-feather="cpu" stroke-width="2.5"></i></div>
+                        <h3 data-i18n="srv_1_t">Business Systems & AI</h3>
+                        <p data-i18n="srv_1_d">Powerful back-end software that helps your company manage data, improve efficiency, and use AI.</p>
                     </div>
-                </div>
-                <div class="project-item reveal-fx" style="transition-delay: 0.1s">
-                    <div class="project-thumb">
-                        <div class="badge" style="border-color:var(--primary);"><i data-feather="lock" class="lock-icon" style="width:14px;"></i> <span data-i18n="badge_private">PRIVATE</span></div>
-                        <i data-feather="shield" style="color:var(--text-main); opacity:0.3; width:80px; height:80px;"></i>
-                        <div class="project-overlay">
-                            <span data-i18n="cat_fintech" style="color:var(--primary); font-weight:700;">Locked</span>
-                            <h3 data-i18n="proj_pay">Coming Soon</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item reveal-fx">
-                    <div class="project-thumb">
-                         <div class="badge" style="border-color:var(--primary);"><i data-feather="lock" class="lock-icon" style="width:14px;"></i> <span data-i18n="badge_private">PRIVATE</span></div>
-                        <i data-feather="truck" style="color:var(--text-main); opacity:0.3; width:80px; height:80px;"></i>
-                        <div class="project-overlay">
-                             <span data-i18n="cat_logistics" style="color:var(--primary); font-weight:700;">Locked</span>
-                            <h3 data-i18n="proj_fleet">Coming Soon</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item reveal-fx" style="transition-delay: 0.1s">
-                    <div class="project-thumb">
-                        <div class="badge" style="border-color:var(--primary);"><i data-feather="lock" class="lock-icon" style="width:14px;"></i> <span data-i18n="badge_private">PRIVATE</span></div>
-                        <i data-feather="database" style="color:var(--text-main); opacity:0.3; width:80px; height:80px;"></i>
-                        <div class="project-overlay">
-                             <span data-i18n="cat_data" style="color:var(--primary); font-weight:700;">Locked</span>
-                            <h3 data-i18n="proj_data">Coming Soon</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- EXECUTIVE TEAM -->
-    <section id="team" class="section-padding" style="background:var(--bg-surface); border-top:1px solid var(--bg-border);">
-        <div class="container reveal-fx">
-            <div style="text-align: center; margin-bottom: 80px;">
-                <h2 data-i18n="team_h2" style="font-size:3rem;">Management</h2>
-                <div style="width: 100px; height: 5px; background: var(--primary); margin: 30px auto; border-radius:3px;"></div>
-            </div>
-            
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
-                <div class="executive-card">
-                    <div class="profile-wrapper">
-                        <div class="profile-circle"><img src="mohammed.jpg" alt="Mohammed Alferjani" class="profile-img" onerror="this.style.display='none'"></div>
+                    <!-- 2 Mobile -->
+                    <div class="glow-card card-target fxd-up" style="transition-delay:0.1s">
+                        <div class="ic-box"><i data-feather="smartphone" stroke-width="2.5"></i></div>
+                        <h3 data-i18n="srv_2_t">Mobile Applications</h3>
+                        <p data-i18n="srv_2_d">Fast, high-performance native apps for iOS and Android, designed for a smooth user experience.</p>
                     </div>
-                    <h3 class="exec-name" data-i18n="name_ceo">Mohammed Alferjani</h3>
-                    <span class="exec-role" data-i18n="role_ceo">CEO & Founder</span>
-                    <p class="exec-bio" data-i18n="bio_ceo">Leading the vision for digital infrastructure in Libya.</p>
-                </div>
-                <div class="executive-card">
-                    <div class="profile-wrapper">
-                        <div class="profile-circle"><img src="beto.jpg" alt="Ibrahim Alferjani" class="profile-img" onerror="this.style.display='none'"></div>
-                    </div>
-                    <h3 class="exec-name" data-i18n="name_gm">Ibrahim Alferjani</h3>
-                    <span class="exec-role" data-i18n="role_gm">GENERAL MANAGER</span>
-                    <p class="exec-bio" data-i18n="bio_gm">Managing operations and ensuring client satisfaction.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CONTACT FORM -->
-    <section id="contact" class="section-padding">
-        <div class="container reveal-fx">
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <div>
-                        <h2 data-i18n="contact_h2" style="font-size:3.5rem; line-height: 1.1; letter-spacing: -2px;">Let's Build<br>Together.</h2>
-                        <p data-i18n="contact_sub" style="font-size:1.25rem; opacity:0.9; margin-top:20px;">Tell us about your project idea. Let's make it real.</p>
+                    <!-- 3 Cloud Infrastructure -->
+                    <div class="glow-card card-target fxd-up">
+                        <div class="ic-box"><i data-feather="cloud" stroke-width="2.5"></i></div>
+                        <h3 data-i18n="srv_cloud_t">Cloud Architecture</h3>
+                        <p data-i18n="srv_cloud_d">Scalable cloud integrations ensuring your business runs with zero downtime.</p>
                     </div>
-                    <div>
-                        <div style="margin-bottom:3rem">
-                            <div style="opacity:0.7; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.8rem" data-i18n="contact_email">Email</div>
-                            <div style="font-size:1.6rem; font-weight:bold; font-family:var(--font-display);">info@agts-ly.com</div>
-                        </div>
-                        <div>
-                            <div style="opacity:0.7; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.8rem" data-i18n="contact_loc">Location</div>
-                            <div style="font-size:1.4rem; font-weight:600; line-height:1.4;" data-i18n="address">Venice Street,<br>Benghazi, Libya</div>
-                        </div>
+
+                    <!-- 4 Web Platforms -->
+                    <div class="glow-card card-target fxd-up" style="transition-delay:0.1s">
+                        <div class="ic-box"><i data-feather="globe" stroke-width="2.5"></i></div>
+                        <h3 data-i18n="srv_3_t">Websites & Web Apps</h3>
+                        <p data-i18n="srv_3_d">Modern, fast-loading websites and web platforms that work perfectly on all devices.</p>
                     </div>
+
+                    <!-- 5 Cyber -->
+                    <div class="glow-card card-target fxd-up" style="transition-delay:0.2s">
+                        <div class="ic-box"><i data-feather="shield" stroke-width="2.5"></i></div>
+                        <h3 data-i18n="srv_cyber_t">Cyber Security</h3>
+                        <p data-i18n="srv_cyber_d">Comprehensive security testing to ensure your databases and user data are completely protected.</p>
+                    </div>
+
+                     <!-- 6 Dig Market -->
+                     <div class="glow-card card-target fxd-up">
+                        <div class="ic-box"><i data-feather="trending-up" stroke-width="2.5"></i></div>
+                        <h3 data-i18n="srv_4_t">Digital Marketing</h3>
+                        <p data-i18n="srv_4_d">Data-driven marketing and content strategies designed to grow your brand and reach more customers.</p>
+                    </div>
+
+                    <!-- 7 UI/UX -->
+                    <div class="glow-card card-target fxd-up" style="transition-delay:0.1s">
+                        <div class="ic-box"><i data-feather="pen-tool" stroke-width="2.5"></i></div>
+                        <h3 data-i18n="srv_5_t">UI/UX Design</h3>
+                        <p data-i18n="srv_5_d">Crafting intuitive, user-centered interfaces that deliver exceptional digital experiences and drive engagement.</p>
+                    </div>
+
+                    <!-- 8 IT Consulting -->
+                    <div class="glow-card card-target fxd-up" style="transition-delay:0.2s">
+                        <div class="ic-box"><i data-feather="briefcase" stroke-width="2.5"></i></div>
+                        <h3 data-i18n="srv_6_t">IT Consulting & Support</h3>
+                        <p data-i18n="srv_6_d">Expert technical guidance and ongoing maintenance to keep your business operations running smoothly.</p>
+                    </div>
+
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <input type="hidden" name="_subject" value="New AGTS Website Inquiry">
-                        <input type="hidden" name="_template" value="table"> 
-                        <div class="form-group">
-                            <input type="text" name="name" id="f-name" class="form-input" required placeholder=" ">
-                            <label for="f-name" class="form-label" data-i18n="form_name">Full Name</label>
+
+            </div>
+        </section>
+
+        <!-- INTEL (WORK PORTFOLIO) -->
+        <section id="showcase" class="sect-pad" style="border-top: 1px solid var(--bg-border);">
+            <div class="container">
+                <div class="sec-head fxd-up">
+                    <div class="accent-bar"></div>
+                    <h2 class="sec-title" data-i18n="work_h">Our Latest Work</h2>
+                    <p class="sec-desc" data-i18n="work_s">Direct implementations currently driving value in the market.</p>
+                </div>
+
+                <div class="proj-wrap">
+                    
+                    <!-- TAHSEEL DIV -->
+                    <div class="pj-wrap fxd-up theme-tahseel">
+                        <div class="proj-visual card-target">
+                            <div class="p-stat">LIVE PORT</div>
+                            <img src="tahseel.png" alt="Tahseel Education Core" class="img-reveal" onerror="this.style.display='none'">
+                            <h1 class="title-caps img-reveal" style="font-size:3rem; letter-spacing:2px; display:none;" id="fb_txt">TAHSEEL</h1>
                         </div>
-                        <div class="form-group">
-                            <input type="email" name="email" id="f-email" class="form-input" required placeholder=" ">
-                            <label for="f-email" class="form-label" data-i18n="form_email">Email Address</label>
+                        <div class="proj-info">
+                            <div>
+                                <span class="proj-cat" data-i18n="cat_t">EDUCATION PLATFORM</span>
+                                <h3 class="proj-title" data-i18n="prj_tahseel">Tahseel</h3>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <textarea name="message" id="f-msg" class="form-input" rows="3" required placeholder=" "></textarea>
-                            <label for="f-msg" class="form-label" data-i18n="form_msg">Your Idea or Question</label>
+                    </div>
+
+                    <div class="pj-wrap fxd-up">
+                        <div class="proj-visual card-target">
+                            <div class="p-stat" style="border-color: var(--primary);">RESTRICTED ACCESS</div>
+                            <div class="lock-ic"><i data-feather="lock" style="width:28px;height:28px;"></i></div>
                         </div>
-                        <button type="submit" id="submitBtn" class="btn-glow" style="width:100%; padding:20px; justify-content:center; font-size:1.1rem; border-color:var(--primary);">
-                            <span id="btnText" data-i18n="btn_submit">Submit Message</span>
-                        </button>
-                    </form>
+                        <div class="proj-info">
+                            <div>
+                                <span class="proj-cat" data-i18n="cat_n1">FINANCE</span>
+                                <h3 class="proj-title" data-i18n="prj_n1">Coming Soon</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pj-wrap fxd-up">
+                        <div class="proj-visual card-target">
+                            <div class="p-stat" style="border-color: var(--primary);">RESTRICTED ACCESS</div>
+                            <div class="lock-ic"><i data-feather="lock" style="width:28px;height:28px;"></i></div>
+                        </div>
+                        <div class="proj-info">
+                            <div>
+                                <span class="proj-cat" data-i18n="cat_n2">LOGISTICS</span>
+                                <h3 class="proj-title" data-i18n="prj_n1">Coming Soon</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pj-wrap fxd-up">
+                        <div class="proj-visual card-target">
+                            <div class="p-stat" style="border-color: var(--primary);">RESTRICTED ACCESS</div>
+                            <div class="lock-ic"><i data-feather="lock" style="width:28px;height:28px;"></i></div>
+                        </div>
+                        <div class="proj-info">
+                            <div>
+                                <span class="proj-cat" data-i18n="cat_n3">DATABASE</span>
+                                <h3 class="proj-title" data-i18n="prj_n1">Coming Soon</h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <!-- Col 1 -->
-                <div class="footer-col footer-about">
-                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px">
-                        <img src="AGTS.png" alt="AGTS Logo" style="height: 80px;">
+        <!-- COMMAND CABIN (TEAM) -->
+        <section id="team" class="sect-pad" style="background: var(--bg-card); border-top: 1px solid var(--bg-border);">
+            <div class="container fxd-up">
+                
+                <!-- MANAGEMENT SECTION -->
+                <div class="sec-head">
+                    <h2 class="sec-title" data-i18n="cm_head">Management Team</h2>
+                    <div style="color:var(--text-dim); text-transform:uppercase; font-size: 0.8rem; letter-spacing:4px; font-weight:700; margin-top:10px;">Executive Committee</div>
+                </div>
+
+                <div class="exec-grid">
+                    
+                    <!-- EX: 1 -->
+                    <div class="card-exec fxd-up">
+                        <div class="avatar">
+                            <div class="avatar-inner">
+                                <img src="beto.jpg" alt="Ibrahim Alferjani" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:60px; height:60px; stroke-width:1;\'></i>'">
+                            </div>
+                        </div>
+                        <h3 class="exec-name" data-i18n="name_i">Ibrahim Alferjani</h3>
+                        <span class="exec-role" data-i18n="r_i">General Manager</span>
+                        <p data-i18n="bio_i">Driving strategic growth and technological innovation across global markets.</p>
                     </div>
-                    <p data-i18n="footer_desc">Professional technology solutions. We build modern websites, apps, and digital systems for companies in Libya.</p>
-                    <div class="social-row">
-                        <!-- <a href="#" class="social-btn"><i data-feather="linkedin"></i></a> -->
-                        <a href="https://www.facebook.com/share/18M2mT2zj7/" class="social-btn"><i data-feather="facebook"></i></a>
+
+                    <!-- EX: 2 -->
+                    <div class="card-exec fxd-up" style="transition-delay:0.1s">
+                        <div class="avatar">
+                            <div class="avatar-inner">
+                                <img src="hunyda.jpg" alt="Hunyda El-obaidy" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:60px; height:60px; stroke-width:1;\'></i>'">
+                            </div>
+                        </div>
+                        <h3 class="exec-name" data-i18n="name_h">Hunyda El-obaidy</h3>
+                        <span class="exec-role" data-i18n="r_h">Marketing Manager</span>
+                        <p data-i18n="bio_h">Crafting impactful brand narratives and data-driven marketing campaigns.</p>
                     </div>
                 </div>
                 
-                <!-- Col 2 -->
-                <div class="footer-col footer-links">
-                    <h4 data-i18n="nav_company">Company</h4>
-                    <a href="#about" data-i18n="nav_studio">About</a>
-                    <a href="#work" data-i18n="nav_work">Our Work</a>
-                    <a href="#team" data-i18n="nav_team">Management</a>
-                    <a href="#contact" data-i18n="nav_contact">Contact Us</a>
+                <!-- CORE TECHNICAL & OPS SECTION -->
+                <div class="sec-head" style="margin-top: 5rem; margin-bottom: 3.5rem;">
+                    <div style="color:var(--text-dim); text-transform:uppercase; font-size: 0.8rem; letter-spacing:4px; font-weight:700;" data-i18n="tm_core">Core Operations Team</div>
+                </div>
+                
+                <div class="core-grid">
+
+                    <!-- DEV: 1 -->
+                    <div class="card-exec fxd-up">
+                        <div class="avatar">
+                            <div class="avatar-inner">
+                                <img src="mailoud.jpg" alt="Mohammed Mailoud" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:50px; height:50px; stroke-width:1;\'></i>'">
+                            </div>
+                        </div>
+                        <h3 class="exec-name" data-i18n="name_mm">Mohammed Mailoud</h3>
+                        <span class="exec-role" data-i18n="r_mm">Web Developer</span>
+                        <p data-i18n="bio_mm">Building responsive, modern, and user-centric web applications.</p>
+                    </div>
+
+                    <!-- DEV: 2 -->
+                    <div class="card-exec fxd-up" style="transition-delay:0.05s">
+                        <div class="avatar">
+                            <div class="avatar-inner">
+                                <img src="amin.jpg" alt="Amin Osman" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:50px; height:50px; stroke-width:1;\'></i>'">
+                            </div>
+                        </div>
+                        <h3 class="exec-name" data-i18n="name_ao">Amin Osman</h3>
+                        <span class="exec-role" data-i18n="r_ao">Backend Developer</span>
+                        <p data-i18n="bio_ao">Architecting secure, scalable, and high-performance server-side systems.</p>
+                    </div>
+
+                    <!-- DEV: 3 -->
+                    <div class="card-exec fxd-up" style="transition-delay:0.1s">
+                        <div class="avatar">
+                            <div class="avatar-inner">
+                                <img src="malek.jpg" alt="Malek Fahmi" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:50px; height:50px; stroke-width:1;\'></i>'">
+                            </div>
+                        </div>
+                        <h3 class="exec-name" data-i18n="name_mf">Malek Fahmi</h3>
+                        <span class="exec-role" data-i18n="r_mf">Dev Ops</span>
+                        <p data-i18n="bio_mf">Streamlining deployment pipelines and optimizing cloud infrastructures.</p>
+                    </div>
+
+                    <!-- DEV: 4 -->
+                    <div class="card-exec fxd-up" style="transition-delay:0.15s">
+                        <div class="avatar">
+                            <div class="avatar-inner">
+                                <img src="mohammed-e.jpg" alt="Mohammed Eljahani" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:50px; height:50px; stroke-width:1;\'></i>'">
+                            </div>
+                        </div>
+                        <h3 class="exec-name" data-i18n="name_me">Mohammed Eljahani</h3>
+                        <span class="exec-role" data-i18n="r_me">Mobile App Developer</span>
+                        <p data-i18n="bio_me">Designing intuitive native mobile experiences for iOS and Android.</p>
+                    </div>
+
+                    <!-- OPS: 5 -->
+                    <div class="card-exec fxd-up" style="transition-delay:0.2s">
+                        <div class="avatar">
+                            <div class="avatar-inner">
+                                <img src="ayaat.jpg" alt="Ayaat Faraj" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:50px; height:50px; stroke-width:1;\'></i>'">
+                            </div>
+                        </div>
+                        <h3 class="exec-name" data-i18n="name_af">Ayaat Faraj</h3>
+                        <span class="exec-role" data-i18n="r_af">Content Manager</span>
+                        <p data-i18n="bio_af">Curating compelling content to maximize audience engagement and brand voice.</p>
+                    </div>
                 </div>
 
-                <!-- Col 3 -->
-                <div class="footer-col footer-links">
-                    <h4 data-i18n="nav_solutions">Solutions</h4>
-                    <a href="#services" data-i18n="ft_web">Web Development</a>
-                    <a href="#services" data-i18n="ft_mob">Mobile Apps</a>
-                    <a href="#services" data-i18n="ft_ai">Enterprise Systems</a>
-                    <a href="#contact" data-i18n="ft_cons">Consultation</a>
-                </div>
-
-                <!-- Col 4 -->
-                <div class="footer-col">
-                    <h4 data-i18n="footer_reach">Reach Us</h4>
-                    <div class="footer-contact-item">
-                        <i data-feather="map-pin"></i>
-                        <span data-i18n="address">Venice Street, Benghazi, Libya</span>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i data-feather="mail"></i>
-                        <span>info@agts-ly.com</span>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i data-feather="phone"></i>
-                        <span dir="ltr">+218 94 612 0005</span>
-                    </div>
-                </div>
             </div>
-            
-            <div class="footer-bottom">
-                <div>&copy; 2025 Appraise Global Technology Solutions.</div>
-                <div class="legal-links"><span>AGTS®</span></div>
+        </section>
+
+        <!-- COMM CHANNELS (CONTACT) -->
+        <section id="connect" class="sect-pad" style="border-top: 1px solid var(--bg-border);">
+            <div class="container fxd-up">
+                
+                <div class="contact-panel">
+                    
+                    <div class="contact-info">
+                        <h2 data-i18n="c_init" style="font-size: clamp(2.2rem, 4vw, 3rem);">Let's Work Together.</h2>
+                        <p style="color:var(--text-dim); font-size: 1.15rem; margin-top: 10px;" data-i18n="c_p">Tell us about your project. We'll review it quickly and provide the right technical solution.</p>
+                        
+                        <div class="c-block">
+                            <div class="info-col">
+                                <p class="l" data-i18n="l_s1">Email Address</p>
+                                <h3>info@agts-ly.com</h3>
+                            </div>
+                            <div class="info-col">
+                                <p class="l" data-i18n="l_s2">Our Location</p>
+                                <h3 data-i18n="l_val">Venice Street, Benghazi, Libya</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <form id="f-xform">
+                            <input type="hidden" name="_subject" value="New Inquiry [AGTS]">
+                            
+                            <input type="text" name="name" class="f-input" required placeholder="Full Name" data-ixp="px_id" id="inp-id">
+                            
+                            <input type="email" name="email" class="f-input" required placeholder="Email Address" data-ixp="px_mail" id="inp-mail">
+                            
+                            <textarea name="message" rows="3" class="f-input" required placeholder="Your Idea or Project Details" data-ixp="px_m" id="inp-body" style="resize:none; padding-bottom:30px;"></textarea>
+
+                            <button type="submit" class="form-sub-btn" id="sbtn-act">
+                                <span id="sbtn-t" data-i18n="act_xmt">Send Message</span>
+                                <i data-feather="chevron-right"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- DATABANK BOTTOM FOOTER -->
+    <footer class="mega-foot">
+        <div class="container">
+            <div class="ft-grid">
+                
+                <div class="ft-col ft-bio">
+                    <a href="#home" style="display:inline-block; margin-bottom: 1.2rem;">
+                        <img src="AGTS.png" alt="AGTS Logo" style="height: 65px; object-fit: contain;" onerror="this.style.display='none'">
+                    </a>
+                    <p data-i18n="ft_log" style="margin-top: 0;">Building robust digital applications and modern websites to transform your business.</p>
+                    <div class="sc-wrap">
+                        <a href="https://www.facebook.com/share/18M2mT2zj7/" target="_blank" class="sc-circle" aria-label="Facebook"><i data-feather="facebook"></i></a>
+                    </div>
+                </div>
+
+                <div class="ft-col">
+                    <h4 data-i18n="fn_index">Company</h4>
+                    <a href="#studio" class="ft-link" data-i18n="nav_studio">About</a>
+                    <a href="#services" class="ft-link" data-i18n="nav_caps">Services</a>
+                    <a href="#showcase" class="ft-link" data-i18n="nav_work">Work</a>
+                    <a href="#connect" class="ft-link" data-i18n="nav_contact">Contact</a>
+                </div>
+
+                <div class="ft-col">
+                    <h4 data-i18n="fn_port">Reach Us</h4>
+                    <span class="ft-link" style="color:var(--text-bold)" dir="ltr">+218 94 612 0005</span>
+                    <span class="ft-link">info@agts-ly.com</span>
+                </div>
+
+            </div>
+
+            <div class="ft-line">
+                <div>&copy; <span id="cc-yr"></span> Appraise Global Tech. <span data-i18n="l_res">All rights reserved.</span></div>
             </div>
         </div>
     </footer>
 
-    <!-- LOGIC -->
+    <!-- Application Code -->
     <script>
+        // Set Current Year
+        document.getElementById('cc-yr').innerText = new Date().getFullYear();
+
+        // Core Fallback for logo
+        if (!document.querySelector('img[src="tahseel.png"]').complete && !document.querySelector('img[src="tahseel.png"]').naturalWidth) { document.getElementById("fb_txt").style.display = 'block'; }
+
+        /* MULTI-LOCALE DICT */
         const translations = {
             en: {
-                nav_studio: "About", nav_caps: "Services", nav_work: "Work", nav_team: "Team", nav_contact: "Contact",
-                nav_company: "Company", nav_solutions: "Solutions",
-                ft_web: "Web Development", ft_mob: "Mobile Apps", ft_ai: "Enterprise Systems", ft_cons: "Consultation",
-                hero_subtitle: "Website & Mobile Experts", hero_h1: "We Build",
-                hero_desc: "AGTS builds powerful websites and mobile apps that make your business stand out. We handle all the technical work so you can focus on what you do best.",
-                btn_explore: "Start A Project",
-                about_badge: "Our Process", about_title: "From Idea to Launch.",
-                about_p1: "We turn your vision into a successful digital product. Whether you need a modern website, a custom mobile app, or an internal system, AGTS manages the entire journey.",
-                about_p2: "You get one expert team for your entire project. No need to manage different freelancers. We provide a streamlined, professional experience in Libya.",
-                step_1_t: "Planning & Design", step_1_d: "We start by understanding your goals. We create a clear plan showing exactly how your website or app will look and function before we start building.",
-                step_2_t: "Development & Review", step_2_d: "Our expert team brings your project to life. We provide regular updates so you can see the progress and test the solution on your devices.",
-                step_3_t: "Launch & Support", step_3_d: "We launch your website on fast servers and publish your app to the Apple and Google stores. Our support continues, ensuring everything runs smoothly.",
-                services_h2: "Our Services", services_sub: "Professional software, web, and mobile solutions.",
-                srv_1_t: "Business Systems & AI", srv_1_d: "Powerful back-end software to help your company manage data, improve efficiency, and utilize AI.",
-                srv_2_t: "Mobile Applications", srv_2_d: "High-performance native apps for both iOS (iPhone) and Android devices, designed for a great user experience.",
-                srv_3_t: "Websites & Web Apps", srv_3_d: "Responsive, modern websites and complex web applications that perform perfectly on all devices.",
-                work_h2: "Recent Work", proj_1: "Tahseel Education System", cat_edtech: "EDUCATION PLATFORM", badge_private: "PRIVATE",
-                proj_pay: "Comming Soon", cat_fintech: "Locked", proj_fleet: "Comming Soon", cat_logistics: "Locked",
-                proj_data: "Comming Soon", cat_data: "Locked",
-                team_h2: "Management Team", 
-                role_ceo: "CEO & FOUNDER", name_ceo: "Mohammed Alferjani", bio_ceo: "Leading the vision for digital infrastructure in North Africa.",
-                role_gm: "GENERAL MANAGER", name_gm: "Ibrahim Alferjani", bio_gm: "Managing operations and ensuring client satisfaction.",
-                contact_h2: "Let's Build Together.", contact_sub: "Tell us about your project idea. Let's make it real.",
-                contact_email: "Email", contact_loc: "Location", address: "Venice Street, Benghazi, Libya",
-                form_name: "Full Name", form_email: "Email Address", form_msg: "Your Idea or Question", btn_submit: "Submit Message",
-                toast_title: "Message Sent", toast_msg: "We have received your inquiry.",
-                footer_desc: "Professional technology solutions. We build modern websites, apps, and digital systems for companies in Libya.",
-                footer_reach: "Reach Us"
+                nav_studio: "About", nav_caps: "Services", nav_work: "Work", nav_team: "Team", nav_contact: "Connect",
+                hero_badge: "Professional Software Agency", hero_t1: "We Build Next-Level", 
+                hero_body: "Transforming bold ideas into powerful digital products. From smart system design to flawless user experiences, AGTS builds reliable technology solutions globally.",
+                btn_ignite: "Start Your Project",
+                about_headline: "Execution Precision.",
+                about_body: "At AGTS, we make technology simple. We assign you an elite team of developers to blueprint, deploy, and scale your platforms securely.",
+                ap_1_h: "Planning & Architecture", ap_1_b: "We map out your system structure and user interface perfectly before writing any code.",
+                ap_2_h: "Development & Testing", ap_2_b: "We build your website or app using modern technologies, testing it strictly to ensure it runs flawlessly.",
+                ap_3_h: "Launch & Growth", ap_3_b: "We launch your project on fast, secure servers, ready to handle traffic and scale globally.",
+                sv_h: "Our Services", sv_sub: "Professional technology solutions designed to help your business grow.",
+                srv_1_t: "Business Systems & AI", srv_1_d: "Powerful back-end software that helps your company manage data, improve efficiency, and use AI.",
+                srv_2_t: "Mobile Applications", srv_2_d: "Fast, high-performance native apps for iOS and Android, designed for a smooth user experience.",
+                srv_cloud_t: "Cloud Architecture", srv_cloud_d: "Scalable cloud integrations ensuring your business runs with zero downtime.",
+                srv_3_t: "Websites & Web Apps", srv_3_d: "Modern, fast-loading websites and web platforms that work perfectly on all devices.",
+                srv_cyber_t: "Cyber Security", srv_cyber_d: "Comprehensive security testing to ensure your databases and user data are completely protected.",
+                srv_4_t: "Digital Marketing", srv_4_d: "Data-driven marketing and content strategies designed to grow your brand and reach more customers.",
+                srv_5_t: "UI/UX Design", srv_5_d: "Crafting intuitive, user-centered interfaces that deliver exceptional digital experiences and drive engagement.",
+                srv_6_t: "IT Consulting & Support", srv_6_d: "Expert technical guidance and ongoing maintenance to keep your business operations running smoothly.",
+                work_h: "Our Latest Work", work_s: "Direct implementations currently driving value in the market.",
+                cat_t: "EDUCATION PLATFORM", cat_n1: "FINANCE", cat_n2: "LOGISTICS", cat_n3: "DATABASE", prj_n1: "Coming Soon", prj_tahseel: "Tahseel",
+                cm_head: "Management Team", tm_core: "Core Operations Team",
+                name_i: "Ibrahim Alferjani", r_i: "General Manager", bio_i: "Driving strategic growth and technological innovation across global markets.",
+                name_h: "Hunyda El-obaidy", r_h: "Marketing Manager", bio_h: "Crafting impactful brand narratives and data-driven marketing campaigns.",
+                name_mm: "Mohammed Mailoud", r_mm: "Web Developer", bio_mm: "Building responsive, modern, and user-centric web applications.",
+                name_ao: "Amin Osman", r_ao: "Backend Developer", bio_ao: "Architecting secure, scalable, and high-performance server-side systems.",
+                name_mf: "Malek Fahmi", r_mf: "Dev Ops", bio_mf: "Streamlining deployment pipelines and optimizing cloud infrastructures.",
+                name_me: "Mohammed Eljahani", r_me: "Mobile App Developer", bio_me: "Designing intuitive native mobile experiences for iOS and Android.",
+                name_af: "Ayaat Faraj", r_af: "Content Manager", bio_af: "Curating compelling content to maximize audience engagement and brand voice.",
+                c_init: "Let's Work Together.", c_p: "Tell us about your project. We'll review it quickly and provide the right technical solution.",
+                l_s1: "Email Address", l_s2: "Our Location", l_val: "Venice Street, Benghazi, Libya",
+                px_id: "Full Name", px_mail: "Email Address", px_m: "Your Idea or Project Details", act_xmt: "Send Message",
+                toast_msg: "Message received. We'll be in touch soon.",
+                ft_log: "Building robust digital applications and modern websites to transform your business.", fn_index: "Company", fn_port: "Reach Us", l_res: "All rights reserved."
             },
             ar: {
-                nav_studio: "عن الشركة", nav_caps: "خدماتنا", nav_work: "أعمالنا", nav_team: "الفريق", nav_contact: "اتصل بنا",
-                nav_company: "الشركة", nav_solutions: "خدماتنا",
-                ft_web: "تطوير المواقع", ft_mob: "تطبيقات الهاتف", ft_ai: "أنظمة الشركات", ft_cons: "الاستشارات",
-                hero_subtitle: "خبراء التقنية", hero_h1: "نحن نبرمج",
-                hero_desc: "تبني AGTS مواقع إلكترونية وتطبيقات هاتف قوية تساعد مشروعك على التميز. نحن نتولى كل الجانب التقني لتركز أنت على نجاح عملك.",
-                btn_explore: "ابدأ مشروعك",
-                about_badge: "طريقة عملنا", about_title: "من الفكرة إلى الإطلاق.",
-                about_p1: "نحول رؤيتك إلى منتج رقمي ناجح. سواء كنت تحتاج إلى موقع إلكتروني حديث، أو تطبيق هاتف مخصص، أو نظام داخلي، AGTS تدير الرحلة بأكملها.",
-                about_p2: "تحصل على فريق خبير واحد لمشروعك بأكمله. لا حاجة لإدارة عدة أشخاص. نقدم تجربة احترافية ومتكاملة في ليبيا.",
-                step_1_t: "التخطيط والتصميم", step_1_d: "نبدأ بفهم أهدافك. نضع خطة واضحة تُظهر بالضبط كيف سيبدو ويعمل موقعك أو تطبيقك قبل أن نبدأ في البرمجة.",
-                step_2_t: "التطوير والمراجعة", step_2_d: "يقوم فريقنا الخبير ببناء مشروعك. نقدم تحديثات منتظمة حتى تتمكن من رؤية التقدم واختبار النظام على أجهزتك.",
-                step_3_t: "الإطلاق والدعم الفني", step_3_d: "نُطلق موقعك على خوادم سريعة وننشر تطبيقك في متاجر أبل وجوجل. يستمر دعمنا لضمان عمل كل شيء بسلاسة.",
-                services_h2: "خدماتنا", services_sub: "حلول برمجية احترافية للويب والهاتف.",
-                srv_1_t: "أنظمة الشركات والذكاء الاصطناعي", srv_1_d: "برامج خلفية قوية لمساعدة شركتك على إدارة البيانات وتحسين الكفاءة والاستفادة من الذكاء الاصطناعي.",
-                srv_2_t: "تطبيقات الهاتف", srv_2_d: "تطبيقات عالية الأداء لأجهزة iOS (آيفون) وأندرويد، مصممة لتجربة مستخدم رائعة.",
-                srv_3_t: "المواقع وتطبيقات الويب", srv_3_d: "مواقع إلكترونية حديثة ومتجاوبة وتطبيقات ويب معقدة تعمل بشكل مثالي على جميع الأجهزة.",
-                work_h2: "أحدث أعمالنا", proj_1: "منصة تحصيل التعليمية", cat_edtech: "منصة تعليمية", badge_private: "خاص",
-                proj_pay: "قريبا", cat_fintech: "مغلق", proj_fleet: "قريبا", cat_logistics: "مغلق",
-                proj_data: "قريبا", cat_data: "مغلق",
-                team_h2: "الإدارة", 
-                role_ceo: "المدير التنفيذي", name_ceo: "محمد الفرجاني", bio_ceo: "قيادة الرؤية التقنية وتطوير البنية التحتية الرقمية في ليبيا. ",
-                role_gm: "المدير العام", name_gm: "إبراهيم الفرجاني", bio_gm: "إدارة العمليات وضمان رضا العملاء.",
-                contact_h2: "لنبنِ معاً", contact_sub: "شاركنا فكرة مشروعك. لنجعلها حقيقة.",
-                contact_email: "البريد الإلكتروني", contact_loc: "العنوان", address: "شارع فينيسيا، بنغازي، ليبيا",
-                form_name: "الاسم الكامل", form_email: "البريد الإلكتروني", form_msg: "اكتب فكرتك أو سؤالك", btn_submit: "إرسال الرسالة",
-                toast_title: "تم الإرسال", toast_msg: "لقد استلمنا طلبكم، سيتم الرد قريباً.",
-                footer_desc: "حلول تقنية احترافية. نبني مواقع وتطبيقات وأنظمة رقمية حديثة للشركات في ليبيا.",
-                footer_reach: "تواصل معنا"
+                nav_studio: "عن الشركة", nav_caps: "خدماتنا", nav_work: "أعمالنا", nav_team: "فريق العمل", nav_contact: "تواصل معنا",
+                hero_badge: "وكالة برمجيات احترافية", hero_t1: "نحن نبتكر للمستقبل", 
+                hero_body: "نحوّل أفكارك الطموحة إلى منتجات رقمية قوية. تبني AGTS حلولاً تقنية موثوقة تنطلق من ليبيا إلى العالم.",
+                btn_ignite: "ابدأ مشروعك الآن",
+                about_headline: "دقة التنفيذ.",
+                about_body: "في AGTS نجعل التقنية بسيطة. نوفر لك فريقاً متخصصاً لبرمجة وبناء وتطوير منصاتك الرقمية بأمان وفعالية.",
+                ap_1_h: "التخطيط والهندسة", ap_1_b: "نخطط هيكل النظام وتجربة المستخدم بدقة كاملة قبل البدء في كتابة الأكواد.",
+                ap_2_h: "التطوير والاختبار", ap_2_b: "نبني موقعك أو تطبيقك باستخدام أحدث التقنيات، مع اختباره بدقة لضمان عمله بلا أخطاء.",
+                ap_3_h: "الإطلاق والنمو", ap_3_b: "نطلق مشروعك على خوادم سريعة وآمنة، جاهزة لاستقبال الزوار والتوسع عالمياً.",
+                sv_h: "خدماتنا", sv_sub: "حلول تقنية احترافية مصممة لمساعدة عملك على النمو.",
+                srv_1_t: "أنظمة الشركات والذكاء الاصطناعي", srv_1_d: "برامج خلفية قوية تساعد شركتك على إدارة البيانات، تحسين الكفاءة، واستخدام الذكاء الاصطناعي.",
+                srv_2_t: "تطبيقات الهاتف", srv_2_d: "تطبيقات سريعة وعالية الأداء لأجهزة iOS وأندرويد، مصممة لتجربة مستخدم سلسة وممتازة.",
+                srv_cloud_t: "الخدمات السحابية", srv_cloud_d: "بنية تحتية سحابية تضمن عمل منصاتك بسرعة واستقرار دون أي انقطاع.",
+                srv_3_t: "المواقع وتطبيقات الويب", srv_3_d: "مواقع ومنصات ويب حديثة وسريعة التحميل، تعمل بشكل مثالي على جميع الأجهزة.",
+                srv_cyber_t: "الأمن السيبراني", srv_cyber_d: "اختبارات أمان شاملة لضمان حماية قواعد بياناتك ومعلومات مستخدميك بالكامل.",
+                srv_4_t: "التسويق الرقمي", srv_4_d: "استراتيجيات تسويق ومحتوى مبنية على البيانات لنمو علامتك التجارية والوصول لعملاء أكثر.",
+                srv_5_t: "تصميم واجهة وتجربة المستخدم", srv_5_d: "تصميم واجهات سهلة الاستخدام وتجارب رقمية استثنائية تركز على المستخدم وتزيد من تفاعله.",
+                srv_6_t: "الاستشارات التقنية والدعم", srv_6_d: "توجيه تقني متخصص وصيانة مستمرة لضمان سير عمليات شركتك بسلاسة وبدون توقف.",
+                work_h: "أحدث أعمالنا", work_s: "مشاريع رقمية ناجحة تعمل حالياً في السوق.",
+                cat_t: "منصة تعليمية", cat_n1: "نظام مالي", cat_n2: "نظام لوجستي", cat_n3: "قاعدة بيانات", prj_n1: "قريباً", prj_tahseel: "منصة تحصيل",
+                cm_head: "فريق الإدارة", tm_core: "الفريق التقني والتشغيلي",
+                name_i: "إبراهيم الفرجاني", r_i: "المدير العام", bio_i: "يقود النمو الاستراتيجي والابتكار التكنولوجي للشركة في الأسواق العالمية.",
+                name_h: "هنيدة العبيدي", r_h: "مديرة التسويق", bio_h: "تبني استراتيجيات الهوية وحملات التسويق الرقمية المبنية على البيانات.",
+                name_mm: "محمد ميلود", r_mm: "مطور ويب", bio_mm: "يبني تطبيقات ومواقع ويب حديثة وسريعة الاستجابة تركز على راحة المستخدم.",
+                name_ao: "امين عصمان", r_ao: "مطور نظم خلفية", bio_ao: "يصمم ويبني أنظمة خوادم آمنة وقابلة للتوسع بأعلى معايير الأداء.",
+                name_mf: "مالك فهمي", r_mf: "مهندس DevOps", bio_mf: "يحسن البنية التحتية السحابية ويسرع عمليات نشر وإطلاق التطبيقات.",
+                name_me: "محمد الجهاني", r_me: "مطور تطبيقات هواتف", bio_me: "يبرمج تطبيقات الهواتف الذكية التفاعلية لأجهزة أندرويد و iOS.",
+                name_af: "ايات فرج", r_af: "مديرة محتوى", bio_af: "تكتب وتدير المحتوى الإبداعي لتعزيز التفاعل وصوت العلامة التجارية.",
+                c_init: "لنبنِ معاً.", c_p: "أخبرنا عن مشروعك. سنقوم بمراجعته بسرعة وتقديم الحل التقني المناسب لك.",
+                l_s1: "البريد الإلكتروني", l_s2: "موقعنا", l_val: "شارع فينيسيا، بنغازي، ليبيا",
+                px_id: "الاسم الكامل", px_mail: "البريد الإلكتروني", px_m: "فكرتك أو تفاصيل مشروعك", act_xmt: "إرسال الرسالة",
+                toast_msg: "لقد استلمنا رسالتك. سنتواصل معك قريباً.",
+                ft_log: "نبني تطبيقات رقمية ومواقع حديثة وقوية لتحويل وتطوير أعمالك.", fn_index: "الشركة", fn_port: "تواصل معنا", l_res: "جميع الحقوق محفوظة."
             }
         };
 
-        let currentLang = 'en';
-        let currentTheme = localStorage.getItem('theme') || 'dark';
+        /* APPLY THEME TO THE HTML ROOT SO SCROLL BOUNCE BACKGROUND COLORS ARE PERFECT */
+        let xSysTheme = localStorage.getItem('__ax_mode') || 'dark';
+        let xSysLocale = 'en';
 
-        /* INIT */
-        document.body.setAttribute('data-theme', currentTheme);
-        updateThemeIcon();
+        // TYPE ENGINE FOR HERO
+        const tsEn =["Digital Experiences", "Mobile Applications", "Web Platforms"];
+        const tsAr =["تجارب رقمية", "تطبيقات هواتف", "منصات ويب"]; 
+        let twLib = tsEn;
+
+        // INIT LOAD
+        document.documentElement.setAttribute('data-theme', xSysTheme);
+        renderVisualTokens();
         feather.replace();
 
-        /* THEME */
-        function toggleTheme() {
-            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.body.setAttribute('data-theme', currentTheme);
-            localStorage.setItem('theme', currentTheme);
-            updateThemeIcon();
-            initParticles(); 
+        function switchSystemTheme() {
+            xSysTheme = xSysTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', xSysTheme);
+            localStorage.setItem('__ax_mode', xSysTheme);
+            renderVisualTokens();
         }
 
-        function updateThemeIcon() {
-            const icon = document.getElementById('theme-icon');
-            if (currentTheme === 'light') {
-                icon.setAttribute('data-feather', 'sun');
+        function renderVisualTokens() {
+            const tkIcon = document.getElementById('ic-theme');
+            if(tkIcon) {
+                if(xSysTheme === 'dark') { tkIcon.setAttribute('data-feather', 'moon'); } 
+                else { tkIcon.setAttribute('data-feather', 'sun'); }
+                feather.replace();
+            }
+        }
+
+        function runMobileDraw() {
+            const mcCanvas = document.getElementById('mobile-canvas');
+            const tkNavBtn = document.getElementById('mob-ic');
+            
+            mcCanvas.classList.toggle('active');
+            
+            if(mcCanvas.classList.contains('active')){
+                tkNavBtn.setAttribute('data-feather', 'x');
             } else {
-                icon.setAttribute('data-feather', 'moon');
+                tkNavBtn.setAttribute('data-feather', 'menu');
             }
             feather.replace();
         }
 
-        /* NEW: MOBILE NAV TOGGLE LOGIC */
-        function toggleMenu() {
-            const drawer = document.getElementById('mobileDrawer');
-            const btn = document.querySelector('.menu-toggle');
+        function flipSystemLocale() {
+            const btnTag = document.getElementById('label-lang');
             
-            // Toggle the drawer slide
-            drawer.classList.toggle('active');
-
-            // Change Icon Logic
-            const isActive = drawer.classList.contains('active');
-            
-            if (isActive) {
-                // Show X (Close)
-                btn.innerHTML = `<i data-feather="x"></i>`;
-            } else {
-                // Show Menu (Hamburger)
-                btn.innerHTML = `<i data-feather="menu"></i>`;
-            }
-            // Re-render the icon we just injected
-            feather.replace();
-        }
-
-        /* LANGUAGE */
-        const phrasesEn = ["Websites", "Mobile Apps", "Digital Solutions"];
-        const phrasesAr = ["مواقع إلكترونية", "تطبيقات الهاتف", "حلول رقمية"];
-        let currentPhrases = phrasesEn;
-
-        function toggleLanguage() {
-            const btnText = document.getElementById("lang-btn-text");
-            currentLang = currentLang === 'en' ? 'ar' : 'en';
-            
-            if(currentLang === 'ar') {
+            if(xSysLocale === 'en'){
+                xSysLocale = 'ar';
                 document.body.classList.add('lang-ar');
-                btnText.textContent = "English";
-                currentPhrases = phrasesAr; 
+                btnTag.textContent = "EN / US";
+                twLib = tsAr;
+                renderLanguagePulls();
             } else {
+                xSysLocale = 'en';
                 document.body.classList.remove('lang-ar');
-                btnText.textContent = "العربية";
-                currentPhrases = phrasesEn; 
+                btnTag.textContent = "عربي";
+                twLib = tsEn;
+                renderLanguagePulls();
             }
-            
             renderMarquee();
-
-            const langData = translations[currentLang];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if(langData[key]) el.textContent = langData[key];
-            });
-
-            const submitBtn = document.getElementById('submitBtn');
-            const formBtnText = document.getElementById('btnText');
-            if(!submitBtn.disabled) formBtnText.textContent = langData['btn_submit'];
-            
-            resetTypewriter();
+            resMachine();
         }
 
+        function renderLanguagePulls(){
+            const coreMaps = translations[xSysLocale];
+            
+            document.querySelectorAll('[data-i18n]').forEach(tag => {
+                const tr = tag.getAttribute('data-i18n');
+                if(coreMaps[tr]){ tag.textContent = coreMaps[tr]; }
+            });
+            
+            document.querySelectorAll('input[data-ixp], textarea[data-ixp]').forEach(el => {
+                const ky = el.getAttribute('data-ixp');
+                if(coreMaps[ky]) { el.setAttribute('placeholder', coreMaps[ky]); }
+            });
+        }
+
+        // T Y P E W R I T E R
+        let mPtx = 0, mChar = 0;
+        let isBackTracking = false;
+        let typCoreRef;
+        const bBoard = document.getElementById("tw-board");
+
+        function typMachineRun() {
+            const targStr = twLib[mPtx];
+            let vSpeed = isBackTracking ? 25 : 85;
+
+            if(!isBackTracking){ mChar++; } else { mChar--; }
+            
+            bBoard.textContent = targStr.substring(0, mChar);
+
+            if(!isBackTracking && mChar === targStr.length) {
+                isBackTracking = true;
+                vSpeed = 3000; 
+            } else if (isBackTracking && mChar === 0) {
+                isBackTracking = false;
+                mPtx = (mPtx + 1) % twLib.length;
+                vSpeed = 300;
+            }
+            
+            typCoreRef = setTimeout(typMachineRun, vSpeed);
+        }
+
+        function resMachine(){
+            clearTimeout(typCoreRef);
+            bBoard.textContent = "";
+            mChar = 0; mPtx = 0; isBackTracking = false;
+            typMachineRun();
+        }
+
+        // MARQUEE GENERATOR
         function renderMarquee() {
-            const track = document.getElementById('marquee-track');
-            const itemsEn = ["Websites", "Mobile Apps", "Software", "AI Tools", "Cloud", "Benghazi"];
-            const itemsAr = ["مواقع الويب", "تطبيقات الهاتف", "برمجيات", "أدوات الذكاء الاصطناعي", "خدمات سحابية", "بنغازي"];
-            const list = currentLang === 'ar' ? itemsAr : itemsEn;
+            const rqTrg = document.getElementById('mq-road');
+            const rqTrgCopy = document.getElementById('mq-road-copy');
             
-            let fullHTML = '';
-            for(let i=0; i<4; i++) { 
-                list.forEach(txt => {
-                    fullHTML += `<div class="marquee-item">${txt} <span class="sep-dot">●</span></div>`;
-                });
-            }
-            track.innerHTML = fullHTML;
-        }
-        
-        /* TYPEWRITER */
-        const typeText = document.getElementById("typewriter-text");
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typeTimer;
-
-        function typeWriter() {
-            const currentPhrase = currentPhrases[phraseIndex];
-            let typeSpeed = isDeleting ? 40 : 100;
-            if (isDeleting) charIndex--; else charIndex++;
-            typeText.textContent = currentPhrase.substring(0, charIndex);
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                typeSpeed = 2500;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % currentPhrases.length;
-                typeSpeed = 500;
-            }
-            typeTimer = setTimeout(typeWriter, typeSpeed);
-        }
-
-        function resetTypewriter() {
-            clearTimeout(typeTimer);
-            typeText.textContent = "";
-            charIndex = 0;
-            isDeleting = false;
-            phraseIndex = 0;
-            typeWriter();
-        }
-
-        /* FORM SUBMIT */
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const btnSpan = document.getElementById('btnText');
-            const toast = document.getElementById('toast');
+            const mxItemsEN =["Websites", "Mobile Apps", "Software", "Cloud Servers", "Data Security", "Benghazi"];
+            const mxItemsAR =["مواقع الويب", "تطبيقات الهاتف", "برمجيات مخصصة", "خدمات سحابية", "أمن المعلومات", "بنغازي"];
             
-            const originalText = translations[currentLang]['btn_submit'];
-            const loadingText = currentLang === 'ar' ? 'جارِ الإرسال...' : 'Sending...';
+            const targetList = xSysLocale === 'en' ? mxItemsEN : mxItemsAR;
+            let tkStream = "";
             
-            btn.disabled = true;
-            btnSpan.textContent = loadingText;
-            
-            const formData = new FormData(contactForm);
-            
-            fetch("https://formsubmit.co/ajax/info@agts-ly.com", { 
-                method: "POST", body: formData 
-            })
-            .then(res => res.json())
-            .then(data => {
-                contactForm.reset();
-                toast.classList.add('active');
-                setTimeout(() => toast.classList.remove('active'), 5000);
-            })
-            .catch(err => { 
-                console.error(err); 
-                alert(currentLang === 'ar' ? 'حدث خطأ. يرجى المحاولة لاحقاً.' : 'Message not sent. Please try again.'); 
-            })
-            .finally(() => { 
-                btn.disabled = false; btnSpan.textContent = originalText; 
+            targetList.forEach(jTag => {
+                tkStream += `<div class="marq-item">${jTag} <div class="marq-icon"><i data-feather="check-square" stroke-width="2.5"></i></div></div>`;
             });
-        });
-        
-        /* PARTICLES */
-        const canvas = document.getElementById("hero-canvas");
-        const ctx = canvas.getContext("2d");
-        let width, height, particles = [];
-        
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            initParticles();
-        }
-        function initParticles() {
-            particles = [];
-            const density = window.innerWidth < 800 ? 15000 : 9000;
-            const count = (width * height) / density;
-            for (let i = 0; i < count; i++) {
-                particles.push({
-                    x: Math.random() * width, y: Math.random() * height,
-                    vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
-                    size: Math.random() * 1.5 + 0.5
-                });
-            }
-        }
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = "#F97316";
-            particles.forEach((p, i) => {
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < 0 || p.x > width) p.vx *= -1;
-                if (p.y < 0 || p.y > height) p.vy *= -1;
-                ctx.globalAlpha = p.size / (currentTheme === 'light' ? 5 : 3);
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
-                for (let j = i + 1; j < particles.length; j++) {
-                    let p2 = particles[j];
-                    let dist = Math.sqrt((p.x - p2.x)**2 + (p.y - p2.y)**2);
-                    if (dist < 110) {
-                        ctx.globalAlpha = (1 - dist / 110) * 0.3;
-                        ctx.beginPath();
-                        ctx.strokeStyle = "#F97316";
-                        ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
-                    }
-                }
-            });
-            requestAnimationFrame(animate);
+            
+            rqTrg.innerHTML = tkStream.repeat(3); 
+            rqTrgCopy.innerHTML = tkStream.repeat(3);
+            feather.replace();
         }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        // OBSERVER LOGIC FOR FADE-UP INTERPOLATIONS
+        const revealConfig = new IntersectionObserver((track) => {
+            track.forEach(pxNode => {
+                if(pxNode.isIntersecting) pxNode.target.classList.add('in-view');
+            });
         }, { threshold: 0.1 });
 
+        // RUN INIT SYSTEMS
         document.addEventListener('DOMContentLoaded', () => {
-            typeWriter(); renderMarquee(); resize(); animate();
-            document.querySelectorAll('.reveal-fx').forEach(el => observer.observe(el));
+            renderMarquee();
+            resMachine();
+            document.querySelectorAll('.fxd-up').forEach(cDiv => { revealConfig.observe(cDiv); });
+            feather.replace();
         });
-        window.addEventListener('resize', resize);
+
+
+        // CSS VARIABLE MANIPULATIONS FOR GORGEOUS INTERACTION EFFECT AND MAGNETIC GLOWS!
+        const cdNodes = document.querySelectorAll(".card-target");
+
+        document.body.addEventListener('mousemove', pTrk => {
+            cdNodes.forEach(tgtNode => {
+                const pBds = tgtNode.getBoundingClientRect();
+                const vLeft = pTrk.clientX - pBds.left;
+                const vTop = pTrk.clientY - pBds.top;
+
+                tgtNode.style.setProperty("--mouse-x", `${vLeft}px`);
+                tgtNode.style.setProperty("--mouse-y", `${vTop}px`);
+            });
+        });
+
+        // FORM SEND ALGORITHM WITH UI DISABLES
+        const mkFrm = document.getElementById('f-xform');
+        mkFrm.addEventListener('submit', kEvt => {
+            kEvt.preventDefault();
+
+            const bxBt = document.getElementById('sbtn-act');
+            const btSp = document.getElementById('sbtn-t');
+            const ntst = document.getElementById('toast');
+
+            const initLabelStr = btSp.innerText;
+            const rnxLoadTag = xSysLocale === 'en' ? 'Sending...' : 'جارِ الإرسال...';
+
+            bxBt.disabled = true; 
+            btSp.innerText = rnxLoadTag;
+
+            const fmPackt = new FormData(mkFrm);
+
+            fetch("https://formsubmit.co/ajax/info@agts-ly.com", { 
+                method: "POST", body: fmPackt
+            }).then(nRet => nRet.json())
+              .then(jxOut => {
+                  mkFrm.reset();
+                  ntst.classList.add('active');
+                  setTimeout(() => ntst.classList.remove('active'), 6000);
+              }).catch(bErr => {
+                  alert(xSysLocale === 'en' ? "Message not sent. Please try again." : "حدث خطأ. يرجى المحاولة لاحقاً.");
+              }).finally(() => {
+                  bxBt.disabled = false;
+                  btSp.innerText = initLabelStr;
+              });
+        });
+
     </script>
 </body>
 </html>
