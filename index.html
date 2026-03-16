@@ -721,14 +721,13 @@
         <section id="team" class="sect-pad" style="background: var(--bg-card); border-top: 1px solid var(--bg-border);">
             <div class="container fxd-up">
                 
-                <!-- MANAGEMENT SECTION -->
+                <!-- EXECUTIVE LEADERSHIP SECTION -->
                 <div class="sec-head">
-                    <h2 class="sec-title" data-i18n="cm_head">Management Team</h2>
-                    <div style="color:var(--text-dim); text-transform:uppercase; font-size: 0.8rem; letter-spacing:4px; font-weight:700; margin-top:10px;">Executive Committee</div>
+                    <h2 class="sec-title" data-i18n="tm_exec">Executive Leadership</h2>
+                    <div style="color:var(--text-dim); text-transform:uppercase; font-size: 0.8rem; letter-spacing:4px; font-weight:700; margin-top:10px;" data-i18n="tm_exec_sub">General Management</div>
                 </div>
 
                 <div class="exec-grid">
-                    
                     <!-- EX: 1 -->
                     <div class="card-exec fxd-up">
                         <div class="avatar">
@@ -740,23 +739,12 @@
                         <span class="exec-role" data-i18n="r_i">General Manager</span>
                         <p data-i18n="bio_i">Driving strategic growth and technological innovation across global markets.</p>
                     </div>
-
-                    <!-- EX: 2 -->
-                    <div class="card-exec fxd-up" style="transition-delay:0.1s">
-                        <div class="avatar">
-                            <div class="avatar-inner">
-                                <img src="hunyda.jpg" alt="Hunyda El-obaidy" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:60px; height:60px; stroke-width:1;\'></i>'">
-                            </div>
-                        </div>
-                        <h3 class="exec-name" data-i18n="name_h">Hunyda El-obaidy</h3>
-                        <span class="exec-role" data-i18n="r_h">Marketing Manager</span>
-                        <p data-i18n="bio_h">Crafting impactful brand narratives and data-driven marketing campaigns.</p>
-                    </div>
                 </div>
                 
-                <!-- CORE TECHNICAL & OPS SECTION -->
+                <!-- DEVELOPMENT & ENGINEERING SECTION -->
                 <div class="sec-head" style="margin-top: 5rem; margin-bottom: 3.5rem;">
-                    <div style="color:var(--text-dim); text-transform:uppercase; font-size: 0.8rem; letter-spacing:4px; font-weight:700;" data-i18n="tm_core">Core Operations Team</div>
+                    <h2 class="sec-title" data-i18n="tm_dev">Development & Engineering</h2>
+                    <div style="color:var(--text-dim); text-transform:uppercase; font-size: 0.8rem; letter-spacing:4px; font-weight:700; margin-top:10px;" data-i18n="tm_dev_sub">Core Technical Team</div>
                 </div>
                 
                 <div class="core-grid">
@@ -809,17 +797,71 @@
                         <p data-i18n="bio_me">Designing intuitive native mobile experiences for iOS and Android.</p>
                     </div>
 
-                    <!-- OPS: 5 -->
+                    <!-- DEV: 5 (Fadeel - Business Developer) -->
                     <div class="card-exec fxd-up" style="transition-delay:0.2s">
                         <div class="avatar">
                             <div class="avatar-inner">
-                                <img src="ayaat.jpg" alt="Ayaat Faraj" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:50px; height:50px; stroke-width:1;\'></i>'">
+                                <img src="fadeel.jpg" alt="Fadeel Elbarghathi" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:50px; height:50px; stroke-width:1;\'></i>'">
+                            </div>
+                        </div>
+                        <h3 class="exec-name" data-i18n="name_fe">Fadeel Elbarghathi</h3>
+                        <span class="exec-role" data-i18n="r_fe">Business Developer</span>
+                        <p data-i18n="bio_fe">Identifying growth opportunities and building strategic partnerships for sustainable business expansion.</p>
+                    </div>
+                </div>
+
+                <!-- MARKETING & CREATIVE SECTION -->
+                <div class="sec-head" style="margin-top: 5rem; margin-bottom: 3.5rem;">
+                    <h2 class="sec-title" data-i18n="tm_mkt">Marketing & Creative</h2>
+                    <div style="color:var(--text-dim); text-transform:uppercase; font-size: 0.8rem; letter-spacing:4px; font-weight:700; margin-top:10px;" data-i18n="tm_mkt_sub">Brand & Content Team</div>
+                </div>
+
+                <div class="core-grid">
+
+                    <!-- MKT: 1 (Marketing Manager) -->
+                    <div class="card-exec fxd-up">
+                        <div class="avatar">
+                            <div class="avatar-inner">
+                                <img src="hunyda.jpg" alt="Hunyda El-obaidy" onerror="this.outerHTML='<i data-feather=\'user\' style=\'width:60px; height:60px; stroke-width:1;\'></i>'">
+                            </div>
+                        </div>
+                        <h3 class="exec-name" data-i18n="name_h">Hunyda El-obaidy</h3>
+                        <span class="exec-role" data-i18n="r_h">Marketing Manager</span>
+                        <p data-i18n="bio_h">Crafting impactful brand narratives and data-driven marketing campaigns.</p>
+                    </div>
+
+                    <!-- MKT: 2 (Content Manager) - HIGH-END VECTOR AVATAR -->
+                    <div class="card-exec fxd-up" style="transition-delay:0.05s">
+                        <div class="avatar">
+                            <div class="avatar-inner" style="background: var(--bg-card); position: relative;">
+                                <!-- Ambient Backlight -->
+                                <div style="position: absolute; width: 100%; height: 100%; background: radial-gradient(circle at top right, var(--glow-1), transparent 60%); opacity: 0.8;"></div>
+                                
+                                <svg viewBox="0 0 100 100" style="width: 55%; height: 55%; z-index: 2; overflow: visible;" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="avaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="var(--primary)"/>
+                                            <stop offset="100%" stop-color="#ef4444"/>
+                                        </linearGradient>
+                                    </defs>
+                                    
+                                    <!-- Minimalist Professional Silhouette -->
+                                    <path d="M 15,100 C 15,65 35,55 50,55 C 65,55 85,65 85,100" fill="none" stroke="var(--text-base)" stroke-width="6" stroke-linecap="round"/>
+                                    <circle cx="50" cy="30" r="18" fill="none" stroke="var(--text-base)" stroke-width="6"/>
+                                    
+                                    <!-- Creative Spark / Content Accent -->
+                                    <path d="M 80,10 L 83,18 L 91,21 L 83,24 L 80,32 L 77,24 L 69,21 L 77,18 Z" fill="url(#avaGrad)">
+                                        <animateTransform attributeName="transform" type="rotate" from="0 80 21" to="360 80 21" dur="12s" repeatCount="indefinite" />
+                                    </path>
+                                    <circle cx="92" cy="8" r="3" fill="url(#avaGrad)" opacity="0.6"/>
+                                </svg>
                             </div>
                         </div>
                         <h3 class="exec-name" data-i18n="name_af">Ayaat Faraj</h3>
                         <span class="exec-role" data-i18n="r_af">Content Manager</span>
                         <p data-i18n="bio_af">Curating compelling content to maximize audience engagement and brand voice.</p>
                     </div>
+
                 </div>
 
             </div>
@@ -938,13 +980,16 @@
                 srv_6_t: "IT Consulting & Support", srv_6_d: "Expert technical guidance and ongoing maintenance to keep your business operations running smoothly.",
                 work_h: "Our Latest Work", work_s: "Direct implementations currently driving value in the market.",
                 cat_t: "EDUCATION PLATFORM", cat_n1: "FINANCE", cat_n2: "LOGISTICS", cat_n3: "DATABASE", prj_n1: "Coming Soon", prj_tahseel: "Tahseel",
-                cm_head: "Management Team", tm_core: "Core Operations Team",
+                tm_exec: "Executive Leadership", tm_exec_sub: "General Management",
+                tm_dev: "Development & Engineering", tm_dev_sub: "Core Technical Team",
+                tm_mkt: "Marketing & Creative", tm_mkt_sub: "Brand & Content Team",
                 name_i: "Ibrahim Alferjani", r_i: "General Manager", bio_i: "Driving strategic growth and technological innovation across global markets.",
                 name_h: "Hunyda El-obaidy", r_h: "Marketing Manager", bio_h: "Crafting impactful brand narratives and data-driven marketing campaigns.",
                 name_mm: "Mohammed Mailoud", r_mm: "Web Developer", bio_mm: "Building responsive, modern, and user-centric web applications.",
                 name_ao: "Amin Osman", r_ao: "Backend Developer", bio_ao: "Architecting secure, scalable, and high-performance server-side systems.",
                 name_mf: "Malek Fahmi", r_mf: "Dev Ops", bio_mf: "Streamlining deployment pipelines and optimizing cloud infrastructures.",
                 name_me: "Mohammed Eljahani", r_me: "Mobile App Developer", bio_me: "Designing intuitive native mobile experiences for iOS and Android.",
+                name_fe: "Fadeel Elbarghathi", r_fe: "Business Developer", bio_fe: "Identifying growth opportunities and building strategic partnerships for sustainable business expansion.",
                 name_af: "Ayaat Faraj", r_af: "Content Manager", bio_af: "Curating compelling content to maximize audience engagement and brand voice.",
                 c_init: "Let's Work Together.", c_p: "Tell us about your project. We'll review it quickly and provide the right technical solution.",
                 l_s1: "Email Address", l_s2: "Our Location", l_val: "Venice Street, Benghazi, Libya",
@@ -973,13 +1018,16 @@
                 srv_6_t: "الاستشارات التقنية والدعم", srv_6_d: "توجيه تقني متخصص وصيانة مستمرة لضمان سير عمليات شركتك بسلاسة وبدون توقف.",
                 work_h: "أحدث أعمالنا", work_s: "مشاريع رقمية ناجحة تعمل حالياً في السوق.",
                 cat_t: "منصة تعليمية", cat_n1: "نظام مالي", cat_n2: "نظام لوجستي", cat_n3: "قاعدة بيانات", prj_n1: "قريباً", prj_tahseel: "منصة تحصيل",
-                cm_head: "فريق الإدارة", tm_core: "الفريق التقني والتشغيلي",
+                tm_exec: "الإدارة التنفيذية", tm_exec_sub: "الإدارة العامة",
+                tm_dev: "تطوير وهندسة البرمجيات", tm_dev_sub: "الفريق التقني الأساسي",
+                tm_mkt: "التسويق والإبداع", tm_mkt_sub: "فريق المحتوى والعلامة التجارية",
                 name_i: "إبراهيم الفرجاني", r_i: "المدير العام", bio_i: "يقود النمو الاستراتيجي والابتكار التكنولوجي للشركة في الأسواق العالمية.",
                 name_h: "هنيدة العبيدي", r_h: "مديرة التسويق", bio_h: "تبني استراتيجيات الهوية وحملات التسويق الرقمية المبنية على البيانات.",
                 name_mm: "محمد ميلود", r_mm: "مطور ويب", bio_mm: "يبني تطبيقات ومواقع ويب حديثة وسريعة الاستجابة تركز على راحة المستخدم.",
                 name_ao: "امين عصمان", r_ao: "مطور نظم خلفية", bio_ao: "يصمم ويبني أنظمة خوادم آمنة وقابلة للتوسع بأعلى معايير الأداء.",
                 name_mf: "مالك فهمي", r_mf: "مهندس DevOps", bio_mf: "يحسن البنية التحتية السحابية ويسرع عمليات نشر وإطلاق التطبيقات.",
                 name_me: "محمد الجهاني", r_me: "مطور تطبيقات هواتف", bio_me: "يبرمج تطبيقات الهواتف الذكية التفاعلية لأجهزة أندرويد و iOS.",
+                name_fe: "فضيل البرغثي", r_fe: "مطور أعمال", bio_fe: "تحديد فرص النمو وبناء شراكات استراتيجية لضمان التوسع المستدام للأعمال.",
                 name_af: "ايات فرج", r_af: "مديرة محتوى", bio_af: "تكتب وتدير المحتوى الإبداعي لتعزيز التفاعل وصوت العلامة التجارية.",
                 c_init: "لنبنِ معاً.", c_p: "أخبرنا عن مشروعك. سنقوم بمراجعته بسرعة وتقديم الحل التقني المناسب لك.",
                 l_s1: "البريد الإلكتروني", l_s2: "موقعنا", l_val: "شارع فينيسيا، بنغازي، ليبيا",
