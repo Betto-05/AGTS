@@ -98,13 +98,14 @@
         h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-bold); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
         a { text-decoration: none; color: inherit; }
         .container { max-width: var(--container-w); margin: 0 auto; padding: 0 5%; width: 100%; position: relative; z-index: 2; }
-        .sect-pad { padding: 140px 0; }
+        .sect-pad { padding: 100px 0; }
         .gradient-txt { background: linear-gradient(120deg, var(--text-bold) 10%, var(--primary) 90%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         .fxd-up { opacity: 0; transform: translateY(40px) scale(0.98); transition: 1.2s var(--ease-silk); will-change: transform, opacity; }
         .fxd-up.in-view { opacity: 1; transform: translateY(0) scale(1); }
 
-        header { position: fixed; top: var(--nav-top-offset); left: 50%; transform: translateX(-50%); width: 90%; max-width: 1400px; height: 75px; z-index: 100; background: var(--bg-nav); border: 1px solid var(--bg-border); border-radius: 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; transition: 0.5s ease; }
+        header { position: fixed; top: var(--nav-top-offset); left: 50%; transform: translateX(-50%); width: 90%; max-width: 1400px; height: 75px; z-index: 100; background: var(--bg-nav); border: 1px solid var(--bg-border); border-radius: 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); display: flex; align-items: center; justify-content: center; padding: 0 20px; transition: 0.5s ease; }
+        .header-content { width: 100%; max-width: 1280px; display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 65px; object-fit: contain; }
         .desktop-menu { display: flex; gap: 28px; }
         .desktop-menu a { font-size: 0.88rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dim); padding: 8px 4px; }
@@ -113,39 +114,53 @@
         .action-pill-btn { background: transparent; color: var(--text-bold); border: 1px solid var(--bg-border); border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; padding: 8px 16px; transition: all 0.3s var(--ease-silk); height: 42px; }
         .action-pill-btn:hover { background: var(--bg-border-hov); border-color: var(--primary); }
 
-        /* Project Specific Styles */
-        .project-hero { min-height: 80vh; display: flex; align-items: center; padding-top: 120px; text-align: center; }
+        /* Project Specific Styles - REFINED FOR PERFECT CENTERING */
+        .project-hero { min-height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; }
         .project-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; color: var(--primary); letter-spacing: 0.1em; background: rgba(249, 115, 22, 0.08); padding: 8px 18px; border-radius: 50px; border: 1px solid var(--bg-border-hov); margin-bottom: 2rem; text-transform: uppercase; }
         .project-hero h1 { font-size: var(--fs-display); margin-bottom: 1.5rem; }
-        .project-hero p { font-size: 1.4rem; color: var(--text-dim); max-width: 800px; margin: 0 auto 3rem; font-weight: 300; }
+        .project-hero p { font-size: 1.4rem; color: var(--text-dim); max-width: 900px; margin: 0 auto 3rem; font-weight: 300; line-height: 1.6; }
 
-        .project-visual-main { width: 100%; border-radius: 30px; overflow: hidden; background: var(--bg-card); border: 1px solid var(--bg-border); box-shadow: var(--shadow-high); margin-bottom: 5rem; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
-        .project-visual-main img { width: 40%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); }
+        .project-visual-main { width: 100%; border-radius: 40px; overflow: hidden; background: var(--bg-card); border: 1px solid var(--bg-border); box-shadow: var(--shadow-high); margin: 0 auto 5rem auto; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; }
+        .project-visual-main img { width: 45%; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6)); transition: transform 1.2s var(--ease-silk); }
+        .project-visual-main:hover img { transform: scale(1.1) rotate(-1deg); }
 
-        .info-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; margin-top: 4rem; }
-        .info-sidebar h4 { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 1rem; }
-        .info-sidebar p { margin-bottom: 2.5rem; color: var(--text-bold); font-weight: 600; }
-        .info-content h2 { font-size: var(--fs-h2); margin-bottom: 2rem; }
-        .info-content p { font-size: 1.15rem; color: var(--text-dim); margin-bottom: 2rem; line-height: 1.8; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; align-items: start; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .info-sidebar { background: var(--bg-panel); padding: 3rem; border-radius: 30px; border: 1px solid var(--bg-border); display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: center; }
+        .info-block { margin-bottom: 0; }
+        .info-sidebar h4 { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 0.8rem; opacity: 0.8; }
+        .info-sidebar p { color: var(--text-bold); font-weight: 700; font-size: 1.1rem; }
 
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 4rem; }
-        .feature-card { background: var(--bg-card); border: 1px solid var(--bg-border); border-radius: 24px; padding: 3rem; transition: 0.4s; }
-        .feature-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .feature-card i { color: var(--primary); margin-bottom: 1.5rem; width: 32px; height: 32px; }
-        .feature-card h3 { margin-bottom: 1rem; }
-        .feature-card p { color: var(--text-dim); }
+        .info-content { max-width: 850px; margin: 4rem auto 0; text-align: center; }
+        .info-content h2 { font-size: var(--fs-h2); margin-bottom: 2.5rem; position: relative; display: inline-block; }
+        .info-content h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--primary); border-radius: 2px; }
+        .info-content p { font-size: 1.25rem; color: var(--text-base); margin-bottom: 2rem; line-height: 1.8; font-weight: 300; }
 
-        .cta-box { background: var(--bg-card); border: 1px solid var(--bg-border); border-radius: 30px; padding: 5rem; text-align: center; margin-top: 6rem; position: relative; overflow: hidden; }
-        .cta-box h2 { font-size: var(--fs-h2); margin-bottom: 1.5rem; }
-        .btn-luminous { position: relative; display: inline-flex; align-items: center; gap: 12px; font-weight: 600; padding: 18px 35px; border-radius: 12px; color: var(--text-bold); background: transparent; border: 1px solid rgba(249, 115, 22, 0.4); z-index: 1; cursor: pointer; transition: 0.5s; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-luminous:hover { background: var(--primary); color: white; border-color: transparent; box-shadow: 0 15px 40px rgba(249, 115, 22, 0.4); }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 5rem; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--bg-border); border-radius: 32px; padding: 4rem 3rem; transition: all 0.6s var(--ease-silk); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .feature-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.1), transparent 70%); opacity: 0; transition: 0.6s; }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-15px); box-shadow: var(--shadow-high); }
+        .feature-card:hover::before { opacity: 1; }
+        .feature-card i { color: var(--primary); margin-bottom: 2rem; width: 48px; height: 48px; filter: drop-shadow(0 5px 15px rgba(249, 115, 22, 0.3)); }
+        .feature-card h3 { margin-bottom: 1.5rem; font-size: 1.6rem; letter-spacing: -0.02em; }
+        .feature-card p { color: var(--text-dim); font-size: 1.15rem; line-height: 1.7; font-weight: 400; }
 
-        footer { border-top: 1px solid var(--bg-border); background: var(--bg-nav); backdrop-filter: blur(40px); padding: 80px 0 40px; margin-top: 100px; }
-        .ft-line { display: flex; justify-content: space-between; align-items: center; color: var(--text-dim); font-size: 0.9rem; }
+        .cta-box { background: var(--bg-card); border: 1px solid var(--bg-border); border-radius: 50px; padding: 7rem 4rem; text-align: center; margin-top: 8rem; position: relative; overflow: hidden; backdrop-filter: blur(30px); border: 1px solid var(--bg-border-hov); }
+        .cta-box h2 { font-size: var(--fs-h1); margin-bottom: 2rem; }
+        .btn-luminous { position: relative; display: inline-flex; align-items: center; gap: 15px; font-weight: 700; padding: 22px 50px; border-radius: 16px; color: var(--text-bold); background: transparent; border: 1px solid rgba(249, 115, 22, 0.5); z-index: 1; cursor: pointer; transition: 0.6s var(--ease-silk); text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; }
+        .btn-luminous:hover { background: var(--primary); color: white; border-color: transparent; box-shadow: 0 20px 50px rgba(249, 115, 22, 0.5); transform: translateY(-5px) scale(1.02); }
+
+        footer { border-top: 1px solid var(--bg-border); background: var(--bg-nav); backdrop-filter: blur(40px); padding: 100px 0 50px; margin-top: 150px; }
+        .ft-line { display: flex; justify-content: space-between; align-items: center; color: var(--text-dim); font-size: 1rem; }
+        .ft-links { display: flex; gap: 40px; }
+        .ft-links a { transition: 0.3s; }
+        .ft-links a:hover { color: var(--primary); transform: translateY(-2px); }
 
         @media (max-width: 1024px) {
-            .info-grid { grid-template-columns: 1fr; gap: 40px; }
-            .cta-box { padding: 3rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .info-sidebar { grid-template-columns: 1fr; }
+            .cta-box { padding: 5rem 2rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .ft-line { flex-direction: column; gap: 30px; text-align: center; }
         }
     </style>
 </head>
@@ -159,101 +174,129 @@
     <div class="noise-layer"></div>
 
     <header>
-        <a href="index.html" class="logo">
-            <img src="AGTS.png" alt="AGTS Logo">
-        </a>
-        <nav class="desktop-menu">
-            <a href="index.html#home"><span data-i18n="nav_home">Home</span></a>
-            <a href="index.html#studio"><span data-i18n="nav_about">About</span></a>
-            <a href="index.html#showcase"><span data-i18n="nav_work">Work</span></a>
-        </nav>
-        <div class="nav-toggles">
-            <button onclick="switchSystemTheme()" class="action-pill-btn">
-                <i data-feather="moon" id="ic-theme"></i>
-            </button>
-            <button onclick="flipSystemLocale()" class="action-pill-btn" style="border-color: var(--primary);">
-                <i data-feather="globe"></i> <span id="label-lang">عربي</span>
-            </button>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="AGTS.png" alt="AGTS Logo">
+            </a>
+            <nav class="desktop-menu">
+                <a href="index.html#home"><span data-i18n="nav_home">Home</span></a>
+                <a href="index.html#studio"><span data-i18n="nav_about">About</span></a>
+                <a href="index.html#showcase"><span data-i18n="nav_work">Work</span></a>
+            </nav>
+            <div class="nav-toggles">
+                <button onclick="switchSystemTheme()" class="action-pill-btn">
+                    <i data-feather="moon" id="ic-theme"></i>
+                </button>
+                <button onclick="flipSystemLocale()" class="action-pill-btn" style="border-color: var(--primary);">
+                    <i data-feather="globe"></i> <span id="label-lang">عربي</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="container">
+    <main>
+        <!-- HERO - PERFECTLY CENTERED -->
         <section class="project-hero fxd-up">
-            <div>
-                <div class="project-badge"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary);box-shadow:0 0 10px var(--primary);"></span> <span data-i18n="p_cat">Education Platform</span></div>
+            <div class="container">
+                <div class="project-badge">
+                    <span style="width:6px;height:6px;border-radius:50%;background:var(--primary);box-shadow:0 0 10px var(--primary);"></span>
+                    <span data-i18n="p_cat">Education Platform</span>
+                </div>
                 <h1 class="gradient-txt" data-i18n="p_title">Tahseel</h1>
-                <p data-i18n="p_desc">A comprehensive digital ecosystem designed to streamline educational management and enhance student attainment tracking.</p>
+                <p data-i18n="p_desc">Tahseel – A comprehensive application for middle and high school students.</p>
                 <a href="index.html#showcase" class="action-pill-btn">
                     <i data-feather="arrow-left" id="back-icon"></i> <span data-i18n="back_home">Back to Portfolio</span>
                 </a>
             </div>
         </section>
 
-        <div class="project-visual-main fxd-up">
-            <img src="tahseel.png" alt="Tahseel Education Platform">
-        </div>
+        <!-- VISUAL - CENTERED -->
+        <section class="container fxd-up">
+            <div class="project-visual-main">
+                <img src="tahseel.png" alt="Tahseel App Interface">
+            </div>
+        </section>
 
-        <section class="info-grid">
-            <aside class="info-sidebar fxd-up">
-                <div class="info-block">
-                    <h4 data-i18n="s_client">Client</h4>
-                    <p>Educational Sector</p>
+        <!-- INFO - CENTERED CONTENT -->
+        <section class="container sect-pad">
+            <div class="info-grid fxd-up">
+                <div class="info-sidebar">
+                    <div class="info-block">
+                        <h4 data-i18n="s_client">Audience</h4>
+                        <p data-i18n="s_client_val">Students</p>
+                    </div>
+                    <div class="info-block">
+                        <h4 data-i18n="s_service">Expertise</h4>
+                        <p>EdTech / AI</p>
+                    </div>
                 </div>
-                <div class="info-block">
-                    <h4 data-i18n="s_year">Year</h4>
-                    <p>2024</p>
-                </div>
-                <div class="info-block">
-                    <h4 data-i18n="s_service">Services</h4>
-                    <p>Web Development, UI/UX Design, Backend Architecture</p>
-                </div>
-            </aside>
+            </div>
+
             <article class="info-content fxd-up">
                 <h2 data-i18n="h_about">About the Project</h2>
-                <p data-i18n="p_about_1">Tahseel is a state-of-the-art education management system built to address the complexities of modern learning environments. By integrating various educational workflows into a single, intuitive platform, it empowers institutions to focus on what matters most: student success.</p>
-                <p data-i18n="p_about_2">Our team at AGTS engineered this solution with scalability and security at its core, ensuring that as the educational data grows, the system remains fast and reliable. The platform provides real-time insights that help educators make data-driven decisions to improve student outcomes.</p>
+                <p data-i18n="p_about_1">Tahseel App is the ideal solution for middle and high school students, providing a comprehensive educational experience that combines smart learning, entertainment, and rewards to help students achieve the best academic results in a fun and effective way.</p>
+                <p data-i18n="p_about_2">The app aims to facilitate lesson follow-up, organize review schedules, and practice interactive learning through various challenges and tests, in addition to opportunities to obtain real cash prizes upon excellence and continuous participation.</p>
             </article>
         </section>
 
-        <section class="sect-pad">
-            <h2 class="fxd-up" style="text-align: center; margin-bottom: 3rem;" data-i18n="h_features">Core Features</h2>
+        <!-- FEATURES - CENTERED CARDS -->
+        <section class="container sect-pad" style="border-top: 1px solid var(--bg-border);">
+            <h2 class="fxd-up" style="text-align: center; margin-bottom: 2rem; font-size: var(--fs-h2);" data-i18n="h_features">Core Advantages</h2>
             <div class="feature-grid">
+                <!-- Offline -->
                 <div class="feature-card fxd-up">
-                    <i data-feather="users"></i>
-                    <h3 data-i18n="f1_t">Smart Management</h3>
-                    <p data-i18n="f1_d">A centralized system for students and educators that streamlines administrative tasks and communication.</p>
+                    <i data-feather="wifi-off"></i>
+                    <h3 data-i18n="f1_t">Offline Access</h3>
+                    <p data-i18n="f1_d">Students can browse study materials, lessons, and books without needing an internet connection, allowing study anytime and anywhere.</p>
                 </div>
-                <div class="feature-card fxd-up">
-                    <i data-feather="trending-up"></i>
-                    <h3 data-i18n="f2_t">Performance Insights</h3>
-                    <p data-i18n="f2_d">Advanced tracking of educational progress and results, providing clear visualization of student attainment.</p>
+                <!-- Prizes -->
+                <div class="feature-card fxd-up" style="transition-delay: 0.1s;">
+                    <i data-feather="dollar-sign"></i>
+                    <h3 data-i18n="f2_t">Cash Prizes</h3>
+                    <p data-i18n="f2_d">The app offers incentive cash prizes for students who achieve outstanding performance in tests, motivating them to continue learning.</p>
                 </div>
+                <!-- Challenges -->
+                <div class="feature-card fxd-up" style="transition-delay: 0.2s;">
+                    <i data-feather="award"></i>
+                    <h3 data-i18n="f3_t">Educational Challenges</h3>
+                    <p data-i18n="f3_d">Includes weekly and monthly competitions and challenges that help students test their skills with a touch of fun and competition.</p>
+                </div>
+                <!-- Books -->
                 <div class="feature-card fxd-up">
-                    <i data-feather="shield"></i>
-                    <h3 data-i18n="f3_t">Secure & Scalable</h3>
-                    <p data-i18n="f3_d">Built on a robust architecture designed to handle growing educational data safely and efficiently.</p>
+                    <i data-feather="book"></i>
+                    <h3 data-i18n="f4_t">Digital Library</h3>
+                    <p data-i18n="f4_d">Provides all approved textbooks for middle and high school, with the ability to search, read, and save important notes easily.</p>
+                </div>
+                <!-- Questions -->
+                <div class="feature-card fxd-up" style="transition-delay: 0.1s;">
+                    <i data-feather="list"></i>
+                    <h3 data-i18n="f5_t">Diverse Questions</h3>
+                    <p data-i18n="f5_d">Contains multiple types of questions (MCQ, True/False) with model answers and simplified explanations to ensure full understanding.</p>
                 </div>
             </div>
         </section>
 
-        <section class="cta-box fxd-up">
-            <h2 data-i18n="cta_h">Have a project in mind?</h2>
-            <p style="margin-bottom: 2.5rem; color: var(--text-dim);" data-i18n="cta_p">Let's build something extraordinary together. Our team is ready to turn your vision into reality.</p>
-            <a href="index.html#connect" class="btn-luminous">
-                <span data-i18n="cta_btn">Start a Conversation</span>
-                <i data-feather="message-circle"></i>
-            </a>
+        <!-- CTA - CENTERED -->
+        <section class="container" style="padding-bottom: 100px;">
+            <div class="cta-box fxd-up">
+                <h2 data-i18n="cta_h">Ready to Build Your Vision?</h2>
+                <p style="margin-bottom: 3.5rem; color: var(--text-dim); font-size: 1.3rem; max-width: 750px; margin-left: auto; margin-right: auto;" data-i18n="cta_p">Transform your industry with AGTS. We combine elite engineering with visionary design to create digital excellence.</p>
+                <a href="index.html#connect" class="btn-luminous">
+                    <span data-i18n="cta_btn">Start Your Project</span>
+                    <i data-feather="arrow-up-right"></i>
+                </a>
+            </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
             <div class="ft-line">
-                <div>&copy; <span id="cc-yr"></span> Appraise Global Tech.</div>
-                <div style="display:flex; gap: 20px;">
+                <div>&copy; <span id="cc-yr"></span> Appraise Global Tech. <span data-i18n="l_res">All rights reserved.</span></div>
+                <div class="ft-links">
                     <a href="index.html#studio" data-i18n="nav_about">About</a>
-                    <a href="index.html#services">Services</a>
-                    <a href="index.html#connect">Contact</a>
+                    <a href="index.html#services" data-i18n="nav_services">Services</a>
+                    <a href="index.html#connect" data-i18n="nav_contact">Contact</a>
                 </div>
             </div>
         </div>
@@ -264,34 +307,40 @@
 
         const translations = {
             en: {
-                nav_home: "Home", nav_about: "About", nav_work: "Work",
-                p_cat: "Education Platform", p_title: "Tahseel", p_desc: "A comprehensive digital ecosystem designed to streamline educational management and enhance student attainment tracking.",
+                nav_home: "Home", nav_about: "About", nav_work: "Work", nav_services: "Services", nav_contact: "Contact",
+                p_cat: "Education Platform", p_title: "Tahseel",
+                p_desc: "Tahseel – A comprehensive application for middle and high school students.",
                 back_home: "Back to Portfolio",
-                s_client: "Client", s_year: "Year", s_service: "Services",
+                s_client: "Audience", s_client_val: "Students", s_year: "Year", s_service: "Expertise",
                 h_about: "About the Project",
-                p_about_1: "Tahseel is a state-of-the-art education management system built to address the complexities of modern learning environments. By integrating various educational workflows into a single, intuitive platform, it empowers institutions to focus on what matters most: student success.",
-                p_about_2: "Our team at AGTS engineered this solution with scalability and security at its core, ensuring that as the educational data grows, the system remains fast and reliable. The platform provides real-time insights that help educators make data-driven decisions to improve student outcomes.",
-                h_features: "Core Features",
-                f1_t: "Smart Management", f1_d: "A centralized system for students and educators that streamlines administrative tasks and communication.",
-                f2_t: "Performance Insights", f2_d: "Advanced tracking of educational progress and results, providing clear visualization of student attainment.",
-                f3_t: "Secure & Scalable", f3_d: "Built on a robust architecture designed to handle growing educational data safely and efficiently.",
-                cta_h: "Have a project in mind?", cta_p: "Let's build something extraordinary together. Our team is ready to turn your vision into reality.",
-                cta_btn: "Start a Conversation"
+                p_about_1: "Tahseel App is the ideal solution for middle and high school students, providing a comprehensive educational experience that combines smart learning, entertainment, and rewards to help students achieve the best academic results in a fun and effective way.",
+                p_about_2: "The app aims to facilitate lesson follow-up, organize review schedules, and practice interactive learning through various challenges and tests, in addition to opportunities to obtain real cash prizes upon excellence and continuous participation.",
+                h_features: "Core Advantages",
+                f1_t: "Offline Access", f1_d: "Students can browse study materials, lessons, and books without needing an internet connection, allowing study anytime and anywhere without restrictions.",
+                f2_t: "Cash Prizes", f2_d: "The app offers incentive cash prizes for students who achieve outstanding performance in tests and challenges, motivating them to continue learning and diligence.",
+                f3_t: "Educational Challenges", f3_d: "Includes weekly and monthly competitions and challenges that help students test their skills and see their progress with a touch of fun and competition.",
+                f4_t: "Digital Library", f4_d: "Provides a digital library including all approved textbooks for middle and high school, with the ability to search, read, and save important notes.",
+                f5_t: "Diverse Questions", f5_d: "Contains multiple types of questions, including MCQ, true/false, and short questions, with model answers and simplified explanations.",
+                cta_h: "Ready to Build Your Vision?", cta_p: "Transform your industry with AGTS. We combine elite engineering with visionary design to create digital excellence.",
+                cta_btn: "Start Your Project", l_res: "All rights reserved."
             },
             ar: {
-                nav_home: "الرئيسية", nav_about: "عن الشركة", nav_work: "أعمالنا",
-                p_cat: "منصة تعليمية", p_title: "تحصيل", p_desc: "نظام بيئي رقمي شامل مصمم لتبسيط الإدارة التعليمية وتعزيز تتبع تحصيل الطلاب.",
+                nav_home: "الرئيسية", nav_about: "عن الشركة", nav_work: "أعمالنا", nav_services: "خدماتنا", nav_contact: "تواصل معنا",
+                p_cat: "منصة تعليمية", p_title: "تحصيل",
+                p_desc: "تحصيل – تطبيق شامل لطلاب الشهادة الإعدادية والثانوية",
                 back_home: "العودة للأعمال",
-                s_client: "العميل", s_year: "السنة", s_service: "الخدمات",
-                h_about: "عن المشروع",
-                p_about_1: "تحصيل هو نظام إدارة تعليمي حديث تم بناؤه لمعالجة تعقيدات بيئات التعلم الحديثة. من خلال دمج سير العمل التعليمي المتنوع في منصة واحدة سهلة الاستخدام، فإنه يمكن المؤسسات من التركيز على الأهم: نجاح الطلاب.",
-                p_about_2: "قام فريقنا في AGTS بهندسة هذا الحل مع وضع القابلية للتوسع والأمان في جوهره، مما يضمن بقاء النظام سريعاً وموثوقاً مع نمو البيانات التعليمية. توفر المنصة رؤى فورية تساعد المعلمين على اتخاذ قرارات مبنية على البيانات لتحسين نتائج الطلاب.",
-                h_features: "المميزات الأساسية",
-                f1_t: "إدارة ذكية", f1_d: "نظام مركزي للطلاب والمعلمين يبسط المهام الإدارية والتواصل.",
-                f2_t: "رؤى الأداء", f2_d: "تتبع متقدم للتقدم والنتائج التعليمية، مما يوفر رؤية واضحة لتحصيل الطلاب.",
-                f3_t: "آمن وقابل للتوسع", f3_d: "مبني على بنية قوية مصممة للتعامل مع البيانات التعليمية المتنامية بأمان وكفاءة.",
-                cta_h: "هل لديك مشروع في بالك؟", cta_p: "لنقم ببناء شيء استثنائي معاً. فريقنا جاهز لتحويل رؤيتك إلى حقيقة.",
-                cta_btn: "ابدأ المحادثة"
+                s_client: "الجمهور", s_client_val: "طلاب الشهادات", s_year: "السنة", s_service: "الخبرات",
+                h_about: "عن مشروع تحصيل",
+                p_about_1: "تطبيق تحصيل هو الحل الأمثل لطلاب المرحلة الإعدادية والثانوية، حيث يقدم تجربة تعليمية متكاملة تجمع بين التعلم الذكي، الترفيه، والمكافآت، لمساعدة الطلاب على تحقيق أفضل النتائج الدراسية بطريقة ممتعة وفعّالة.",
+                p_about_2: "يهدف التطبيق إلى تيسير متابعة الدروس، تنظيم جدول المراجعة، وممارسة أسلوب التعلم التفاعلي من خلال تحديات واختبارات متنوعة، بالإضافة إلى فرص للحصول على جوائز مالية حقيقية عند التفوق والمشاركة المستمرة.",
+                h_features: "مميزات تطبيق تحصيل",
+                f1_t: "الوصول أوفلاين", f1_d: "يمكن للطلاب تصفح المواد الدراسية والدروس والكتب دون الحاجة لاتصال بالإنترنت، مما يتيح الدراسة في أي وقت وأي مكان بدون قيود، سواء أثناء التنقل أو في المناطق ذات الإنترنت الضعيف.",
+                f2_t: "جوائز مالية", f2_d: "يقدم التطبيق جوائز مالية تشجيعية للطلاب الذين يحققون أداءً متميزًا في الاختبارات والتحديات، مما يحفزهم على الاستمرار في التعلم والاجتهاد لتحقيق المزيد من النجاح.",
+                f3_t: "تحديات تعليمية", f3_d: "تتضمن تجربة التعلم في التطبيق مسابقات وتحديات أسبوعية وشهرية، تساعد الطلاب على اختبار مهاراتهم ومعرفة مستوى تقدمهم، مع إضافة عنصر المرح والتنافسية لتحفيزهم على التعلم بشكل مستمر.",
+                f4_t: "كتب دراسية", f4_d: "يوفر التطبيق مكتبة رقمية تشمل جميع الكتب الدراسية المعتمدة للمرحلة الإعدادية والثانوية، مع إمكانية البحث، القراءة، وحفظ الملاحظات المهمة، مما يجعل الدراسة أكثر تنظيمًا وسهولة.",
+                f5_t: "أسئلة متنوعة", f5_d: "يحتوي التطبيق على أسئلة متعددة الأنواع، تشمل اختيار من متعدد، صح أو خطأ، وأسئلة قصيرة، مع إجابات نموذجية وشروحات مبسطة، لتعزيز الفهم والتأكد من استيعاب الطالب للمواد الدراسية بشكل كامل.",
+                cta_h: "جاهز لبناء رؤيتك؟", cta_p: "أحدث ثورة في مجالك مع AGTS. نحن نجمع بين الهندسة النخبوية والتصميم الرؤيوي لخلق تميز رقمي لا مثيل له.",
+                cta_btn: "ابدأ مشروعك الآن", l_res: "جميع الحقوق محفوظة."
             }
         };
 
