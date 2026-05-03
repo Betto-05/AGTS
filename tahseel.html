@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- === FAVICON === -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='90' font-weight='900' font-family='sans-serif' fill='%23F97316'>A</text></svg>" type="image/svg+xml">
+
+    <title>Tahseel — AGTS Project Case Study</title>
+
+    <!-- Ultra Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        /* =========================================
+           CORE SYSTEM VARIABLES (Synced with index.html)
+           ========================================= */
+        :root {
+            --primary: #F97316;
+            --primary-light: #fbd38d;
+            --primary-dark: #dd6b20;
+            --success: #10B981;
+            --container-w: 1280px;
+            --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-bouncy: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            --nav-top-offset: 20px;
+            --fs-display: clamp(2.8rem, 5vw, 5.5rem);
+            --fs-h1: clamp(2.5rem, 5vw, 4rem);
+            --fs-h2: clamp(2rem, 4vw, 3.2rem);
+            --fs-h3: clamp(1.4rem, 2vw, 1.8rem);
+            --fs-body: clamp(1rem, 1.1vw, 1.15rem);
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --font-arabic: 'Cairo', sans-serif;
+        }
+
+        html[data-theme="dark"] {
+            --bg-site: #060608;
+            --bg-nav: rgba(18, 18, 20, 0.65);
+            --bg-panel: rgba(25, 25, 30, 0.4);
+            --bg-card: rgba(18, 18, 20, 0.5);
+            --bg-border: rgba(255, 255, 255, 0.08);
+            --bg-border-hov: rgba(255, 255, 255, 0.2);
+            --text-bold: #FFFFFF;
+            --text-base: #9AA0A6;
+            --text-dim: #6b7280;
+            --btn-glass: rgba(255, 255, 255, 0.03);
+            --glow-1: rgba(249, 115, 22, 0.25);
+            --glow-2: rgba(76, 29, 149, 0.25);
+            --glow-3: rgba(15, 118, 110, 0.15);
+            --shadow-high: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+        }
+
+        html[data-theme="light"] {
+            --bg-site: #F9FAFB;
+            --bg-nav: rgba(255, 255, 255, 0.85);
+            --bg-panel: rgba(255, 255, 255, 0.7);
+            --bg-card: rgba(255, 255, 255, 0.8);
+            --bg-border: rgba(0, 0, 0, 0.06);
+            --bg-border-hov: rgba(249, 115, 22, 0.4);
+            --text-bold: #09090b;
+            --text-base: #52525B;
+            --text-dim: #A1A1AA;
+            --btn-glass: rgba(0, 0, 0, 0.02);
+            --glow-1: rgba(249, 115, 22, 0.12);
+            --glow-2: rgba(124, 58, 237, 0.08);
+            --glow-3: rgba(16, 185, 129, 0.08);
+            --shadow-high: 0 30px 60px -15px rgba(0,0,0,0.06);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-site); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 120px; background-color: var(--bg-site); transition: background-color 0.8s ease; }
+        body { background-color: var(--bg-site); color: var(--text-base); font-family: var(--font-body); font-weight: 400; overflow-x: hidden; line-height: 1.65; transition: background-color 0.8s ease, color 0.8s ease; overscroll-behavior-y: none; }
+
+        .ambient-mesh { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: -2; overflow: hidden; }
+        .aurora { position: absolute; width: 60vw; height: 60vh; filter: blur(140px); opacity: 0.8; mix-blend-mode: normal; animation: drift 25s ease-in-out infinite alternate; }
+        .a1 { background: var(--glow-1); top: -20%; left: -10%; border-radius: 50%; }
+        .a2 { background: var(--glow-2); top: 30%; right: -20%; width: 50vw; height: 70vh; border-radius: 40%; animation-duration: 30s;}
+        .a3 { background: var(--glow-3); bottom: -10%; left: 30%; width: 80vw; height: 50vh; border-radius: 60%; animation-duration: 35s;}
+        @keyframes drift { 0% { transform: translateY(0) scale(1) rotate(0deg); } 50% { transform: translateY(-50px) scale(1.1) rotate(10deg); } 100% { transform: translateY(30px) scale(0.9) rotate(-15deg); } }
+        .noise-layer { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.25; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+
+        body.lang-ar { font-family: var(--font-arabic) !important; direction: rtl; }
+        body.lang-ar h1, body.lang-ar h2, body.lang-ar h3, body.lang-ar h4, body.lang-ar .desktop-menu a { font-family: var(--font-arabic) !important; letter-spacing: 0; font-weight: 700; }
+
+        h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-bold); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: var(--container-w); margin: 0 auto; padding: 0 5%; width: 100%; position: relative; z-index: 2; }
+        .sect-pad { padding: 140px 0; }
+        .gradient-txt { background: linear-gradient(120deg, var(--text-bold) 10%, var(--primary) 90%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .fxd-up { opacity: 0; transform: translateY(40px) scale(0.98); transition: 1.2s var(--ease-silk); will-change: transform, opacity; }
+        .fxd-up.in-view { opacity: 1; transform: translateY(0) scale(1); }
+
+        header { position: fixed; top: var(--nav-top-offset); left: 50%; transform: translateX(-50%); width: 90%; max-width: 1400px; height: 75px; z-index: 100; background: var(--bg-nav); border: 1px solid var(--bg-border); border-radius: 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; transition: 0.5s ease; }
+        .logo img { height: 65px; object-fit: contain; }
+        .desktop-menu { display: flex; gap: 28px; }
+        .desktop-menu a { font-size: 0.88rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dim); padding: 8px 4px; }
+        .desktop-menu a:hover { color: var(--text-bold); }
+        .nav-toggles { display: flex; align-items: center; gap: 10px; }
+        .action-pill-btn { background: transparent; color: var(--text-bold); border: 1px solid var(--bg-border); border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; padding: 8px 16px; transition: all 0.3s var(--ease-silk); height: 42px; }
+        .action-pill-btn:hover { background: var(--bg-border-hov); border-color: var(--primary); }
+
+        /* Project Specific Styles */
+        .project-hero { min-height: 80vh; display: flex; align-items: center; padding-top: 120px; text-align: center; }
+        .project-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; color: var(--primary); letter-spacing: 0.1em; background: rgba(249, 115, 22, 0.08); padding: 8px 18px; border-radius: 50px; border: 1px solid var(--bg-border-hov); margin-bottom: 2rem; text-transform: uppercase; }
+        .project-hero h1 { font-size: var(--fs-display); margin-bottom: 1.5rem; }
+        .project-hero p { font-size: 1.4rem; color: var(--text-dim); max-width: 800px; margin: 0 auto 3rem; font-weight: 300; }
+
+        .project-visual-main { width: 100%; border-radius: 30px; overflow: hidden; background: var(--bg-card); border: 1px solid var(--bg-border); box-shadow: var(--shadow-high); margin-bottom: 5rem; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+        .project-visual-main img { width: 40%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); }
+
+        .info-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; margin-top: 4rem; }
+        .info-sidebar h4 { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 1rem; }
+        .info-sidebar p { margin-bottom: 2.5rem; color: var(--text-bold); font-weight: 600; }
+        .info-content h2 { font-size: var(--fs-h2); margin-bottom: 2rem; }
+        .info-content p { font-size: 1.15rem; color: var(--text-dim); margin-bottom: 2rem; line-height: 1.8; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 4rem; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--bg-border); border-radius: 24px; padding: 3rem; transition: 0.4s; }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .feature-card i { color: var(--primary); margin-bottom: 1.5rem; width: 32px; height: 32px; }
+        .feature-card h3 { margin-bottom: 1rem; }
+        .feature-card p { color: var(--text-dim); }
+
+        .cta-box { background: var(--bg-card); border: 1px solid var(--bg-border); border-radius: 30px; padding: 5rem; text-align: center; margin-top: 6rem; position: relative; overflow: hidden; }
+        .cta-box h2 { font-size: var(--fs-h2); margin-bottom: 1.5rem; }
+        .btn-luminous { position: relative; display: inline-flex; align-items: center; gap: 12px; font-weight: 600; padding: 18px 35px; border-radius: 12px; color: var(--text-bold); background: transparent; border: 1px solid rgba(249, 115, 22, 0.4); z-index: 1; cursor: pointer; transition: 0.5s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-luminous:hover { background: var(--primary); color: white; border-color: transparent; box-shadow: 0 15px 40px rgba(249, 115, 22, 0.4); }
+
+        footer { border-top: 1px solid var(--bg-border); background: var(--bg-nav); backdrop-filter: blur(40px); padding: 80px 0 40px; margin-top: 100px; }
+        .ft-line { display: flex; justify-content: space-between; align-items: center; color: var(--text-dim); font-size: 0.9rem; }
+
+        @media (max-width: 1024px) {
+            .info-grid { grid-template-columns: 1fr; gap: 40px; }
+            .cta-box { padding: 3rem; }
+        }
+    </style>
+</head>
+<body class="project-page">
+
+    <div class="ambient-mesh">
+        <div class="aurora a1"></div>
+        <div class="aurora a2"></div>
+        <div class="aurora a3"></div>
+    </div>
+    <div class="noise-layer"></div>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="AGTS.png" alt="AGTS Logo">
+        </a>
+        <nav class="desktop-menu">
+            <a href="index.html#home"><span data-i18n="nav_home">Home</span></a>
+            <a href="index.html#studio"><span data-i18n="nav_about">About</span></a>
+            <a href="index.html#showcase"><span data-i18n="nav_work">Work</span></a>
+        </nav>
+        <div class="nav-toggles">
+            <button onclick="switchSystemTheme()" class="action-pill-btn">
+                <i data-feather="moon" id="ic-theme"></i>
+            </button>
+            <button onclick="flipSystemLocale()" class="action-pill-btn" style="border-color: var(--primary);">
+                <i data-feather="globe"></i> <span id="label-lang">عربي</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="project-hero fxd-up">
+            <div>
+                <div class="project-badge"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary);box-shadow:0 0 10px var(--primary);"></span> <span data-i18n="p_cat">Education Platform</span></div>
+                <h1 class="gradient-txt" data-i18n="p_title">Tahseel</h1>
+                <p data-i18n="p_desc">A comprehensive digital ecosystem designed to streamline educational management and enhance student attainment tracking.</p>
+                <a href="index.html#showcase" class="action-pill-btn">
+                    <i data-feather="arrow-left" id="back-icon"></i> <span data-i18n="back_home">Back to Portfolio</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="project-visual-main fxd-up">
+            <img src="tahseel.png" alt="Tahseel Education Platform">
+        </div>
+
+        <section class="info-grid">
+            <aside class="info-sidebar fxd-up">
+                <div class="info-block">
+                    <h4 data-i18n="s_client">Client</h4>
+                    <p>Educational Sector</p>
+                </div>
+                <div class="info-block">
+                    <h4 data-i18n="s_year">Year</h4>
+                    <p>2024</p>
+                </div>
+                <div class="info-block">
+                    <h4 data-i18n="s_service">Services</h4>
+                    <p>Web Development, UI/UX Design, Backend Architecture</p>
+                </div>
+            </aside>
+            <article class="info-content fxd-up">
+                <h2 data-i18n="h_about">About the Project</h2>
+                <p data-i18n="p_about_1">Tahseel is a state-of-the-art education management system built to address the complexities of modern learning environments. By integrating various educational workflows into a single, intuitive platform, it empowers institutions to focus on what matters most: student success.</p>
+                <p data-i18n="p_about_2">Our team at AGTS engineered this solution with scalability and security at its core, ensuring that as the educational data grows, the system remains fast and reliable. The platform provides real-time insights that help educators make data-driven decisions to improve student outcomes.</p>
+            </article>
+        </section>
+
+        <section class="sect-pad">
+            <h2 class="fxd-up" style="text-align: center; margin-bottom: 3rem;" data-i18n="h_features">Core Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card fxd-up">
+                    <i data-feather="users"></i>
+                    <h3 data-i18n="f1_t">Smart Management</h3>
+                    <p data-i18n="f1_d">A centralized system for students and educators that streamlines administrative tasks and communication.</p>
+                </div>
+                <div class="feature-card fxd-up">
+                    <i data-feather="trending-up"></i>
+                    <h3 data-i18n="f2_t">Performance Insights</h3>
+                    <p data-i18n="f2_d">Advanced tracking of educational progress and results, providing clear visualization of student attainment.</p>
+                </div>
+                <div class="feature-card fxd-up">
+                    <i data-feather="shield"></i>
+                    <h3 data-i18n="f3_t">Secure & Scalable</h3>
+                    <p data-i18n="f3_d">Built on a robust architecture designed to handle growing educational data safely and efficiently.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-box fxd-up">
+            <h2 data-i18n="cta_h">Have a project in mind?</h2>
+            <p style="margin-bottom: 2.5rem; color: var(--text-dim);" data-i18n="cta_p">Let's build something extraordinary together. Our team is ready to turn your vision into reality.</p>
+            <a href="index.html#connect" class="btn-luminous">
+                <span data-i18n="cta_btn">Start a Conversation</span>
+                <i data-feather="message-circle"></i>
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="ft-line">
+                <div>&copy; <span id="cc-yr"></span> Appraise Global Tech.</div>
+                <div style="display:flex; gap: 20px;">
+                    <a href="index.html#studio" data-i18n="nav_about">About</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#connect">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('cc-yr').innerText = new Date().getFullYear();
+
+        const translations = {
+            en: {
+                nav_home: "Home", nav_about: "About", nav_work: "Work",
+                p_cat: "Education Platform", p_title: "Tahseel", p_desc: "A comprehensive digital ecosystem designed to streamline educational management and enhance student attainment tracking.",
+                back_home: "Back to Portfolio",
+                s_client: "Client", s_year: "Year", s_service: "Services",
+                h_about: "About the Project",
+                p_about_1: "Tahseel is a state-of-the-art education management system built to address the complexities of modern learning environments. By integrating various educational workflows into a single, intuitive platform, it empowers institutions to focus on what matters most: student success.",
+                p_about_2: "Our team at AGTS engineered this solution with scalability and security at its core, ensuring that as the educational data grows, the system remains fast and reliable. The platform provides real-time insights that help educators make data-driven decisions to improve student outcomes.",
+                h_features: "Core Features",
+                f1_t: "Smart Management", f1_d: "A centralized system for students and educators that streamlines administrative tasks and communication.",
+                f2_t: "Performance Insights", f2_d: "Advanced tracking of educational progress and results, providing clear visualization of student attainment.",
+                f3_t: "Secure & Scalable", f3_d: "Built on a robust architecture designed to handle growing educational data safely and efficiently.",
+                cta_h: "Have a project in mind?", cta_p: "Let's build something extraordinary together. Our team is ready to turn your vision into reality.",
+                cta_btn: "Start a Conversation"
+            },
+            ar: {
+                nav_home: "الرئيسية", nav_about: "عن الشركة", nav_work: "أعمالنا",
+                p_cat: "منصة تعليمية", p_title: "تحصيل", p_desc: "نظام بيئي رقمي شامل مصمم لتبسيط الإدارة التعليمية وتعزيز تتبع تحصيل الطلاب.",
+                back_home: "العودة للأعمال",
+                s_client: "العميل", s_year: "السنة", s_service: "الخدمات",
+                h_about: "عن المشروع",
+                p_about_1: "تحصيل هو نظام إدارة تعليمي حديث تم بناؤه لمعالجة تعقيدات بيئات التعلم الحديثة. من خلال دمج سير العمل التعليمي المتنوع في منصة واحدة سهلة الاستخدام، فإنه يمكن المؤسسات من التركيز على الأهم: نجاح الطلاب.",
+                p_about_2: "قام فريقنا في AGTS بهندسة هذا الحل مع وضع القابلية للتوسع والأمان في جوهره، مما يضمن بقاء النظام سريعاً وموثوقاً مع نمو البيانات التعليمية. توفر المنصة رؤى فورية تساعد المعلمين على اتخاذ قرارات مبنية على البيانات لتحسين نتائج الطلاب.",
+                h_features: "المميزات الأساسية",
+                f1_t: "إدارة ذكية", f1_d: "نظام مركزي للطلاب والمعلمين يبسط المهام الإدارية والتواصل.",
+                f2_t: "رؤى الأداء", f2_d: "تتبع متقدم للتقدم والنتائج التعليمية، مما يوفر رؤية واضحة لتحصيل الطلاب.",
+                f3_t: "آمن وقابل للتوسع", f3_d: "مبني على بنية قوية مصممة للتعامل مع البيانات التعليمية المتنامية بأمان وكفاءة.",
+                cta_h: "هل لديك مشروع في بالك؟", cta_p: "لنقم ببناء شيء استثنائي معاً. فريقنا جاهز لتحويل رؤيتك إلى حقيقة.",
+                cta_btn: "ابدأ المحادثة"
+            }
+        };
+
+        let xSysTheme = localStorage.getItem('__ax_mode') || 'dark';
+        let xSysLocale = 'en';
+
+        document.documentElement.setAttribute('data-theme', xSysTheme);
+        renderVisualTokens();
+        feather.replace();
+
+        function switchSystemTheme() {
+            xSysTheme = xSysTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', xSysTheme);
+            localStorage.setItem('__ax_mode', xSysTheme);
+            renderVisualTokens();
+        }
+
+        function renderVisualTokens() {
+            const tkIcon = document.getElementById('ic-theme');
+            if(tkIcon) {
+                tkIcon.setAttribute('data-feather', xSysTheme === 'dark' ? 'moon' : 'sun');
+                feather.replace();
+            }
+        }
+
+        function flipSystemLocale() {
+            const btnTag = document.getElementById('label-lang');
+            const backIcon = document.getElementById('back-icon');
+            if(xSysLocale === 'en'){
+                xSysLocale = 'ar';
+                document.body.classList.add('lang-ar');
+                btnTag.textContent = "EN / US";
+                if(backIcon) backIcon.setAttribute('data-feather', 'arrow-right');
+            } else {
+                xSysLocale = 'en';
+                document.body.classList.remove('lang-ar');
+                btnTag.textContent = "عربي";
+                if(backIcon) backIcon.setAttribute('data-feather', 'arrow-left');
+            }
+            renderLanguagePulls();
+            feather.replace();
+        }
+
+        function renderLanguagePulls(){
+            const coreMaps = translations[xSysLocale];
+            document.querySelectorAll('[data-i18n]').forEach(tag => {
+                const tr = tag.getAttribute('data-i18n');
+                if(coreMaps[tr]){ tag.textContent = coreMaps[tr]; }
+            });
+        }
+
+        const revealConfig = new IntersectionObserver((track) => {
+            track.forEach(pxNode => {
+                if(pxNode.isIntersecting) pxNode.target.classList.add('in-view');
+            });
+        }, { threshold: 0.1 });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.fxd-up').forEach(cDiv => { revealConfig.observe(cDiv); });
+            feather.replace();
+        });
+    </script>
+</body>
+</html>
